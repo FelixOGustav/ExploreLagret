@@ -2,7 +2,7 @@
 
 This is the repository for the website explorelagret.se
 
-## Contributors
+### Contributors
 
 - Gustav Råkeberg
 - Felix Brunnegård
