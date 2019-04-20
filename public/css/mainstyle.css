@@ -402,3 +402,72 @@ form label {
     filter: opacity(80%);
     -webkit-filter: opacity(80%);
 }
+
+
+
+
+
+
+/* Explore start page info content stuff */
+
+.contentRow {
+    width: 100vw;
+    margin: 0px;
+    padding: 0px;
+}
+
+.contentContainer {
+    display: flex;
+    flex-direction: row;
+    -ms-flex-direction: row;
+    background-color: white;
+    max-height: 600px;
+}
+
+.containerItem {
+    width: 50%;
+    margin: 0px;
+    /*flex-grow: 1;*/
+}
+
+.contentImg {
+    /*width: 50vw;*/
+    height: inherit;
+    overflow: hidden;
+}
+
+.contentImg img {
+    width: 100%;
+    height: auto;
+}
+
+.contentTxt {
+    padding: 3rem;
+    font-family: ChampagneLimousines;
+    color: #606569;
+}
+
+.contentTxt h2 {
+    font-family: Elkwood;
+    font-size: 60px;
+}
+
+@media (max-width: 991.98px){
+    .containerItem{
+        width: 100%;
+        order: 1;
+    }
+
+    .contentImg {
+        width: 100vw;
+    }
+
+    .contentContainer {
+        max-height: 1200px;
+    }
+
+    .contentContainer {
+        flex-direction: column-reverse;
+        -ms-flex-direction: column-reverse;
+    }
+}

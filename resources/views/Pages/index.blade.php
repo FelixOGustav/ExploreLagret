@@ -155,6 +155,42 @@
 
         <div class="invisibleSpacer"></div>
 
+        <!-- Explore info row -->
+        <div class="ContentRow">
+            <div class="contentContainer">
+                <div class="containerItem contentImg" style="order: 1">
+                    <img style="object-fit: fill;" src="{{URL::asset('img/wheetField.JPG')}}">
+                </div>
+                <div class="containerItem contentTxt"  style="order: 0">
+                    <h2>Vad är EXPLORE?</h2>
+                    <p>Explore är ett sommarläger som varje år arrangeras av Equmeniaförsamlingarna i Vårgårda och Herrljungtrakten.
+                        Lägret bjuder på en vecka av bad, snack om Gud och bibel, gamla och nya vänner, aktiviteter av olika slag
+                        och mängder med tillfällen att njuta av livet
+                    </p>
+                </div>
+            </div>
+        </div>
+        <!-- Explore info row end -->
+
+        <!-- Explore info row -->
+        <div class="ContentRow">
+            <div class="contentContainer">
+                <div class="containerItem contentImg"  style="order: 1">
+                    <img style="object-fit: fill;" src="{{URL::asset('img/wheetField.JPG')}}">
+                </div>
+                <div class="containerItem contentTxt"  style="order: 2">
+                    <h2>Vad är EXPLORE?</h2>
+                    <p>Explore är ett sommarläger som varje år arrangeras av Equmeniaförsamlingarna i Vårgårda och Herrljungtrakten.
+                        Lägret bjuder på en vecka av bad, snack om Gud och bibel, gamla och nya vänner, aktiviteter av olika slag
+                        och mängder med tillfällen att njuta av livet
+                    </p>
+                </div>
+            </div>
+        </div>
+        <!-- Explore info row end -->
+        
+        <div class="invisibleSpacer"></div>
+
         <!-- Pris info -->
         <div class="container-fluid bg-white paddingBottom paddingTop" id="prisInfo">
             <div class="centerTextInDiv">

@@ -111,16 +111,17 @@
 
     <div class="footerBG row" style="margin: 0px;" id="footerId">
         <div class="col" style="margin-top: auto; margin-bottom: auto; text-align: center">
-            <a href="/about" class="same-as-p whiteColor scaleFooterTextToMobile">Om hemsidan<br><br></a>
-            <a href="/gdpr" class="same-as-p whiteColor scaleFooterTextToMobile">GDPR<br><br></a>
-            <a href="/admin/login" class="same-as-p whiteColor scaleFooterTextToMobile">Admin-sidan</a>
+            <a href="/contact" class="footerLink scaleFooterTextToMobile">Kontakt ><br><br></a>
+            <a href="http://www.equmenia.se/" class="footerLink scaleFooterTextToMobile" style="color: white;" target="blank">Equmenia ></a> 
         </div>
 
-        <div class="col">
-            <a href="http://www.equmenia.se/" target="blank"><img src="{{URL::asset('img/EqumeniaTextLogga.png')}}" class="footerImg"></a>
+        <div class="col" style="margin-top: auto; margin-bottom: auto; text-align: center">
+            <a><h2 style=" font-size: 25;" class="footerLogo scaleFooterLogoToMobile">EXPLORE</h2></a>
+            <p class="footerRights scaleFooterRightsToMobile">(C) Equmenia Väst</p>
         </div>
-        <div  class="col">
-            <a href="http://www.equmenia.se/" target="blank"><img src="{{URL::asset('img/EqumeniakyrkanKorsLogga.png')}}" class="footerImg"></a> 
+        <div  class="col" style="margin-top: auto; margin-bottom: auto; text-align: center">
+            <a href="/gdpr" class="footerLink scaleFooterTextToMobile">GDPR ><br><br></a>
+            <a href="/admin/login" class="footerLink scaleFooterTextToMobile">Admin ></a>
         </div>
     </div>
 

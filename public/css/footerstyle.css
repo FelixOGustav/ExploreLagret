@@ -1,6 +1,27 @@
 .footerBG {
-    background-color: #54595de0 !important;
+    background-color: #EAC15B !important;
     height: 160px;
+    line-height: 1;
+}
+
+.footerLink {
+    color: white;
+    font-size: 35px;
+}
+
+.footerLink:hover {
+    color: white;
+    text-decoration: none;
+}
+
+.footerLogo {
+    color: white;
+    font-size: 55px;
+}
+
+.footerRights {
+    color: white;
+    font-size: 20px;
 }
 
 .footerImg {
@@ -14,12 +35,28 @@
 
 @media (max-width:767.98px){
     .scaleFooterTextToMobile{
-        font-size: 15px;
+        font-size: 18px;
+    }
+
+    .scaleFooterLogoToMobile{
+        font-size: 30px;
+    }
+
+    .scaleFooterRightsToMobile{
+        font-size: 10px;
     }
 }
 
 @media (max-width:359.98px){
     .scaleFooterTextToMobile{
-        font-size: 12px;
+        font-size: 15px;
+    }
+
+    .scaleFooterLogoToMobile{
+        font-size: 25px;
+    }
+
+    .scaleFooterRightsToMobile{
+        font-size: 8px;
     }
 }
