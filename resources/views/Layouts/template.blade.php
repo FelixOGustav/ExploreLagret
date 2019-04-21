@@ -26,8 +26,9 @@
     <link rel="stylesheet" href="{{URL::asset('css/navbarcstyle.css')}}">
     <link rel="stylesheet" href="{{URL::asset('css/footerstyle.css')}}">
     <link rel="stylesheet" href="{{URL::asset('css/mainstyle.css')}}">
+    <link rel="stylesheet" href="{{URL::asset('css/mainSideMenu.css')}}">
 
-    <title>{{config('app.name', 'Branäslägret')}}</title>
+    <title>{{config('app.name', 'Explorelägret')}}</title>
 </head>
 <body>
     <div class="mainBG"></div>
@@ -40,18 +41,15 @@
     <script src="https://cdn.jsdelivr.net/npm/js-cookie@2/src/js.cookie.min.js"></script>
 
     <!-- Loading content -->
-
     <div class="loadingBG" id="loadingScreen">
         <div class="loadingContent centerTextInDiv">
             <img src="{{URL::asset('img/branaslogga_white.png')}}" type="img/PNG" class="rotating">
             <p class="whiteColor">Vänta lite..</p>
         </div>
     </div>
-    
     <!-- Loading content  end-->
 
-    <!-- Navbar -->
-    
+    <!-- Navbar 
     <div class="navbar navbar-expand-lg navbar-light navbarBG fixed-top navbar-custom">
         <div>
             <a class="navbar-brand"  id="scrollToTopLogo" href="{{$links['navLogoLink'] ?? '/'}}"><img src="{{URL::asset('img/branaslagret.svg')}}" height="40" class="d-inline-block align-top"></a>
@@ -79,34 +77,80 @@
             </ul>
         </div>
     </div>
-
+-->
     <!-- Navbar end -->
 
     <!-- Main Site Content -->
-    <div class="container-fluid noPadding" style="min-height: 850px;" id="mainContent"><!-- min-height should be able to be removed later -->
-        <div class="navbarSpacer" ></div> <!-- Spacer so that content doesn't start under navbar -->
-            
-        <!-- Cookie consent -->
-        <div class="js-cookie-consent cookie-consent" id="cookieConsentDiv" style="display: block;">
-            <div class="fixed-bottom cookiestyle centerTextInDiv">
-                <span class="cookie-consent__message">
-                    Genom att besöka och använda denna sida godkänner du användningen av cookies.
-                    Vi använder inga cookies för att spåra eller samla in användardata.
-                </span>
-                <span>
-                    <a href="/gdpr" class="btn" style="background-color: white; margin-left: 15px;"><p style="margin: 0px; padding: 0px;">Läs mer om GDPR</p></a>
-                    
-                    <button id="agreeCookies" class="btn" style="background-color: white; margin-left: 15px;">
-                        <p style="margin: 0px; padding: 0px;">Ok</p>
-                    </button>
-                </span>
+    <div class="wrapper" style="color: white;">
+        <!-- Sidebar -->
+        <div id="sidebar" class="hidden" style="overflow-y: auto;">
+            <div class="sidebarName">
+                <h1>EXPLORE</h1>
             </div>
-        </div>
-        <!-- Cookie consent end -->
+            <hr class="sidebarmenuline">
 
-        @yield('content')
-    
+            <!-- Menu navigation buttons -->
+            <ul style="padding: 0px;">
+                <li class="sidebarbutton">
+                    <a href="{{$links['infoLink'] ?? "/#branaslagretInfo"}}" id="scrollToInfoBtn">
+                        <i class="fas fa-home"></i>
+                        <span>Info</span>
+                    </a>
+                </li>
+
+                <li class="sidebarbutton">
+                    <a href="{{$links['prisLink'] ?? "/#prisInfo"}}" id="scrollToPrisBtn">
+                        <i class="fas fa-user-plus"></i>
+                        <span>Pris?</span>
+                    </a>
+                </li>
+
+                <li class="sidebarbutton">
+                    <a href="{{$links['reglerLink'] ?? "/#ReglerInfo"}}">
+                        <i class="fas fa-user-edit"></i>
+                        <span>Regler</span>
+                    </a>
+                </li>
+
+                <li class="sidebarbutton">
+                    <a href="{{$links['faqLink'] ?? "/#faqInfo"}}">
+                        <i class="fas fa-campground"></i>
+                        <span>FAQ</span>
+                    </a>
+                </li>
+
+                <li class="sidebarbutton">
+                    <a href="{{$links['kontaktLink'] ?? "/#KontaktInfo"}}">
+                        <i class="fas fa-clock"></i>
+                        <span>Kontakt</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+
+        <!-- Page Content -->
+        <div id="content" class="hidden">
+
+            <!-- Top bar -->
+            <div class="topBar" id="topbar">
+                <a id="sidebarshowbtn">
+                    <div class="hamburger"><div></div></div>
+                </a>
+            </div>
+
+            <div class="toplogo" id="scrollToTopLogo">
+                <h1>Explore</h1>
+                <p>2019</p>
+            </div>
+            
+            <!-- Main site content -->
+            <div class="contentcontainer hidden" id="contentcontainer">
+                @yield('content')
+             </div>
+        </div>
     </div>
+
+    
     <!-- Footer -->
 
     <div class="footerBG row" style="margin: 0px;" id="footerId">
@@ -137,7 +181,14 @@
                 $("html,body").animate({scrollTop:0},"1300");
                 return false
             })
-        })
+        });
+
+        $(function(){
+            $("#scrollToTopLogo").click(function(){
+                $("html,body").animate({scrollTop:0},"1300");
+                return false
+            })
+        });
         
         // Closes the navbar drop-down in mobile view when a link i pressed
         $('.navbar-nav>li>a').on('click', function(){
@@ -168,6 +219,13 @@
             })
         })
 
+        $(document).ready(function () {
+            $('#sidebarshowbtn').on('click', toggleHiddenSidebarClass);
+        });
+
+        function toggleHiddenSidebarClass() {
+            $('#sidebar, #topbar, #contentcontainer').toggleClass('hidden');
+        }
 
         </script>
     </div>

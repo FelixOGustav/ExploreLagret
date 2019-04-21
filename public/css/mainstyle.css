@@ -1,23 +1,5 @@
 .mainBG{
-    background-image: url(../img/mainBG.jpg);
-    height: 100vh;
-    width: 100vw;
-    position: fixed;
-    top: 0px;
-    left: 0px;
-    z-index: -1;
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-}
-
-@media (max-width: 991.98px){
-    .mainBG {
-        background-image: url(../img/mainBG_mobile.jpg);
-    }
+    background-color: #EBEBEB;
 }
 
 .noPadding {
@@ -49,22 +31,22 @@
 }
 
 .buttonStyle {
-    background-color: #606569;
+    background: none;
     border: none;
-    padding: 10px 25px 10px 25px;
+    /*padding: 10px 25px 10px 25px;
     text-align: center;
     text-decoration: none;
     display: inline-block;
     margin-top: 35px;
     margin-left: auto;
-    margin-right: auto;
+    margin-right: auto;*/
     cursor: pointer;
 }
 
 .buttonStyle p {
     color: white;
     font-family: Elkwood;
-    font-size: 30px;
+    font-size: 70px;
     font-weight: normal;
     margin: 0px;
 }
@@ -160,8 +142,8 @@
 }
 
 .qnaBound {
-    width: 50%;
-    margin: 0px;
+    width: 44.5%;
+    margin: 48px;
     padding: 0px;
 }
 
@@ -173,7 +155,7 @@
 @media (max-width: 991.98px){
     .qnaBound {
         width: 100%;
-        margin: 0px;
+        /*margin: 0px;*/
         padding: 0px;
     }
 
@@ -410,8 +392,9 @@ form label {
 
 /* Explore start page info content stuff */
 
-.contentRow {
-    width: 100vw;
+.ContentRow {
+    background-color: #EBEBEB;
+    width: 100%;
     margin: 0px;
     padding: 0px;
 }
@@ -420,7 +403,7 @@ form label {
     display: flex;
     flex-direction: row;
     -ms-flex-direction: row;
-    background-color: white;
+    background-color: #EBEBEB;
     max-height: 600px;
 }
 
@@ -438,7 +421,7 @@ form label {
 
 .contentImg img {
     width: 100%;
-    height: auto;
+    min-height: 100%;
 }
 
 .contentTxt {
@@ -450,6 +433,11 @@ form label {
 .contentTxt h2 {
     font-family: Elkwood;
     font-size: 60px;
+}
+
+.contentTxt p {
+    font-weight: lighter;
+    font-size: 30px;
 }
 
 @media (max-width: 991.98px){
@@ -470,4 +458,224 @@ form label {
         flex-direction: column-reverse;
         -ms-flex-direction: column-reverse;
     }
+
+    .hideOnMobile{
+        display: none;
+    }
+}
+
+
+.landingDiv {
+    background: url('../img/grass_sunset.jpg') no-repeat center center;
+    background-size: cover;
+    height: 100vh;
+    position: relative;
+}
+
+.landingDiv .landingContentContainer {
+    display: flex;
+    display: -webkit-flex;
+    flex-direction: column;
+    /*width: 100vw;*/
+}
+
+.landingDiv .logoTxt h1 {
+    text-align: center;
+    color: white;
+    margin-top: calc(50vh - 200px);
+    font-size: 200px;
+}
+
+.landingInfo {
+    display: flex;
+    display: -webkit-flex;
+    flex-flow: row;
+}
+
+.landingInfo div {
+    width: 50vw;
+}
+
+.landingInfo div p{
+    color: white;
+    font-family: Elkwood;
+    font-size: 70px;
+    font-weight: normal;
+    margin: 0px;
+    text-align: center;
+}
+
+@media (max-width: 991.98px){
+    
+    .landingInfo div p {
+        font-size: 40px;
+    }
+
+    .landingInfo {
+        position: absolute;
+        bottom: 100px;
+        /*margin-top: 200px;*/
+    }
+}
+
+.chevron {
+    position: relative;
+    text-align: center;
+    /*padding: 2px;*/
+    margin-bottom: 6px;
+    height: 8px;
+    width: 100px;
+    cursor: pointer;
+}
+.chevron:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 51%;
+    background: rgb(255, 255, 255);
+    /*transform: skew(0deg, 20deg);*/
+    transform: rotate(20deg);
+    transform-origin: bottom right;
+}
+.chevron:after {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    height: 100%;
+    width: 50%;
+    background: rgb(255, 255, 255);
+    /*transform: skew(0deg, -20deg);*/
+    transform: rotate(-20deg);
+    transform-origin: bottom left;
+}
+
+.chevronContainer {
+    position: absolute;
+    bottom: 0px;
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 40px;
+}
+
+.chevronContainer .chevron {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.hamburger {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 200;
+    width: 60px;
+    height: 60px;
+    padding: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.hamburger > div {
+    position: relative;
+    flex: none;
+    width: 100%;
+    height: 2px;
+    z-index: 200;
+    background: red;
+    display: flex;
+    align-content: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+}
+
+.hamburger > div:after,
+.hamburger > div:before {
+    content: '';
+    position: absolute;
+    z-index: 200;
+    top: -10px;
+    width: 100%;
+    height: 2px;
+    background: inherit;
+}
+
+.hamburger > div:before {
+    top: 10px;
+}
+
+.topBar.hidden > #sidebarshowbtn > .hamburger > div {
+    transform: rotate(135deg);
+}
+
+.topBar.hidden > #sidebarshowbtn > .hamburger > div:after,
+.topBar.hidden > #sidebarshowbtn > .hamburger > div:before {
+    top: 0;
+    transform: rotate(90deg);
+}
+
+.topBar.hidden > #sidebarshowbtn > .hamburger:hover > div {
+    transform: rotate(225deg);
+}
+
+.toplogo {
+    z-index: 10;
+    background-color: #fff;
+    position: fixed;
+    width: 100vw;
+    height: 60px;
+    box-shadow: 0px 3px 6px #00000016;
+    text-align: center;
+}
+
+.toplogo > h1 {
+    font-size: 30px;
+    margin-bottom: 0px;
+    margin-top: 2px;
+}
+
+.toplogo > p {
+    font-size: 15px;
+    margin: 0;
+    padding: 0;
+    margin-top: -3px;
+}
+
+@media (min-width: 992px){
+    .toplogo {
+        display: none;
+    }
+}
+
+.inlineImgBanner {
+    height: 400px;
+    width: 100%;
+    overflow: hidden;
+}
+
+.inlineImgBanner > img {
+    width: 100%;
+    height: auto;
+    margin-top: -500px;
+}
+
+.faqTitle {
+    font-family: ChampagneLimousines;
+    font-size: 35px;
+    color: #606569;
+    margin-bottom: 25px;
+}
+
+.faqBody {
+    font-family: ChampagneLimousines;
+    font-weight: smaller;
+    font-size: 25px;
+    color: #606569;
+}
+
+#KontaktInfo h2 {
+    font-size: 42px;
 }

@@ -13,7 +13,7 @@ return [
     |
     */
 
-    'name' => env('Branäslägret', 'Branäslägret'),
+    'name' => env('Explorelägret', 'Explorelägret'),
 
     /*
     |--------------------------------------------------------------------------
