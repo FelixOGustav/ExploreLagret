@@ -1,8 +1,8 @@
 @extends('Layouts/template')
 @section('content')
 
-<div class="bg-white">
-    <div class="centerTextInDiv container" style="padding: 50px 5px;">
+<div style="background-color: #EBEBEB;">
+    <div class="centerTextInDiv container" style="padding: 80px 5px;">
         <h1 class="anmalan">GDPR</h1>
         <h2>Allmänt</h2>
         <h4> Vi på Branäslägret värnar om din personliga integritet. Därför jobbar vi ständigt med att ta hand om alla dina uppgifter på ett bra sätt som möjligt. Så att du kan känna dig trygg! Vi sparar endast uppgifter som vi har ett direkt syfte med och har laglig grund att spara. </h4>

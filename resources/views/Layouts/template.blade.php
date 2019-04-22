@@ -85,9 +85,8 @@
         <!-- Sidebar -->
         <div id="sidebar" class="hidden" style="overflow-y: auto;">
             <div class="sidebarName">
-                <h1>EXPLORE</h1>
+                <a href="/">EXPLORE</a>
             </div>
-            <hr class="sidebarmenuline">
 
             <!-- Menu navigation buttons -->
             <ul style="padding: 0px;">
@@ -129,7 +128,7 @@
         </div>
 
         <!-- Page Content -->
-        <div id="content" class="hidden">
+        <div id="content" class="hidden" style="min-height: calc(100vh - 160px); background-color: #EBEBEB">
 
             <!-- Top bar -->
             <div class="topBar" id="topbar">
@@ -148,27 +147,25 @@
                 @yield('content')
              </div>
         </div>
-    </div>
-
     
-    <!-- Footer -->
+        <!-- Footer -->
 
-    <div class="footerBG row" style="margin: 0px;" id="footerId">
-        <div class="col" style="margin-top: auto; margin-bottom: auto; text-align: center">
-            <a href="/contact" class="footerLink scaleFooterTextToMobile">Kontakt ><br><br></a>
-            <a href="http://www.equmenia.se/" class="footerLink scaleFooterTextToMobile" style="color: white;" target="blank">Equmenia ></a> 
-        </div>
+        <div class="footerBG row" style="margin: 0px;" id="footerId">
+            <div class="col" style="margin-top: auto; margin-bottom: auto; text-align: center">
+                <a href="/contact" class="footerLink scaleFooterTextToMobile">Kontakt ><br><br></a>
+                <a href="http://www.equmenia.se/" class="footerLink scaleFooterTextToMobile" style="color: white;" target="blank">Equmenia ></a> 
+            </div>
 
-        <div class="col" style="margin-top: auto; margin-bottom: auto; text-align: center">
-            <a><h2 style=" font-size: 25;" class="footerLogo scaleFooterLogoToMobile">EXPLORE</h2></a>
-            <p class="footerRights scaleFooterRightsToMobile">(C) Equmenia Väst</p>
-        </div>
-        <div  class="col" style="margin-top: auto; margin-bottom: auto; text-align: center">
-            <a href="/gdpr" class="footerLink scaleFooterTextToMobile">GDPR ><br><br></a>
-            <a href="/admin/login" class="footerLink scaleFooterTextToMobile">Admin ></a>
+            <div class="col" style="margin-top: auto; margin-bottom: auto; text-align: center">
+                <a><h2 style=" font-size: 25;" class="footerLogo scaleFooterLogoToMobile">EXPLORE</h2></a>
+                <p class="footerRights scaleFooterRightsToMobile">(C) Equmenia Väst</p>
+            </div>
+            <div  class="col" style="margin-top: auto; margin-bottom: auto; text-align: center">
+                <a href="/gdpr" class="footerLink scaleFooterTextToMobile">GDPR ><br><br></a>
+                <a href="/admin/login" class="footerLink scaleFooterTextToMobile">Admin ></a>
+            </div>
         </div>
     </div>
-
     <!-- Footer end -->
     <button id="scrollToTopBtn" title="Go to top" class="dropShadow"><img src="{{URL::asset('img/arrowUp.png')}}"></button>
 

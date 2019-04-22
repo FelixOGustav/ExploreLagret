@@ -87,9 +87,9 @@
                     <!-- Registration btns -->
                     <div class="container-fluid d-flex justify-content-center mobileRegistrationBtn">
                         @if($camp->open > 0)
-                            <button class="buttonStyle" data-toggle="modal" data-target="#registerChoiseModal"><p>Anmäl dig</p></button>
+                            <button class="buttonStyle linkHover" data-toggle="modal" data-target="#registerChoiseModal"><p>Anmäl dig</p></button>
                         @elseif($camp->late_open > 0)
-                            <button class="buttonStyle" data-toggle="modal" data-target="#registerChoiseModal"><p>Efteranmälan</p></button>
+                            <button class="buttonStyle linkHover" data-toggle="modal" data-target="#registerChoiseModal"><p>Efteranmälan</p></button>
                         @else
                             <p class="buttonStyle" style="color: white; font-size: 27px; cursor: default;">Anmälan är stängd</p>
                         @endif
@@ -554,7 +554,7 @@
                                         <h5 style="margin-right: 5px;">Martin Olausson</h5>
                                     </td>
                                     <td>
-                                        <p style="margin-top: 8px; margin-left: 5px;">0709 61 98 46</p>
+                                        <p style="margin-top: 8px; margin-left: 5px;">0709-61 98 46</p>
                                     </td>
                                 </tr>
                             </tbody>

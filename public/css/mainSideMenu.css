@@ -9,6 +9,7 @@
 
 .sidebarName {
     margin: 30px 10px 30px 10px;
+    text-align: center;
 }
 
 #sidebar {
@@ -37,7 +38,9 @@
     text-decoration: none;
 }
 
-.sidebarName h1 {
+.sidebarName a {
+    font-size: 35px;
+    font-family: Elkwood;
     color: #606569;
     text-align: center;
 }

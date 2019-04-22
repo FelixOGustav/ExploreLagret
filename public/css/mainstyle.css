@@ -575,6 +575,7 @@ form label {
     width: 60px;
     height: 60px;
     padding: 1rem;
+    padding-top: calc(1rem - 10px);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -689,4 +690,8 @@ form label {
     display: flex;
     -ms-flex-wrap: wrap;
     flex-wrap: wrap;
+}
+
+.linkHover:hover {
+    text-decoration: underline white;
 }
