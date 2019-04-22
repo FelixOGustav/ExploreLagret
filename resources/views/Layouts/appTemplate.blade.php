@@ -11,11 +11,11 @@
     <title>Branäslägret App</title>
     
     <meta name="author" content="Gustav Råkeberg, Felix Brunnegård">
-    <meta name="description" content="Branäslägret är ett nyårsläger som arrangeras av equmeniakyrkans församlingar i trakten kring Herrljunga och Vårgårda. Veckan bjuder på skidåkning, Gud-snack, lägerstämning, bibel, gamla och nya vänner, aktiviteter, slappa-tid och mängder med tillfällen att njuta av livet!">
-    <meta property="og:url" content="https://branaslagret.se/app">
-    <meta property="og:site_name" content="Branäslägret 2018-2019">
-    <meta property="og:title" content="Branäslägret">
-    <meta property="og:description" content="Branäslägret är ett nyårsläger som arrangeras av equmeniakyrkans församlingar i trakten kring Herrljunga och Vårgårda. Veckan bjuder på skidåkning, Gud-snack, lägerstämning, bibel, gamla och nya vänner, aktiviteter, slappa-tid och mängder med tillfällen att njuta av livet!">
+    <meta name="description" content="Explorelägret är ett sommarläger som arrangeras av equmeniakyrkans församlingar i trakten kring Herrljunga, Vårgårda och Alingsås. Veckan bjuder på skidåkning, Gud-snack, lägerstämning, bibel, gamla och nya vänner, aktiviteter, slappa-tid och mängder med tillfällen att njuta av livet!">
+    <meta property="og:url" content="https://explorelagret.se/app">
+    <meta property="og:site_name" content="Explorelägret 2019">
+    <meta property="og:title" content="Explorelägret">
+    <meta property="og:description" content="Explorelägret är ett sommarläger som arrangeras av equmeniakyrkans församlingar i trakten kring Herrljunga, Vårgårda och Alingsås. Veckan bjuder på skidåkning, Gud-snack, lägerstämning, bibel, gamla och nya vänner, aktiviteter, slappa-tid och mängder med tillfällen att njuta av livet!">
 
     <!-- Web App settings -->
     <link rel="manifest" href="/manifest.json">

@@ -139,7 +139,7 @@
             </div>
 
             <div class="toplogo" id="scrollToTopLogo">
-                <h1>Explore</h1>
+                <h1>EXPLORE</h1>
                 <p>2019</p>
             </div>
             

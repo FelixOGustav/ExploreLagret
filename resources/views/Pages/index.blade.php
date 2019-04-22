@@ -101,7 +101,7 @@
                     </div>
                 </div>
 
-                <div class="chevronContainer">
+                <div class="chevronContainer" onclick="(function(){$('html,body').animate({scrollTop: $('#explorelagretInfo').offset().top},'1300');})();">
                     <div class="chevron"></div> 
                 </div>
                 
@@ -115,7 +115,7 @@
         <div class="ContentRow">
             <div class="contentContainer">
                 <div class="containerItem contentImg" style="order: 1">
-                    <img style="object-fit: fill;" src="{{URL::asset('img/fun_laugh.JPG')}}">
+                    <img  src="{{URL::asset('img/fun_laugh.JPG')}}">
                 </div>
                 <div class="containerItem contentTxt"  style="order: 0" id="explorelagretInfo">
                     <h2>Vad är EXPLORE?</h2>
@@ -132,7 +132,7 @@
         <div class="ContentRow">
             <div class="contentContainer">
                 <div class="containerItem contentImg"  style="order: 0">
-                    <img style="object-fit: fill;" src="{{URL::asset('img/storsjostran_2.jpg')}}">
+                    <img src="{{URL::asset('img/storsjostran_2.jpg')}}">
                 </div>
                 <div class="containerItem contentTxt"  style="order: 1" id="">
                     <h2>Var?</h2>
@@ -149,7 +149,7 @@
         <div class="ContentRow">
             <div class="contentContainer">
                 <div class="containerItem contentImg" style="order: 1">
-                    <img style="object-fit: fill;" src="{{URL::asset('img/wheet.jpg')}}">
+                    <img src="{{URL::asset('img/wheet.jpg')}}">
                 </div>
                 <div class="containerItem contentTxt"  style="order: 0" id="prisInfo">
                     <h2>Pris?</h2>
@@ -166,7 +166,7 @@
         <div class="ContentRow">
             <div class="contentContainer">
                 <div class="containerItem contentImg"  style="order: 0">
-                    <img style="object-fit: fill;" src="{{URL::asset('img/andakt.jpg')}}">
+                    <img src="{{URL::asset('img/andakt.jpg')}}">
                 </div>
                 <div class="containerItem contentTxt"  style="order: 1">
                     <h2>Andakter</h2>
@@ -202,7 +202,7 @@
         </div>
 
         <div class="inlineImgBanner">
-            <img src="{{URL::asset('img/canoe.jpg')}}" style="margin-top: -500px;">
+            <img src="{{URL::asset('img/canoe.jpg')}}">
         </div>
 
         <div class="ContentRow">
@@ -224,7 +224,7 @@
         </div>
 
         <div class="inlineImgBanner">
-            <img src="{{URL::asset('img/tents.jpg')}}" style="margin-top: -760px;">
+            <img src="{{URL::asset('img/tents.jpg')}}">
         </div>
 
         <!-- QnA -->
@@ -234,7 +234,7 @@
                 <h2>Frågor och svar</h2>
             </div>
             <div class="">
-                <div class="row">
+                <div class="qnaRow">
                     <!-- Left row -->
                    <div class="qnaBound">
                         <!-- Question 1-->
@@ -614,7 +614,9 @@
 
         // Called every time the window is resized.
         // Makes sure the info blocks with images aligns properly
-        $(window).resize(function() {            
+        $(window).resize(CheckOrder);
+
+        function CheckOrder() {            
             var infoBlocks = $('.ContentRow');
             var i = 0;
 
@@ -631,7 +633,7 @@
                 }
                 i++; 
             });
-        })
+        }
        
 
         // Scroll to top logo
@@ -651,7 +653,7 @@
             })
         })
         
-        // Scroll to branaslagret?
+        // Scroll to "var är explore?"
         $(function(){
             $("#scrollToInfoBtn").click(function(){
                 $("html,body").animate({scrollTop: $("#explorelagretInfo").offset().top},"1300");
@@ -688,6 +690,10 @@
                 return false
             })
         })
+
+        $(document).ready(function(){
+            CheckOrder();
+        });
     </script>
     <!-- scroll to top btn end -->
     

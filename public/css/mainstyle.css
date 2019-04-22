@@ -421,7 +421,8 @@ form label {
 
 .contentImg img {
     width: 100%;
-    min-height: 100%;
+    height: 100%;
+    object-fit: cover;
 }
 
 .contentTxt {
@@ -605,6 +606,7 @@ form label {
 
 .hamburger > div:before {
     top: 10px;
+    height: 0px;
 }
 
 .topBar.hidden > #sidebarshowbtn > .hamburger > div {
@@ -638,7 +640,8 @@ form label {
 }
 
 .toplogo > p {
-    font-size: 15px;
+    font-family: Elkwood;
+    font-size: 18px;
     margin: 0;
     padding: 0;
     margin-top: -3px;
@@ -658,8 +661,8 @@ form label {
 
 .inlineImgBanner > img {
     width: 100%;
-    height: auto;
-    margin-top: -500px;
+    height: 100%;
+    object-fit: cover;
 }
 
 .faqTitle {
@@ -678,4 +681,12 @@ form label {
 
 #KontaktInfo h2 {
     font-size: 42px;
+}
+
+.qnaRow {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
 }
