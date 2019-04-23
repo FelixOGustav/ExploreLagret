@@ -115,7 +115,7 @@
         <div class="ContentRow">
             <div class="contentContainer">
                 <div class="containerItem contentImg" style="order: 1">
-                    <img  src="{{URL::asset('img/fun_laugh.JPG')}}">
+                    <img  src="{{URL::asset('img/fun_laugh.jpg')}}">
                 </div>
                 <div class="containerItem contentTxt"  style="order: 0" id="explorelagretInfo">
                     <h2>Vad är EXPLORE?</h2>

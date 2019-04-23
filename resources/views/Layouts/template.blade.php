@@ -6,7 +6,7 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no, user-scalable=no">
-    <link rel="icon" href="{{URL::asset('img/branaslogga.png')}}"  type="img/PNG">
+    <link rel="icon" href="{{URL::asset('img/explore-favicon.png')}}"  type="img/PNG">
 
     <meta name="author" content="Gustav Råkeberg, Felix Brunnegård">
     <meta name="description" content="Branäslägret är ett nyårsläger som arrangeras av equmeniakyrkans församlingar i trakten kring Herrljunga och Vårgårda. Veckan bjuder på skidåkning, Gud-snack, lägerstämning, bibel, gamla och nya vänner, aktiviteter, slappa-tid och mängder med tillfällen att njuta av livet!">
