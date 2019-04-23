@@ -525,43 +525,6 @@
                             </tbody>
                         </table>
                     </div>
-                    <!-- Kontakt webbadmin end -->
-                    <!-- Kontakt Uthyrning -->
-                    <div>
-                        <h2><br>Uthyrning Utrustning</h2>
-                        <table style="display: flex; justify-content: center;">
-                            <tbody>
-                                <tr>
-                                    <td>
-                                        <h5 style="margin-right: 5px;">Rickard Martinsson</h5>
-                                    </td>
-                                    <td>
-                                        <p style="margin-top: 8px; margin-left: 5px;">0706-30 30 88</p>
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                    <!-- Kontakt Uthyrning end -->
-
-                    <!-- Kontakt Liftkort -->
-                    <div>
-                        <h2><br>Liftkort</h2>
-                        <table style="display: flex; justify-content: center;">
-                            <tbody>
-                                <tr>
-                                    <td>
-                                        <h5 style="margin-right: 5px;">Martin Olausson</h5>
-                                    </td>
-                                    <td>
-                                        <p style="margin-top: 8px; margin-left: 5px;">0709-61 98 46</p>
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                    <!-- Kontakt Liftkort end -->
-
                     <!-- Kontakt sjukvårdsansvarig -->
                     <div>
                         <h2><br>Sjukvårdsansvarig</h2>
@@ -569,10 +532,10 @@
                             <tbody>
                                 <tr>
                                     <td>
-                                        <h5 style="margin-right: 5px;">Joakim Alriksson</h5>
+                                        <h5 style="margin-right: 5px;">Namn Namnsson</h5>
                                     </td>
                                     <td>
-                                        <p style="margin-top: 8px; margin-left: 5px;">0707 44 10 51</p>
+                                        <p style="margin-top: 8px; margin-left: 5px;">0713-371337</p>
                                     </td>
                                 </tr>
                             </tbody>
@@ -588,10 +551,10 @@
                             <tbody>
                                 <tr>
                                     <td>
-                                        <h5 style="margin-right: 5px;">Markus Andersson</h5>
+                                        <h5 style="margin-right: 5px;">Hemligt</h5>
                                     </td>
                                     <td>
-                                        <p style="margin-top: 8px; margin-left: 5px;">0702 84 88 85</p>
+                                        <p style="margin-top: 8px; margin-left: 5px;">Hemligt</p>
                                     </td>
                                 </tr>
                             </tbody>
