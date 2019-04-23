@@ -6,7 +6,7 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no, user-scalable=no">
-    <link rel="icon" href="{{URL::asset('img/explore-favicon.png')}}"  type="img/PNG">
+    <link rel="icon" href="{{URL::asset('img/Explore-favicon.png')}}"  type="img/PNG">
 
     <meta name="author" content="Gustav Råkeberg, Felix Brunnegård">
     <meta name="description" content="Branäslägret är ett nyårsläger som arrangeras av equmeniakyrkans församlingar i trakten kring Herrljunga och Vårgårda. Veckan bjuder på skidåkning, Gud-snack, lägerstämning, bibel, gamla och nya vänner, aktiviteter, slappa-tid och mängder med tillfällen att njuta av livet!">
@@ -158,7 +158,7 @@
 
             <div class="col" style="margin-top: auto; margin-bottom: auto; text-align: center">
                 <a><h2 style=" font-size: 25;" class="footerLogo scaleFooterLogoToMobile">EXPLORE</h2></a>
-                <p class="footerRights scaleFooterRightsToMobile">(C) Equmenia Väst</p>
+                <p class="footerRights scaleFooterRightsToMobile">© Equmenia Väst</p>
             </div>
             <div  class="col" style="margin-top: auto; margin-bottom: auto; text-align: center">
                 <a href="/gdpr" class="footerLink scaleFooterTextToMobile">GDPR ><br><br></a>

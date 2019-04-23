@@ -91,7 +91,7 @@
                         @elseif($camp->late_open > 0)
                             <button class="buttonStyle linkHover" data-toggle="modal" data-target="#registerChoiseModal"><p>Efteranmälan</p></button>
                         @else
-                            <p class="buttonStyle" style="color: white; font-size: 27px; cursor: default;">Anmälan är stängd</p>
+                            <p class="buttonStyle" style="color: white; cursor: default;">Anmälan är stängd</p>
                         @endif
                     </div>
                     <!-- Registration btns end -->
