@@ -628,6 +628,8 @@ form label {
     z-index: 10;
     background-color: #fff;
     position: fixed;
+    top: 0;
+    left: 0;
     width: 100vw;
     height: 60px;
     box-shadow: 0px 3px 6px #00000016;
