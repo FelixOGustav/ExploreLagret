@@ -1,0 +1,70 @@
+.register {
+
+}
+
+.registerLabel {
+    color: #EAC15B;
+    font-size: 20px;
+}
+
+.bottonRegister {
+    background-color:  #EAC15B;
+    border: none;
+    font-family: elkwood;
+    font-size: 20px;
+    margin-top: 30px;   
+}
+
+.progressbar {
+    counter-reset: step;
+    display: flex;
+    flex-direction: row;
+}
+
+.progressbar li {
+    list-style-type: none;
+    width: 20%;
+    position: relative;
+    text-align: center;
+    color: #EAC15B;
+}
+
+.progressbar li:before {
+    content: ' ';/*counter(step);
+    counter-increment: step;*/
+    width: 30px;
+    height: 30px;
+    line-height: 30px;
+    border: 3px;
+    display: block;
+    text-align: center;
+    margin: 0 auto 10px auto;
+    border-radius: 50%;
+    background-color: azure;
+    z-index: 2;
+    
+}
+
+.progressbar li:after {
+    content: '';
+    position: absolute;
+    opacity: 0.99;
+    width: 100%;
+    height: 1px;
+    background-color: black;
+    top: 15px;
+    left: -50%;
+    z-index: -1;
+}
+
+.progressbar li:first-child:after {
+    content: none;
+}
+
+.progressbar li.active {
+    color: #EAC15B;
+}
+
+.progressbar li.active:before {
+    background-color: #EAC15B;
+}

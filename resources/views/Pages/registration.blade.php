@@ -1,16 +1,65 @@
 @extends('Layouts/template')
 @section('content')
-<div class="bg-white">
-    @if($key)
+<div>
+    <!--@if($key)
     <form method="POST" action="/registration/{{$key}}/done">
     @else
     <form method="POST" action="/registration/done">
-    @endif
+    @endif -->
     
         {{ csrf_field() }}
-    <div class="container">
+        <div class="container" style="margin-top:10%">
+            <h1 style=" margin-top: 3rem; text-align: center; color:#EAC15B;" class="anmalan">Anmälan</h1>
+            <div>
+                <ul class="progressbar" style="padding-inline-start: 0px;">
+                    <li class="active">Info deltagare</li>
+                    <li>Adress</li>
+                    <li>Målsman</li>
+                    <li>Vilkor och pris</li>
+                    <li>Slutför</li>
+                </ul>
+            </div>
+            <div class="register">
+                <div>
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label class="registerLabel" for="firstName">Förnamn</label>
+                            <input type="text" class="form-control" id="firstName" name="firstName" placeholder="Namn" required>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label class="registerLabel" for="lastName">Efternamn</label>
+                            <input type="text" class="form-control" id="lastName" name="lastName" placeholder="Namnsson" required>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-9">
+                            <label class="registerLabel" for="year">Föddelseår</label>
+                            <input type="text" class="form-control" id="birthdate" name="birthdate" placeholder="1337-13-37" required>
+                        </div>
+                        <div class="form-group col-3">
+                            <label class="registerLabel" for="inputAddress2">Fyra sista</label>
+                            <input type="text" class="form-control" id="fourLast" name="fourLast" placeholder="XXXX" required>
+                        </div>
+                    </div>
+                    <div>
+                        <label class="registerLabel" for="inputState">Vilken ort vill du åka med?</label>
+                        <select id="place" name="place" class="form-control"  required>
+                                <option value="">Välj...</option>
+                            @foreach($places as $place)
+                                <option value="{{$place->placeID}}">{{$place->placename}}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                </div>
+                    <span style="margin-left:45%">
+                            <button type="back" style="background-color: white; "class="bottonRegister">Bak</button>
+                            <button type="submit" class="bottonRegister">Nästa</button>
+                    </span>
+            </div>
+        </div>
+        <!--
         <h1 style=" margin-top: 3rem; text-align: center;" class="anmalan">Anmälan</h1>
-        <!-- Start deltagare -->
+        Start deltagare
         <div style="margin-top: 5rem;"><h2 style="text-align: center;" class="rubrikerAnmalan">Deltagare</h2></div>
             <div>
                 <div class="form-row">
@@ -33,6 +82,7 @@
                         <input type="text" class="form-control" id="fourLast" name="fourLast" placeholder="XXXX" required>
                     </div>
                 </div>
+            </div>    
                 <div class="form-group container-fluid noPadding">
                     <label for="inputCity">Adress</label>
                     <input type="text" class="form-control" id="address" name="address" placeholder="Vintergatan 42" required> 
@@ -64,8 +114,8 @@
                         <textarea class="form-control container-fluid" name="other" id="other" cols="165" rows="5"></textarea>
                     </div>
                 </div>
-            <!-- Slut deltagare -->
-            <!-- Start Ort -->
+            <Slut deltagare 
+            Start Ort 
             <div style="margin-top: 3rem;" >
                     
                 <div ><h2 style="text-align: center; " class="rubrikerAnmalan">Ort</h2></div>
@@ -79,15 +129,15 @@
                     </select>
                 </div>
             </div>
-            <!-- Slut Ort -->
-            <!-- Skidhyra -->
+            Slut Ort 
+             Skidhyra 
     </div>
             <div class="BGGrey" style="padding-bottom: 3rem; padding-top: 3rem; margin-top:3rem; ">
                 <h3 style="text-align:center;" class="whiteColor">OBS! Information om att köpa liftkort och hyra utrustning, kommer skickas ut i början av december.</h3>
             </div>
-            <!-- -->
+            
     <div class="container">
-            <!-- Start Målsman -->
+           Start Målsman
             <div style="padding-top: 3rem;">    
                 <div><h2 style="text-align: center;" class="rubrikerAnmalan">Kontaktuppgifter målsman</h2></div>
                 <div class="form-row">
@@ -113,9 +163,9 @@
                         <input type="text" class="form-control" id="homeNumberAdvocate" name="homeNumberAdvocate" placeholder="0713-371337"> 
                 </div>
             </div>
-            <!-- Slut Målsman-->
+            <!-- Slut Målsman
 
-            <!-- Start Equmenia-->
+            <!-- Start Equmenia
                 </label>
             <div style="margin-top: 3rem;">
                     <div><h2 style="text-align: center;" class="rubrikerAnmalan">Equmenia</h2></div>
@@ -129,9 +179,9 @@
                         </select>
                 </div>
             </div>
-            <!--Slut Equmenia -->
+            <!--Slut Equmenia 
     </div>
-            <!-- Start regler-->
+            <!-- Start regler
     <div class="BGGrey" style="padding-bottom: 3rem; padding-top: 3rem; margin-top: 3rem;">
         <div class="container">
         <h2 style="text-align: center;" class="whiteColor" class="rubrikerAnmalan">Regler och vilkor:</h2>
@@ -144,9 +194,9 @@
         <h4 style="text-align: center;" class="whiteColor">-Anmälan är bindande</h4>
         <h4 style="text-align: center;" class="whiteColor">-Att deltagaren är med i bild och video som sedan publiceras på socialmedier (Om detta skulle vara ett problem, kontakta info@branaslagret.se)</h4>
         </div> 
-        <!--Slut regler-->
+        <!--Slut regler
     </div>
-        <!-- Start anmäningsknapp-->
+        <!-- Start anmäningsknapp
             <div style="padding:5rem;">
                 <div style="text-align:center;">
                         <h2 class="rubrikerAnmalan">Pris = 1500kr</h2>
@@ -157,8 +207,8 @@
                 </div>
                 <button type="submit" style="margin-top: 10px; font-family: elkwood;" class="btn btn-primary centerImg whiteColor">Slutför Anmälan</button>
             </div>
-        <!-- Slut anmäningsknapp   -->    
+        <!-- Slut anmäningsknap   
         </form>
-    
+    --> 
 </div>                 
 @endsection

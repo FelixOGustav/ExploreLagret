@@ -26,6 +26,7 @@
     <link rel="stylesheet" href="{{URL::asset('css/navbarcstyle.css')}}">
     <link rel="stylesheet" href="{{URL::asset('css/footerstyle.css')}}">
     <link rel="stylesheet" href="{{URL::asset('css/mainstyle.css')}}">
+    <link rel="stylesheet" href="{{URL::asset('css/registerstyle.css')}}">
     <link rel="stylesheet" href="{{URL::asset('css/mainSideMenu.css')}}">
 
     <title>{{config('app.name', 'Explorelägret')}}</title>
