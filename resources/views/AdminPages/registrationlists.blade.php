@@ -2,11 +2,15 @@
 @section('adminContent')
 
 <div class="centerTextInDiv panel">
-    <h4 style="text-align:left;">Antal anmälda: {{$count}}</h4>
+    @if($cancelled == false)
+        <h4 style="text-align:left;">Antal anmälda: {{$count}}</h4>
+    @else 
+        <h4 style="text-align:left;">Antal avanmälda: {{$count}}</h4>
+    @endif
     @if($type == 'leader')
-        <h1>Ledare</h1>
+        <h1> @if($cancelled != false)avanmälda @endif Ledare</h1>
     @else
-        <h1>Deltagare</h1>
+        <h1>@if($cancelled != false)avanmälda @endif Deltagare</h1>
     @endif
     <div class="sidescrollcontent">
         <table id="regtbl" class="table table-hover" style="min-width: 100%;">
@@ -65,6 +69,15 @@
 
                     @can('editregistration')
                         <th class="tblheadcol def-vis-col" id="tbl-edit">Ändra</th>
+                    @endcan
+
+                    @can('admin')
+                        <th class="tblheadcol def-vis-col" id="tbl-delete">
+                            @if($cancelled == false)
+                                Ta bort</th>
+                            @else 
+                                Återskapa
+                            @endif
                     @endcan
                     
                 </tr>
@@ -151,6 +164,29 @@
                         @can('editregistration')                    
                             <td><a href="/admin/editregistration/participant/{{$reg->id}}"><i class="fas fa-edit" style="color: #606569;"></i></a></td>
                         @endcan 
+
+                        @can('admin')
+                            @if($type == 'participant')
+                                @if($cancelled == 'cancelled')
+                                    <td><a href="/admin/restoreregistration/participant/{{$reg->id}}" class="btn btn-danger">                                    
+                                    <i class="fas fa-life-ring"></i>
+                                @else 
+                                    <td><a href="/admin/removeregistration/participant/{{$reg->id}}" class="btn btn-danger"> 
+                                    <i class="far fa-trash-alt"></i>
+                                @endif
+                                </a></td>
+                            @else 
+                                
+                                @if($cancelled == 'cancelled')
+                                    <td><a href="/admin/restoreregistration/leader/{{$reg->id}}" class="btn btn-danger">
+                                    <i class="fas fa-life-ring"></i>
+                                @else 
+                                    <td><a href="/admin/removeregistration/leader/{{$reg->id}}" class="btn btn-danger">
+                                    <i class="far fa-trash-alt"></i>
+                                @endif
+                                </a></td>
+                            @endif
+                        @endcan
 
                     </tr>
                 @endforeach

@@ -116,6 +116,16 @@
                             <span>Ledarlistor</span>
                         </a>
                     </li>
+                    <li class="sidebarbutton">
+                        <a href="/admin/registrationlists/participant/cancelled">
+                            <span>Avanmälda Deltagare</span>
+                        </a>
+                    </li>
+                    <li class="sidebarbutton">
+                        <a href="/admin/registrationlists/leader/cancelled">
+                            <span>Avamälda Ledare</span>
+                        </a>
+                    </li>
                 </div>
                 @endcan
 

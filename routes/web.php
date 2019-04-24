@@ -56,7 +56,7 @@ Route::group(['prefix' => 'app'], function () {
 
 Route::group(['middleware' => 'auth'], function () {
     Route::get('/admin/dashboard', 'PagesController@dashboard');
-    Route::get('/admin/registrationlists/{type}','PagesController@registrationlists')->middleware('can:registrationlists');
+    Route::get('/admin/registrationlists/{type}/{cancelled?}','PagesController@registrationlists')->middleware('can:registrationlists');
     Route::get('/admin/manageusers','PagesController@manageusers')->middleware('can:manageusers');
     Route::get('/admin/manageusers/user/{id}', 'PagesController@manageuser')->middleware('can:manageusers');
     Route::get('/admin/managecamps', 'PagesController@managecamps')->middleware('can:managecamps');
@@ -68,6 +68,8 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/admin/registrationlists/{type}/{id}', 'CampRegistrationController@ResendVerificationEmail')->middleware('can:editregistration');
     Route::get('/admin/editregistration/{type}/{id}', 'CampRegistrationController@EditRegistration')->middleware('can:editregistration');
     Route::post('/admin/editregistration/done/{type}/{id}', 'CampRegistrationController@StoreEdit')->middleware('can:editregistration');
+    Route::get('/admin/removeregistration/{type}/{id}', 'CampRegistrationController@MoveRegistrationToCancelled')->middleware('can:admin');
+    Route::get('/admin/restoreregistration/{type}/{id}', 'CampRegistrationController@RestoreCancelledRegistration')->middleware('can:admin');
     Route::post('/admin/manageuser/user/done/{id}', 'AccessLevelController@Store')->middleware('can:manageusers');
     Route::get('/admin/lateregistration', 'PagesController@lateregistration')->middleware('can:admin');
     Route::post('/admin/addlateregistration', 'PagesController@addLateRegistration')->middleware('can:admin');

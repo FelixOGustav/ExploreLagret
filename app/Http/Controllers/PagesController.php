@@ -56,7 +56,8 @@ class PagesController extends Controller
 
         return view('AdminPages/dashboard', ['placesStats' => $placesStats]);
     }
-    public function registrationlists($type){
+
+    public function registrationlists($type, $cancelled = false){
 
         $placesIDArray = [];
         $user = Auth::user();
@@ -91,14 +92,26 @@ class PagesController extends Controller
         }
 
 
-        $regAmount = \App\registrations_leader::count() + \App\registration::count();
-        
         if($type == 'participant'){
-            $registrations = \App\registration::whereIn('place', $placesIDArray)->get();
-            return view('AdminPages/registrationlists', ['registrations' => $registrations, 'places' => $places, 'count' => $regAmount, 'type' => $type]);
+            if($cancelled == "cancelled"){
+                $regAmount = \App\registrations_cancel::count();
+                $registrations = \App\registrations_cancel::whereIn('place', $placesIDArray)->get();
+            }
+            else{
+                $regAmount = \App\registration::count();
+                $registrations = \App\registration::whereIn('place', $placesIDArray)->get();
+            }
+            return view('AdminPages/registrationlists', ['registrations' => $registrations, 'places' => $places, 'count' => $regAmount, 'type' => $type, 'cancelled' => $cancelled]);
         }else if($type == 'leader'){
-            $registrations_leaders = \App\registrations_leader::whereIn('place', $placesIDArray)->get();
-            return view('AdminPages/registrationlists', ['registrations' => $registrations_leaders, 'places' => $places, 'count' => $regAmount, 'type' => $type]);
+            if($cancelled == "cancelled"){
+                $regAmount = \App\registrations_leaders_cancel::count();
+                $registrations_leaders = \App\registrations_leaders_cancel::whereIn('place', $placesIDArray)->get();
+            }
+            else{
+                $regAmount = \App\registrations_leader::count();
+                $registrations_leaders = \App\registrations_leader::whereIn('place', $placesIDArray)->get();
+            }
+            return view('AdminPages/registrationlists', ['registrations' => $registrations_leaders, 'places' => $places, 'count' => $regAmount, 'type' => $type, 'cancelled' => $cancelled]);
         }else {
             return redirect('/invalidaddress');
         }

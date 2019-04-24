@@ -473,6 +473,100 @@ class CampRegistrationController extends Controller
         }
     }
 
+    public function MoveRegistrationToCancelled($type, $id){
+        if($type == "participant"){
+            $registration = \App\registration::find($id);     
+            $cancelled_registration = new \App\registrations_cancel();       
+        }
+        else {
+            $registration = \App\registrations_leader::find($id);
+            $cancelled_registration = new \App\registrations_leaders_cancel();
+        }
+        
+        // Copy all columns
+        $cancelled_registration->first_name =$registration->first_name;
+        $cancelled_registration->last_name = $registration->last_name;
+        $cancelled_registration->birthdate = $registration->birthdate;
+        $cancelled_registration->last_four = $registration->last_four;
+        $cancelled_registration->address = $registration->address ;
+        $cancelled_registration->zip = $registration->zip;
+        $cancelled_registration->city = $registration->city;
+        $cancelled_registration->email = $registration->email;
+        $cancelled_registration->phonenumber = $registration->phonenumber;
+        $cancelled_registration->allergy = $registration->allergy;
+        $cancelled_registration->first_name_advocate =$registration->first_name_advocate;
+        $cancelled_registration->last_name_advocate = $registration->last_name_advocate;
+        $cancelled_registration->email_advocate = $registration->email_advocate;
+        $cancelled_registration->verified_at = $registration->verified_at;
+        $cancelled_registration->phone_number_advocate = $registration->phone_number_advocate;
+        $cancelled_registration->home_number = $registration->home_number;
+        $cancelled_registration->place = $registration->place;
+        $cancelled_registration->member = $registration->member;
+        $cancelled_registration->member_place = $registration->member_place;
+        $cancelled_registration->cost = $registration->cost;
+        $cancelled_registration->other = $registration->other;
+        $cancelled_registration->terms = $registration->terms;
+        $cancelled_registration->verification_key = $registration->verification_key;
+        if($type != "participant")
+            $cancelled_registration->kitchen = $registration->kitchen;
+
+
+        $cancelled_registration->save();  
+        $registration->delete();
+
+        if($type == "participant")
+            return redirect('/admin/registrationlists/participant');
+        else 
+            return redirect('/admin/registrationlists/leader');
+    }
+
+    public function RestoreCancelledRegistration($type, $id){
+        if($type == "participant"){
+            $cancelled_registration = \App\registrations_cancel::find($id);     
+            $registration = new \App\registration();       
+        }
+        else {
+            $cancelled_registration = \App\registrations_leaders_cancel::find($id);
+            $registration = new \App\registrations_leader();
+        }
+        
+        // Copy all columns
+        $registration->first_name =$cancelled_registration->first_name;
+        $registration->last_name = $cancelled_registration->last_name;
+        $registration->birthdate = $cancelled_registration->birthdate;
+        $registration->last_four = $cancelled_registration->last_four;
+        $registration->address = $cancelled_registration->address ;
+        $registration->zip = $cancelled_registration->zip;
+        $registration->city = $cancelled_registration->city;
+        $registration->email = $cancelled_registration->email;
+        $registration->phonenumber = $cancelled_registration->phonenumber;
+        $registration->allergy = $cancelled_registration->allergy;
+        $registration->first_name_advocate =$cancelled_registration->first_name_advocate;
+        $registration->last_name_advocate = $cancelled_registration->last_name_advocate;
+        $registration->email_advocate = $cancelled_registration->email_advocate;
+        $registration->verified_at = $cancelled_registration->verified_at;
+        $registration->phone_number_advocate = $cancelled_registration->phone_number_advocate;
+        $registration->home_number = $cancelled_registration->home_number;
+        $registration->place = $cancelled_registration->place;
+        $registration->member = $cancelled_registration->member;
+        $registration->member_place = $cancelled_registration->member_place;
+        $registration->cost = $cancelled_registration->cost;
+        $registration->other = $cancelled_registration->other;
+        $registration->terms = $cancelled_registration->terms;
+        $registration->verification_key = $cancelled_registration->verification_key;
+        if($type != "participant")
+            $registration->kitchen = $cancelled_registration->kitchen;
+
+
+        $cancelled_registration->delete();
+        $registration->save();  
+
+        if($type == "participant")
+            return redirect('/admin/registrationlists/participant/cancelled');
+        else 
+            return redirect('/admin/registrationlists/leader/cancelled');
+    }
+
     public static function GetAgeFromDate($date) {
         return Carbon::parse($date)->age;
     }
