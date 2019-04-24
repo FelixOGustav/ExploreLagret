@@ -30,8 +30,7 @@
 }
 
 .progressbar li:before {
-    content: ' ';/*counter(step);
-    counter-increment: step;*/
+    content: ' ';
     width: 30px;
     height: 30px;
     line-height: 30px;
@@ -41,23 +40,20 @@
     margin: 0 auto 10px auto;
     border-radius: 50%;
     background-color: azure;
-    z-index: 2;
+
     
 }
 
 .progressbar li:after {
     content: '';
     position: absolute;
-    opacity: 0.99;
-    width: 100%;
+    width: calc(100% - 30px);
     height: 1px;
     background-color: black;
     top: 15px;
-    left: -50%;
-    z-index: -1;
 }
 
-.progressbar li:first-child:after {
+.progressbar li:last-child:after {
     content: none;
 }
 

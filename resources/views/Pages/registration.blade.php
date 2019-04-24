@@ -13,8 +13,8 @@
             <div>
                 <ul class="progressbar" style="padding-inline-start: 0px;">
                     <li class="active">Info deltagare</li>
-                    <li>Adress</li>
-                    <li>Målsman</li>
+                    <li class="active">Adress</li>
+                    <li class="active">Målsman</li>
                     <li>Vilkor och pris</li>
                     <li>Slutför</li>
                 </ul>
