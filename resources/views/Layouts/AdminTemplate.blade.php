@@ -7,7 +7,7 @@
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="icon" href="{{URL::asset('img/branaslogga.png')}}"  type="img/PNG">
+    <link rel="icon" href="{{URL::asset('img/Explore-favicon.png')}}"  type="img/PNG">
     <title>Explorelägret Admin-sida</title>
     
     <!-- CSS links-->

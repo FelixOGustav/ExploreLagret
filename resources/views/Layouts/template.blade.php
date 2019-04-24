@@ -9,16 +9,16 @@
     <link rel="icon" href="{{URL::asset('img/Explore-favicon.png')}}"  type="img/PNG">
 
     <meta name="author" content="Gustav Råkeberg, Felix Brunnegård">
-    <meta name="description" content="Branäslägret är ett nyårsläger som arrangeras av equmeniakyrkans församlingar i trakten kring Herrljunga och Vårgårda. Veckan bjuder på skidåkning, Gud-snack, lägerstämning, bibel, gamla och nya vänner, aktiviteter, slappa-tid och mängder med tillfällen att njuta av livet!">
-    <meta property="og:url" content="https://branaslagret.se/app">
-    <meta property="og:site_name" content="Branäslägret 2018-2019">
-    <meta property="og:title" content="Branäslägret">
-    <meta property="og:description" content="Branäslägret är ett nyårsläger som arrangeras av equmeniakyrkans församlingar i trakten kring Herrljunga och Vårgårda. Veckan bjuder på skidåkning, Gud-snack, lägerstämning, bibel, gamla och nya vänner, aktiviteter, slappa-tid och mängder med tillfällen att njuta av livet!">
+    <meta name="description" content="Explorelägret är ett sommarläger som arrangeras av equmeniakyrkans församlingar i trakten kring Herrljunga, Vårgårda och Alingsås. Veckan bjuder på skidåkning, Gud-snack, lägerstämning, bibel, gamla och nya vänner, aktiviteter, slappa-tid och mängder med tillfällen att njuta av livet!">
+    <meta property="og:url" content="https://explorelagret.se/app">
+    <meta property="og:site_name" content="Explorelägret 2019">
+    <meta property="og:title" content="Explorelägret">
+    <meta property="og:description" content="Explorelägret är ett sommarläger som arrangeras av equmeniakyrkans församlingar i trakten kring Herrljunga, Vårgårda och Alingsås. Veckan bjuder på skidåkning, Gud-snack, lägerstämning, bibel, gamla och nya vänner, aktiviteter, slappa-tid och mängder med tillfällen att njuta av livet!">
 
     <meta name="theme-color" content="#606569">
     <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-touch-startup-image" content="{{URL::asset('img/branaslogga.png')}}">
-    <link rel="apple-touch-icon image_src" href="{{URL::asset('img/branaslogga.png')}}">
+    <meta name="apple-touch-startup-image" content="{{URL::asset('img/Explore-favicon.png')}}">
+    <link rel="apple-touch-icon image_src" href="{{URL::asset('img/Explore-favicon.png')}}">
 
     <!-- CSS links-->
     <link rel="stylesheet" href="{{URL::asset('css/app.css')}}">
