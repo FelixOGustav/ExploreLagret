@@ -13,8 +13,9 @@
             <div>
                 <ul class="progressbar" style="padding-inline-start: 0px;">
                     <li class="active">Info deltagare</li>
-                    <li class="">Adress</li>
-                    <li class="">Målsman</li>
+                    <li>Adress</li>
+                    <li>Övrigt</li>
+                    <li>Målsman</li>
                     <li>Vilkor och pris</li>
                     <li>Slutför</li>
                 </ul>
@@ -54,12 +55,121 @@
                     </div>
 
                     <div class="formPage" form-index="1">
-                        <p>Hej..!</p>
+                        <div class="form-group container-fluid noPadding">
+                            <label class="registerLabel" for="inputCity">Adress</label>
+                            <input type="text" class="form-control" id="address" name="address" placeholder="Sommargatan 42" required> 
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group col-md-4">
+                                        <label class="registerLabel" for="inputZip">Postnummer</label>
+                                        <input type="text" class="form-control" id="zip" name="zip" placeholder="13337" required>
+                            </div>
+                            <div class="form-group col-md-8">
+                                <label class="registerLabel" for="inputCity">Postort</label>
+                                <input type="text" class="form-control" id="city" name="city" placeholder="Sommargårda" required>
+                            </div>
+                        </div>
+                            <div class="form-group col-md-12 noPadding">
+                                <label class="registerLabel" for="firstName">E-post</label>
+                                <input type="email" class="form-control" id="email" name="email" placeholder="namn.namnsson@mail.se" required>
+                            </div>
+                            <div class="form-group col-md-12 noPadding">
+                                <label class="registerLabel" for="firstName">Bekräfta E-post</label>
+                                <input type="email" class="form-control" id="emailconfirm" name="emailConfirm" placeholder="namn.namnsson@mail.se" onpaste="return false;" required>
+                            </div>
+                            <div class="form-group container-fluid noPadding">
+                                    <label class="registerLabel" for="inputCity">Telefon</label>
+                                    <input type="text" class="form-control" id="phoneNumber" name="phoneNumber" placeholder="0713-371337" required>
+                            </div>
+                    </div>
+                    <div class="formPage" form-index="2">
+                            <div class="form-group container-fluid noPadding" >
+                                    <label class="registerLabel" for="member">Är du med i en Equmeniaförening</label>
+                                    <select id="memberPlace" name="memberPlace" class="form-control" required>
+                                            <option value="null">Nej, jag är inte medlem i någon Equmeniaförening</option>
+                                        @foreach($places as $place)
+                                            <option value="{{$place->placeID}}">Ja, jag är med i {{$place->placename}}</option>
+                                        @endforeach
+                                    </select>
+                            </div>
+                        <div>
+                            <label class="registerLabel" for="allergy">Allergi</label>
+                            <textarea class="form-control container-fluid" name="allergy" id="allergy" cols="165" rows="5"></textarea>
+                        </div>
+                        <div>
+                            <label class="registerLabel" for="other">Övrigt</label>
+                            <textarea class="form-control container-fluid" name="other" id="other" cols="165" rows="5"></textarea>
+                        </div>
+                    </div>
+                    <div class="formPage" form-index="3">
+                        <div class="form-row">
+                            <div class="form-group col-md-6">
+                                <label class="registerLabel" for="firstNameAdvocate">Förnamn målsman</label>
+                                <input type="text" class="form-control" id="firstNameAdvocate" name="firstNameAdvocate" placeholder="Namn" required>
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label class="registerLabel" for="lastNameAdvocate">Efternamn målsman</label>
+                                <input type="text" class="form-control" id="lastNameAdvocate" name="lastNameAdvocate" placeholder="Namnsson" required>
+                            </div>
+                        </div>
+                        <div class="form-group col-md-12 noPadding">
+                                <label class="registerLabel" for="firstName">E-post</label>
+                                <input type="email" class="form-control" id="emailAdvocate" name="emailAdvocate" placeholder="namn.namnsson@namn.se" required>
+                        </div>
+                        <div class="form-group col-md-12 noPadding">
+                                <label class="registerLabel" for="firstName">Berkäfta E-post</label>
+                                <input type="email" class="form-control" id="emailAdvocateConfirm" name="emailAdvocateConfirm" placeholder="namn.namnsson@namn.se" onpaste="return false;" required>
+                        </div>
+                        <div class="form-group container-fluid noPadding">
+                                <label class="registerLabel" for="inputCity">Telefon</label>
+                                <input type="text" class="form-control" id="phoneNumberAdvocate" name="phoneNumberAdvocate" placeholder="0713-371337" required> 
+                        </div>
+                        <div class="form-group container-fluid noPadding">
+                                <label class="registerLabel" for="inputCity">Hemtelefon</label>
+                                <input type="text" class="form-control" id="homeNumberAdvocate" name="homeNumberAdvocate" placeholder="0713-371337"> 
+                        </div>
                     </div>
 
+                    <div class="formPage" form-index="4">
+                        <div class="form-row">    
+                            <div class="form-group col-md-6">   
+                                <h4 style="color: #EAC15B;">
+                                    <ul>
+                                        <li>TIDER SKA FÖLJAS</li>
+                                        <li>LEDARNA ÄR DE SOM BESTÄMMER</li>
+                                        <li>KILLAR OCH TJEJER SOVER ÅTSKILJT </li>
+                                        <li>DU SKA VARA MED På DE OBLIGATORISKA AKTIVITETERNA </li>
+                                        <li>NOLLTOLERANS MOT ALKOHOL OCH DROGER</li>
+                                        <li>DET GÅR EJ AVANMÄLAN EFTER SISTA ANMäLNINGSDAGEN UTAN GILTIGT LÄKARINTYG </li>
+                                        <li>Anmälan är bindande </li>
+                                        <li>Att deltagaren är med i bild och video som sedan publiceras på socialmedier (Om detta skulle vara ett problem, kontakta info@branaslagret.se)</li>
+                                    </ul>
+                                </h4>
+                            </div>
+                            <div class="form-group col-md-6">
+                                <div>
+                                    <h1 style=" color:#EAC15B;">Priset för lägret:<br>900kr</h1>
+                                </div>
+                                <div>
+                                        <p style=" color:#EAC15B; ">Jag vill ansöka om syskonrabatt</p>
+                                        <label class="switch">
+                                            <input type="checkbox">
+                                            <span class="slider round"></span>
+                                        </label>
+                                        </div>
+                                <div>
+                                <p style=" color:#EAC15B; ">Jag har läst förstått och godkänt vilkoren för lägret</p>
+                                <label class="switch">
+                                    <input type="checkbox">
+                                    <span class="slider round"></span>
+                                </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                     <div class="formPage" form-index="last">
                             <p>Bajs!</p>
-                        </div>
+                    </div>
                 </div>
                     <span style="margin-left:45%">
                             <button type="back" style="background-color: white; "class="bottonRegister" id="formPrevPage">Bak</button>

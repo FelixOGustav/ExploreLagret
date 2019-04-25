@@ -29,13 +29,32 @@ $('#formPrevPage').click(function(){
 
 
 // Detects a key change on input element with an id and calls CheckInputsEqual function
-$('#firstName').keyup(CheckInputsEqual); // Change to first email id
-$('#lastName').keyup(CheckInputsEqual); // change to second email id
+$('#email').keyup(CheckInputsEqual); // Change to first email id
+$('#emailConfirm').keyup(CheckInputsEqual); // change to second email id
 
 // Checks if two input elements have the same value. If not, a btn will be disabled
 function CheckInputsEqual(){
-    var email = $('#firstName').val(); // Change to first email id
-    var repeatEmail = $('#lastName').val(); // change to second email id
+    var email = $('#email').val(); // Change to first email id
+    var repeatEmail = $('#emailConfirm').val(); // change to second email id
+
+    if(email == repeatEmail){
+        $('#formNextPage').removeAttr('disabled');
+        console.log("Enabling btn");
+    }
+    else{
+        $('#formNextPage').attr('disabled', true);
+        console.log("Disabling btn");
+    }
+}
+
+// Detects a key change on input element with an id and calls CheckInputsEqual function
+$('#emailAdvocate').keyup(CheckInputsEqualAdvocate); // Change to first email id
+$('#emailAdvocateConfirm').keyup(CheckInputsEqualAdvocate); // change to second email id
+
+// Checks if two input elements have the same value. If not, a btn will be disabled
+function CheckInputsEqualAdvocate(){
+    var email = $('#emailAdvocate').val(); // Change to first email id
+    var repeatEmail = $('#emailAdvocateConfirm').val(); // change to second email id
 
     if(email == repeatEmail){
         $('#formNextPage').removeAttr('disabled');
