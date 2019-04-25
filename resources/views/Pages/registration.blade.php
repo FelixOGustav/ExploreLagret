@@ -58,8 +58,8 @@
                     </div>
 
                     <div class="formPage" form-index="last">
-                            <p>Bajs!</p>
-                        </div>
+                        <p>Bajs!</p>
+                    </div>
                 </div>
                     <span style="margin-left:45%">
                             <button type="back" style="background-color: white; "class="bottonRegister" id="formPrevPage">Bak</button>
