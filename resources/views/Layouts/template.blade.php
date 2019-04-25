@@ -86,7 +86,7 @@
         <!-- Sidebar -->
         <div id="sidebar" class="hidden" style="overflow-y: auto;">
             <div class="sidebarName">
-                <a href="{{$links['navLogoLink'] ?? '/'}}">EXPLORE</a>
+                <a href="{{$links['navLogoLink'] ?? '/'}}" class="scrollToTop">EXPLORE</a>
             </div>
 
             <!-- Menu navigation buttons -->
@@ -131,7 +131,7 @@
                 </a>
             </div>
 
-            <div class="toplogo" id="scrollToTopLogo">
+            <div class="toplogo" id="scrollToTopLogo" class="scrollToTop">
                 <h1>EXPLORE</h1>
                 <p>2019</p>
             </div>

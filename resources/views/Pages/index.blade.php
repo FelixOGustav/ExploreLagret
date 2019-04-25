@@ -601,8 +601,9 @@
 
         // Scroll to top logo
         $(function(){
-            $("#scrollToTopLogo").click(function(){
+            $(".scrollToTop").click(function(){
                 $("html,body").animate({scrollTop:0},"1300");
+                toggleHiddenSidebarClass();
                 return false
             })
         })
