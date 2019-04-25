@@ -13,47 +13,57 @@
             <div>
                 <ul class="progressbar" style="padding-inline-start: 0px;">
                     <li class="active">Info deltagare</li>
-                    <li class="active">Adress</li>
-                    <li class="active">Målsman</li>
+                    <li class="">Adress</li>
+                    <li class="">Målsman</li>
                     <li>Vilkor och pris</li>
                     <li>Slutför</li>
                 </ul>
             </div>
             <div class="register">
-                <div>
-                    <div class="form-row">
-                        <div class="form-group col-md-6">
-                            <label class="registerLabel" for="firstName">Förnamn</label>
-                            <input type="text" class="form-control" id="firstName" name="firstName" placeholder="Namn" required>
+                <div id="formPageContainer">
+                    <div class="formPage current" form-index="0">
+                        <div class="form-row">
+                            <div class="form-group col-md-6">
+                                <label class="registerLabel" for="firstName">Förnamn</label>
+                                <input type="text" class="form-control" id="firstName" name="firstName" placeholder="Namn" required>
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label class="registerLabel" for="lastName">Efternamn</label>
+                                <input type="text" class="form-control" id="lastName" name="lastName" placeholder="Namnsson" required>
+                            </div>
                         </div>
-                        <div class="form-group col-md-6">
-                            <label class="registerLabel" for="lastName">Efternamn</label>
-                            <input type="text" class="form-control" id="lastName" name="lastName" placeholder="Namnsson" required>
+                        <div class="form-row">
+                            <div class="form-group col-9">
+                                <label class="registerLabel" for="year">Föddelseår</label>
+                                <input type="text" class="form-control" id="birthdate" name="birthdate" placeholder="1337-13-37" required>
+                            </div>
+                            <div class="form-group col-3">
+                                <label class="registerLabel" for="inputAddress2">Fyra sista</label>
+                                <input type="text" class="form-control" id="fourLast" name="fourLast" placeholder="XXXX" required>
+                            </div>
+                        </div>
+                        <div>
+                            <label class="registerLabel" for="inputState">Vilken ort vill du åka med?</label>
+                            <select id="place" name="place" class="form-control"  required>
+                                    <option value="">Välj...</option>
+                                @foreach($places as $place)
+                                    <option value="{{$place->placeID}}">{{$place->placename}}</option>
+                                @endforeach
+                            </select>
                         </div>
                     </div>
-                    <div class="form-row">
-                        <div class="form-group col-9">
-                            <label class="registerLabel" for="year">Föddelseår</label>
-                            <input type="text" class="form-control" id="birthdate" name="birthdate" placeholder="1337-13-37" required>
-                        </div>
-                        <div class="form-group col-3">
-                            <label class="registerLabel" for="inputAddress2">Fyra sista</label>
-                            <input type="text" class="form-control" id="fourLast" name="fourLast" placeholder="XXXX" required>
-                        </div>
+
+                    <div class="formPage" form-index="1">
+                        <p>Hej..!</p>
                     </div>
-                    <div>
-                        <label class="registerLabel" for="inputState">Vilken ort vill du åka med?</label>
-                        <select id="place" name="place" class="form-control"  required>
-                                <option value="">Välj...</option>
-                            @foreach($places as $place)
-                                <option value="{{$place->placeID}}">{{$place->placename}}</option>
-                            @endforeach
-                        </select>
-                    </div>
+
+                    <div class="formPage" form-index="last">
+                            <p>Bajs!</p>
+                        </div>
                 </div>
                     <span style="margin-left:45%">
-                            <button type="back" style="background-color: white; "class="bottonRegister">Bak</button>
-                            <button type="submit" class="bottonRegister">Nästa</button>
+                            <button type="back" style="background-color: white; "class="bottonRegister" id="formPrevPage">Bak</button>
+                            <button type="submit" class="bottonRegister" id="formNextPage">Nästa</button>
                     </span>
             </div>
         </div>
@@ -210,5 +220,8 @@
         <!-- Slut anmäningsknap   
         </form>
     --> 
+
+    <!-- Reference to js helper-->
+    <script src="{{URL::asset('js/registrationHelper.js')}}"></script>
 </div>                 
 @endsection
