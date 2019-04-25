@@ -6,7 +6,7 @@
     @if($camp->open > 0)
         <!-- Modal normal registration-->
         <div class="modal fade" id="registerChoiseModal" role="dialog">
-            <div class="modal-dialog">
+            <div class="modal-dialog modal-dialog-centered">
 
                 <!-- Modal content-->
                 <div class="modal-content">
@@ -25,7 +25,7 @@
     @else 
         <!-- Modal efter registration-->
         <div class="modal fade" id="registerChoiseModal" role="dialog">
-            <div class="modal-dialog">
+            <div class="modal-dialog modal-dialog-centered">
                 <!-- Modal content-->
                 <div class="modal-content">
                     <div class="modal-header justify-content-center">
@@ -178,7 +178,7 @@
         <!-- Explore info row end -->
         
         <div class="ContentRow">
-            <div class="contentTxt" style="background-color: #EBEBEB;">
+            <div class="contentTxt" style="background-color: #EBEBEB;" id="ParentsInfo">
                 <h2>För föräldrar</h2>
                 <p>En vanlig dag börjar med gemensam frukost i mattältet. Därefter träffas tonåringar och ledare från 
                     respektive ort för att snacka om hur tonåringarna upplever lägret, presentera dagens aktiviteter 
@@ -601,16 +601,8 @@
 
         // Scroll to top logo
         $(function(){
-            $("#scrollToTopLogo").click(function(){
+            $(".scrollToTop").click(function(){
                 $("html,body").animate({scrollTop:0},"1300");
-                return false
-            })
-        })
-        
-        // Scroll to pris
-        $(function(){
-            $("#scrollToPrisBtn").click(function(){
-                $("html,body").animate({scrollTop: $("#prisInfo").offset().top},"1300");
                 toggleHiddenSidebarClass();
                 return false
             })
@@ -627,8 +619,8 @@
         
         // Scroll to Regler
         $(function(){
-            $("#scrollToReglerBtn").click(function(){
-                $("html,body").animate({scrollTop: $("#ReglerInfo").offset().top},"1300");
+            $("#scrollToParentsBtn").click(function(){
+                $("html,body").animate({scrollTop: $("#ParentsInfo").offset().top},"1300");
                 toggleHiddenSidebarClass();
                 return false 
             })

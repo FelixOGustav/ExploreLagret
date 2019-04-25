@@ -86,7 +86,7 @@
         <!-- Sidebar -->
         <div id="sidebar" class="hidden" style="overflow-y: auto;">
             <div class="sidebarName">
-                <a href="/">EXPLORE</a>
+                <a href="{{$links['navLogoLink'] ?? '/'}}" class="scrollToTop">EXPLORE</a>
             </div>
 
             <!-- Menu navigation buttons -->
@@ -99,28 +99,21 @@
                 </li>
 
                 <li class="sidebarbutton">
-                    <a href="{{$links['prisLink'] ?? "/#prisInfo"}}" id="scrollToPrisBtn">
-                        <i class="fas fa-user-plus"></i>
-                        <span>Pris?</span>
-                    </a>
-                </li>
-
-                <li class="sidebarbutton">
-                    <a href="{{$links['reglerLink'] ?? "/#ReglerInfo"}}">
+                    <a href="{{$links['reglerLink'] ?? "/#ReglerInfo"}}" id="scrollToParentsBtn">
                         <i class="fas fa-user-edit"></i>
-                        <span>Regler</span>
+                        <span>För Föräldrar</span>
                     </a>
                 </li>
 
                 <li class="sidebarbutton">
-                    <a href="{{$links['faqLink'] ?? "/#faqInfo"}}">
+                    <a href="{{$links['faqLink'] ?? "/#faqInfo"}}" id="scrollTofaqBtn">
                         <i class="fas fa-campground"></i>
-                        <span>FAQ</span>
+                        <span>Frågor & Svar</span>
                     </a>
                 </li>
 
                 <li class="sidebarbutton">
-                    <a href="{{$links['kontaktLink'] ?? "/#KontaktInfo"}}">
+                    <a href="{{$links['kontaktLink'] ?? "/#KontaktInfo"}}" id="scrollToKontaktBtn">
                         <i class="fas fa-clock"></i>
                         <span>Kontakt</span>
                     </a>
@@ -138,7 +131,7 @@
                 </a>
             </div>
 
-            <div class="toplogo" id="scrollToTopLogo">
+            <div class="toplogo" id="scrollToTopLogo" class="scrollToTop">
                 <h1>EXPLORE</h1>
                 <p>2019</p>
             </div>
