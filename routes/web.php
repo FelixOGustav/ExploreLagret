@@ -110,6 +110,15 @@ Route::get('/test/mail/{id}', function ($id) {
     return view('Emails/defaultmail', ['mail' => \App\mail::find($id)]);
 });
 
+/*
+Route::get('/sendMailJob', function(){
+    for($i = 0; $i < 5; $i++){
+        $job = (new SendMassEmailJob('test@test.com', 3))->delay(Carbon::now()->addMinutes($i));
+        dispatch($job);
+    }
+    return 'Email job dispatched';
+});
+*/
 
 Route::group(['prefix' => 'admin'], function () {
     //Auth::routes();

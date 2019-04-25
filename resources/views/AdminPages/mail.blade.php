@@ -116,13 +116,10 @@
     </div>
     <p>
         Tjänsten som levererar våra mail som skickas genom hemsidan (mass utskick och bekräftningsmail t.ex.) har en 
-        gräns på 100 mail/timme. Detta gör att vi inte kan skicka ut mass mail till alla samtidigt. I tabellen med 
-        tillgängliga mail finns det en lista med hur många mails som är levererade per grupp. Om en grupp inte har 
-        skickat till alla är det bara att välja den gruppen och den kommer skicka resterande eller max 90 mail till i 
-        den gruppen. Flera grupper kan väljas, men de hanteras i samma ordning de är listade i menyn. När 90 mail är 
-        uppnådda per omgång kommer inga fler mail skickas i den gruppen eller i de kommande grupperna. <br><br>
-        Om "välj mottagare" knappen inte går att använda betyder det att gränsen att skicka har uppnåtts. Då är det 
-        bara att vänta en timme från att den omgången skickades. När den tiden gått blir knappen tillgänglig.<br>
+        gräns på 100 mail/timme. Detta gör att vi inte kan skicka ut mass mail till alla samtidigt. Istället skickas 
+        mailen med 1 minut intervall tills alla är skickade. Om det redan finns köade mail kommer nya mail att behandlas 
+        direkt efter. Detta leder då till att tiden det tar att skicka alla mail tar en lång stund, så se till att skicka 
+        mailen i tid!<br>
     </p>
     <hr>
     <h3>Mails</h3>
@@ -132,7 +129,6 @@
                 <thead style="color: #606569;">
                     <tr>
                         <th>Ämne</th>
-                        <th>Skickade</th>
                         <th>Val</th>
                     </tr>
                 </thead>
@@ -140,19 +136,12 @@
                     @foreach($mails as $mail)
                         <tr style="color: #606569;">
                             <td>{{$mail->subject}}</td>
-                            <td>
-                                <p style="margin: 0px;">Deltagare: {{$mail->participants_sent_amount}}/{{$registrations}}</p>
-                                <p style="margin: 0px;">Deltageres målsman: {{$mail->participants_advocate_sent_amount}}/{{$registrations}}</p>
-                                <p style="margin: 0px;">Ledare: {{$mail->leader_sent_amount}}/{{$leaders}}</p>
-                                <p style="margin: 0px;">Ledares anhörig: {{$mail->leader_advocate_sent_amount}}/{{$leaders}}</p>
-                            </td>
                             <td>                               
                                 <a class="btn btn-secondary" style="color:white;" data-toggle="modal" data-target="#previewmodal" onclick="updatePreviewModal('/test/mail/{{$mail->id}}')">Förhandsgranska</a> 
-                                <a class="btn btn-success @if(!$cansend)disabled @endif" style="color:white;" data-toggle="modal" data-target="#sendmodal" onclick="updateSendModal({{$mail->id}})">välj mottagare</a> 
-                                <a href="/admin/mail/update/{{$mail->id}}" class="btn btn-primary">Ändra</a>
+                                <a class="btn btn-success" style="color:white;" data-toggle="modal" data-target="#sendmodal" onclick="updateSendModal({{$mail->id}})">välj mottagare</a> 
                                 <br><br>
+                                <a href="/admin/mail/update/{{$mail->id}}" class="btn btn-primary">Ändra</a>
                                 <a href="/admin/mail/duplicate/{{$mail->id}}" class="btn btn-info" style="color:white;">Duplicera</a>
-                                <a href="/admin/mail/clearsendstats/{{$mail->id}}" class="btn btn-dark" style="color:white;">Rensa skickade data</a>
                                 <a class="btn btn-danger" style="color:white;" data-toggle="modal" data-target="#removemodal" onclick="updateRemoveModal('/admin/mail/remove/{{$mail->id}}')">Ta Bort</a>
                             </td>
                         </tr>
@@ -161,6 +150,8 @@
             </table>
         @endif
     </div>
+    <hr>
+    <h2 id="queuedAmount">I kö: {{$queued}}</h2>
 </div>
 
 <div class="panel">
@@ -187,7 +178,7 @@
     </div>
 </div>
 
-<script src="http://malsup.github.com/jquery.form.js"></script>
+<script src="https://malsup.github.com/jquery.form.js"></script>
 <script src="https://cloud.tinymce.com/stable/tinymce.min.js?apiKey=u8ldionpp9fa3j79vndfw9aljw1nhalezrswhqthrb7w9umw"></script>
 <script>
     tinymce.init({
@@ -224,9 +215,9 @@
 
 
     $(document).ready(function() {
-        $('#sendmails').on('submit', function() {
+        //$('#sendmails').on('submit', function() {
             setInterval(UpdateProgressBar, 1000);
-        });
+        //});
     });
 
     var CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
@@ -239,7 +230,7 @@
             data: {_token: CSRF_TOKEN},
             dataType: 'JSON',
             success: function (data) {
-                $('#sendingprogress').css('width', data+'%').attr('aria-valuenow', data);
+                $('#queuedAmount').text("I kö: " + data);
             }
         });
     }
