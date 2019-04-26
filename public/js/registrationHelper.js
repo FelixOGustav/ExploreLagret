@@ -2,7 +2,18 @@
 $('#formNextPage').click(function(){
     if($(".formPage.current").attr("form-index") == "last")
         return;
-
+/*
+    var allInputsForCurrentPage = $('formPage.current input');
+        allInputsForCurrentPage.forEach(selected => {
+            if(selected.val().length() <= 0){
+                console.log("found an invalid input")
+                selected.css("border-color", "red");
+                alert("du har inte fyllt i rätt!");
+                return;
+            }
+        }
+    ); 
+*/
     $(".progressbar > .active").last().next().toggleClass('active'); // sets next progressbar point to not active
 
     // Toggle current class to the next page
@@ -25,15 +36,6 @@ $('#formNextPage').click(function(){
 
 // Move one page forward as long as current page is not "0"
 $('#formPrevPage').click(function(){
-    /*var allInputsForCurrentPage = $('formPage.current input');
-    foreach(allInputsForCurrentPage as inputs){
-        if(input.val().length() <= 0){
-            alert("du har inte fyllt i rätt!")
-            return;
-        }
-    }
-      */  
-
     if($(".formPage.current").attr("form-index") == "0")
         return;
 
@@ -94,3 +96,8 @@ function CheckInputsEqualAdvocate(){
         console.log("Disabling btn");
     }
 }
+
+// Set border color to white on key up on any input in current form page
+$('.formPage.current input').keyup(function(){
+    $(this).css("border-color", "#fff");
+});
