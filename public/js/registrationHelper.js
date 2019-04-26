@@ -20,16 +20,6 @@ $('#formNextPage').click(function(){
     var nextPage = $('.formPage.current').next();
     $('.formPage.current').toggleClass('current'); // Do not change order of this line and line under. Will breake
     nextPage.toggleClass('current');
-
-    // When on last page, set next btn to submit
-    if($(".formPage.current").attr("form-index") == "last"){
-        $('#formNextPage').text("Skicka in");
-        $('#formNextPage').attr('type', 'submit');
-    }
-    // Displays the previus page btn if not on the first page
-    else if($(".formPage.current").attr("form-index") > "0"){
-        $('#formPrevPage').css('display', "inherit");
-    }
 });
 
 
@@ -45,16 +35,6 @@ $('#formPrevPage').click(function(){
     var prevPage = $('.formPage.current').prev();
     $('.formPage.current').toggleClass('current'); // Do not change order of this line and line under. Will breake
     prevPage.toggleClass('current');
-
-    // When on last page, set next btn to submit
-    if($(".formPage.current").attr("form-index") == "4"){
-        $('#formNextPage').text("Nästa");
-        $('#formNextPage').attr('type', 'next');
-    }
-    // Hides the previus page btn if on the first page
-    else if($(".formPage.current").attr("form-index") == "0"){
-        $('#formPrevPage').css("display","none");
-    }
 });
 
 
