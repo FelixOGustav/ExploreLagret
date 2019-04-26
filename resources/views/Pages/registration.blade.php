@@ -17,7 +17,6 @@
                     <li>Övrigt</li>
                     <li>Målsman</li>
                     <li>Vilkor och pris</li>
-                    <li>Slutför</li>
                 </ul>
             </div>
             <div class="register">
@@ -35,7 +34,7 @@
                         </div>
                         <div class="form-row">
                             <div class="form-group col-9">
-                                <label class="registerLabel" for="year">Föddelseår</label>
+                                    <label class="registerLabel" for="year">Föddelseår<Span><button type="info" class="bottonInfo" data-toggle="popover" data-placement="right" data-content="För att kunna få bidrag för ditt deltagande behöver Equmenia redovisa ett personnummer" data-trigger="focus hover" data-original-title title>?</button></Span></label>
                                 <input type="text" class="form-control" id="birthdate" name="birthdate" placeholder="1337-13-37" required>
                             </div>
                             <div class="form-group col-3">
@@ -44,7 +43,7 @@
                             </div>
                         </div>
                         <div>
-                            <label class="registerLabel" for="inputState">Vilken ort vill du åka med?</label>
+                            <label class="registerLabel" for="inputState">Vilken ort vill du åka med? <Span><button type="info" class="bottonInfo" data-toggle="popover" data-placement="right" data-content="För att kunna få bidrag för ditt deltagande behöver Equmenia redovisa ett personnummer" data-trigger="focus hover" data-original-title title>?</button></Span></label>
                             <select id="place" name="place" class="form-control"  required>
                                     <option value="">Välj...</option>
                                 @foreach($places as $place)
@@ -130,7 +129,7 @@
                         </div>
                     </div>
 
-                    <div class="formPage" form-index="4">
+                    <div class="formPage" form-index="last">
                         <div class="form-row">    
                             <div class="form-group col-md-6">   
                                 <h4 style="color: #EAC15B;">
@@ -140,9 +139,9 @@
                                         <li>KILLAR OCH TJEJER SOVER ÅTSKILJT </li>
                                         <li>DU SKA VARA MED På DE OBLIGATORISKA AKTIVITETERNA </li>
                                         <li>NOLLTOLERANS MOT ALKOHOL OCH DROGER</li>
-                                        <li>DET GÅR EJ AVANMÄLAN EFTER SISTA ANMäLNINGSDAGEN UTAN GILTIGT LÄKARINTYG </li>
-                                        <li>Anmälan är bindande </li>
-                                        <li>Att deltagaren är med i bild och video som sedan publiceras på socialmedier (Om detta skulle vara ett problem, kontakta info@branaslagret.se)</li>
+                                        <li>DET GÅR EJ AVANMÄLAN EFTER SISTA ANMÄLNINGSDAGEN UTAN GILTIGT LÄKARINTYG </li>
+                                        <li>ANMÄLAN ÄR BINDANDE </li>
+                                        <li>ATT DELTAGAREN ÄR MED I BILD OCH VIDEO SOM SEDAN PUBLICERAS PÅ SOCIALMEDIER (OM DETTA SKULLE VARA ETT PROBLEM, KONTAKTA INFO@EXPLORELAGRET.SE)</li>
                                     </ul>
                                 </h4>
                             </div>
@@ -158,7 +157,7 @@
                                         </label>
                                         </div>
                                 <div>
-                                <p style=" color:#EAC15B; ">Jag har läst förstått och godkänt vilkoren för lägret</p>
+                                <p style=" color:#EAC15B; ">Jag har läst förstått och godkänt vilkoren och <a href="https://equmenia.se/personuppgiftspolicy/">hanteringen<a> av personuppgifter inför lägret</p>
                                 <label class="switch">
                                     <input type="checkbox">
                                     <span class="slider round"></span>
@@ -167,17 +166,12 @@
                             </div>
                         </div>
                     </div>
-                    <div class="formPage" form-index="last">
-<<<<<<< HEAD
-                            <p>Bajs!</p>
-=======
-                        <p>Bajs!</p>
->>>>>>> 738974c2c804d5d0de35b9a566e2a9f82fa7076e
-                    </div>
                 </div>
                     <span style="margin-left:45%">
+                        
                             <button type="back" style="background-color: white; "class="bottonRegister" id="formPrevPage">Bak</button>
                             <button type="submit" class="bottonRegister" id="formNextPage">Nästa</button>
+                    
                     </span>
             </div>
         </div>
