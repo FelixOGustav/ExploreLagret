@@ -15,6 +15,7 @@ class SendMassEmailJob implements ShouldQueue
 
     public $mailid;
     public $address;
+    public $tries = 5;
 
     /**
      * Create a new job instance.

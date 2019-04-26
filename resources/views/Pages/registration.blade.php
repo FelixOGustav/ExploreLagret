@@ -74,7 +74,7 @@
                             </div>
                             <div class="form-group col-md-12 noPadding">
                                 <label class="registerLabel" for="firstName">Bekräfta E-post</label>
-                                <input type="email" class="form-control" id="emailconfirm" name="emailConfirm" placeholder="namn.namnsson@mail.se" onpaste="return false;" required>
+                                <input type="email" class="form-control" id="emailConfirm" name="emailConfirm" placeholder="namn.namnsson@mail.se" onpaste="return false;" required>
                             </div>
                             <div class="form-group container-fluid noPadding">
                                     <label class="registerLabel" for="inputCity">Telefon</label>
