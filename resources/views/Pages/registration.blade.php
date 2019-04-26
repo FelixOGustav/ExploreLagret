@@ -168,17 +168,16 @@
                         </div>
                     </div>
                     <div class="formPage" form-index="last">
-<<<<<<< HEAD
-                            <p>Bajs!</p>
-=======
                         <p>Bajs!</p>
->>>>>>> 738974c2c804d5d0de35b9a566e2a9f82fa7076e
                     </div>
                 </div>
-                    <span style="margin-left:45%">
-                            <button type="back" style="background-color: white; "class="bottonRegister" id="formPrevPage">Bak</button>
-                            <button type="submit" class="bottonRegister" id="formNextPage">Nästa</button>
+                <div style="text-align:center">
+                    <span>
+                        <button type="back" style="background-color: white; display: none;"class="bottonRegister" id="formPrevPage">Bak</button>
+                        <button type="submit" class="bottonRegister" id="formNextPage">Nästa</button>
                     </span>
+                </div>
+                    
             </div>
         </div>
         <!--
