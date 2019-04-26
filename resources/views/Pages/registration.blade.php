@@ -166,13 +166,17 @@
                             </div>
                         </div>
                     </div>
+                    <div class="formPage" form-index="last">
+                        <p>Bajs!</p>
+                    </div>
                 </div>
-                    <span style="margin-left:45%">
-                        
-                            <button type="back" style="background-color: white; "class="bottonRegister" id="formPrevPage">Bak</button>
-                            <button type="submit" class="bottonRegister" id="formNextPage">Nästa</button>
-                    
+                <div style="text-align:center">
+                    <span>
+                        <button type="back" style="background-color: white; display: none;"class="bottonRegister" id="formPrevPage">Bak</button>
+                        <button type="submit" class="bottonRegister" id="formNextPage">Nästa</button>
                     </span>
+                </div>
+                    
             </div>
         </div>
         <!--
