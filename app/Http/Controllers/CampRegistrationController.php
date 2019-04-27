@@ -20,7 +20,7 @@ class CampRegistrationController extends Controller
             abort(403);
         }
         
-        $places = \App\place::all();
+        $places = \App\place::orderBy('placename', 'ASC')->get();
         return view('Pages/registration', ['places' => $places, 'key' => null]);
     }
 
@@ -31,7 +31,7 @@ class CampRegistrationController extends Controller
             abort(403);
         }
 
-        $places = \App\place::all();
+        $places = \App\place::orderBy('placename', 'ASC')->get();
         return view('Pages/registration-leader', ['places' => $places, 'key' => null]);
     }
 

@@ -114,12 +114,14 @@ Route::get('/test/mail/{id}', function ($id) {
     return view('Emails/defaultmail', ['mail' => \App\mail::find($id)]);
 });
 
+/*
 Route::get('/sendMailJob', function(){
         //$job = (new SendMassEmailJob('gustav.rakeberg@gmail.com', 4))->delay(Carbon::now()->addSeconds(10));
         //dispatch($job);
         \Mail::to('gustav.rakeberg@gmail.com')->send(new CampRegistration(\App\registration::find(23), 'https://explorelagret.se'));
     return 'Email job dispatched';
 });
+*/
 
 Route::group(['prefix' => 'admin'], function () {
     //Auth::routes();

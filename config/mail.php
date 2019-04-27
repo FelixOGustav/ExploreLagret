@@ -56,8 +56,8 @@ return [
     */
 
     'from' => [
-        'address' => env('MAIL_FROM_ADDRESS', 'info@branaslagret.se'),
-        'name' => env('MAIL_FROM_NAME', 'Branäslägret'),
+        'address' => env('MAIL_FROM_ADDRESS', 'info@explorelagret.se'),
+        'name' => env('MAIL_FROM_NAME', 'Explorelägret'),
     ],
 
     /*

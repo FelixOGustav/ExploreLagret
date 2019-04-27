@@ -34,7 +34,7 @@
                         </div>
                         <div class="form-row">
                             <div class="form-group col-9">
-                                    <label class="registerLabel" for="year">Föddelseår<Span><button type="info" class="bottonInfo" data-toggle="popover" data-placement="right" data-content="För att kunna få bidrag för ditt deltagande behöver Equmenia redovisa ett personnummer" data-trigger="focus hover" data-original-title title>?</button></Span></label>
+                                    <label class="registerLabel" for="year">Föddelseår</label>
                                 <input type="text" class="form-control" id="birthdate" name="birthdate" placeholder="1337-13-37" required>
                             </div>
                             <div class="form-group col-3">
@@ -43,7 +43,7 @@
                             </div>
                         </div>
                         <div>
-                            <label class="registerLabel" for="inputState">Vilken ort vill du åka med? <Span><button type="info" class="bottonInfo" data-toggle="popover" data-placement="right" data-content="För att kunna få bidrag för ditt deltagande behöver Equmenia redovisa ett personnummer" data-trigger="focus hover" data-original-title title>?</button></Span></label>
+                            <label class="registerLabel" for="inputState">Vilken ort vill du åka med?</label>
                             <select id="place" name="place" class="form-control"  required>
                                     <option value="">Välj...</option>
                                 @foreach($places as $place)
@@ -157,7 +157,7 @@
                                         </label>
                                         </div>
                                 <div>
-                                <p style=" color:#EAC15B; ">Jag har läst förstått och godkänt vilkoren och <a href="https://equmenia.se/personuppgiftspolicy/">hanteringen<a> av personuppgifter inför lägret</p>
+                                <p style=" color:#EAC15B; ">Jag har läst förstått och godkänt vilkoren och <a href="https://equmenia.se/personuppgiftspolicy/" target="_blank">hanteringen</a> av personuppgifter inför lägret</p>
                                 <label class="switch">
                                     <input type="checkbox">
                                     <span class="slider round"></span>
