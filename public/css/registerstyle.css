@@ -11,17 +11,27 @@
     margin-top: 30px;   
 }
 .bottonInfo {
-  background-color: #EBEBEB;
+  
   font-family: ChampagneLimousines;
   font-size: 15px;
+  color: #EAC15B;
+  margin-left: 10px;
+  text-align: center;
+  height: 20px;
+  width: 20px;
+  border:none;
+  background-color: rgba(255, 255, 255, 0);
+  padding-top: 10px;
+
+}
+
+.bottonInfo::before {
+  content: '';
   height: 20px;
   width: 20px;
   border-radius: 100%;
   border:2px solid #EAC15B;
-  color: #EAC15B;
-  margin-left: 10px;
-  text-align: center;
-
+  background-color: #EBEBEB;
 }
 .progressbar {
     counter-reset: step;
@@ -85,6 +95,10 @@
 
 .formPage.current {
     display: block;
+}
+
+.formPage input[type="text"]::placeholder {
+  color: rgba(128, 128, 128, 0.700);
 }
 
 /* The switch - the box around the slider */
@@ -188,3 +202,4 @@
     visibility: visible;
     opacity: 1;
   }
+
