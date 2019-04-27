@@ -6,6 +6,7 @@
 
     <!-- CSS links-->
     <link rel="stylesheet" href="css/fonts.css">
+    <link rel="stylesheet" href="{{URL::asset('css/fonts.css')}}">
     <style type="text/css">
         html, body {
             height: 100%;
@@ -34,7 +35,7 @@
     
 
 
-    <title>Särnalägret 2018-2019</title>
+    <title>Explorelägret 2019</title>
 </head>
 <body>
     <!-- Optional JavaScript -->

@@ -1,4 +1,11 @@
 <!DOCTYPE html>
+<!-- 
+****************************************************************************************
+*                                                                                      *
+*    Bygd av Gustav Råkeberg och Felix Brunnegård med Laravel och twitter bootstrap    *
+*                                                                                      *
+****************************************************************************************
+-->
 <html lang="sv">
 <head>
     <meta charset="UTF-8">
@@ -169,8 +176,15 @@
                         <span>Mail</span>
                     </a>
                 </li>
+                <li class="sidebarbutton">
+                    <a href="/admin/editstart">
+                        <i class="fas fa-desktop"></i>
+                        <span>Redigera startsida</span>
+                    </a>
+                </li>
                 @endcan
 
+                {{-- 
                 @can('schedule')
                 <li class="sidebarbutton">
                     <a href="/admin/schedule">
@@ -206,6 +220,7 @@
                     </a>
                 </li>
                 @endcan
+                --}}
             </ul>
 
             <!-- Logout button -->
