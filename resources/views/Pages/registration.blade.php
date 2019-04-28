@@ -148,22 +148,19 @@
                                 <div>
                                         <p style=" color:#EAC15B; ">Jag vill ansöka om syskonrabatt</p>
                                         <label class="switch">
-                                            <input type="checkbox">
+                                            <input type="checkbox" id="discount" name="discount" value="1" required>
                                             <span class="slider round"></span>
                                         </label>
                                         </div>
                                 <div>
                                 <p style=" color:#EAC15B; ">Jag har läst förstått och godkänt vilkoren och <a href="https://equmenia.se/personuppgiftspolicy/" target="_blank">hanteringen</a> av personuppgifter inför lägret</p>
                                 <label class="switch">
-                                    <input type="checkbox">
+                                    <input type="checkbox" id="terms" name="terms" value="1" required>
                                     <span class="slider round"></span>
                                 </label>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="formPage" form-index="last">
-                        <p>Bajs!</p>
                     </div>
                 </div>
                 <div style="text-align:center">

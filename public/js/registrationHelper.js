@@ -32,7 +32,9 @@ $('#formNextPage').click(function(){
     // Displays the previus page btn if not on the first page
     else if($(".formPage.current").attr("form-index") > "0"){
         $('#formPrevPage').css('display', "inherit");
-    }
+    }    
+    
+    event.preventDefault()
 });
 
 
@@ -49,8 +51,8 @@ $('#formPrevPage').click(function(){
     $('.formPage.current').toggleClass('current'); // Do not change order of this line and line under. Will breake
     prevPage.toggleClass('current');
 
-    // When on last page, set next btn to submit
-    if($(".formPage.current").attr("form-index") == "4"){
+    // When not on last page, set next btn to next
+    if($(".formPage.current").attr("form-index") != "last"){
         $('#formNextPage').text("Nästa");
         $('#formNextPage').attr('type', 'next');
     }
@@ -58,6 +60,8 @@ $('#formPrevPage').click(function(){
     else if($(".formPage.current").attr("form-index") == "0"){
         $('#formPrevPage').css("display","none");
     }
+
+    event.preventDefault()
 });
 
 
@@ -106,13 +110,13 @@ $('.formPage.current input').keyup(function(){
 });
 
 // Check validity of personnummer.
-$('#personalnr').keyup(function(){
-    var valid = isValidSwedishSSN($('#personalnr').val());
+$('#socialSecurityNumber').keyup(function(){
+    var valid = isValidSwedishSSN($('#socialSecurityNumber').val());
     if(valid){
-        $('#personalnr').css('border', 'inherit');
+        $('#socialSecurityNumber').css('border', 'inherit');
     }
     else {
-        $('#personalnr').css('border', '2px solid red');
+        $('#socialSecurityNumber').css('border', '2px solid red');
     }
 })
 

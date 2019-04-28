@@ -106,10 +106,28 @@ class CampRegistrationController extends Controller
         $registration= new \App\registration();
         //return request()->all();
         
+        // parse birthdate and last four from personnummer
+        $ssn = Request('socialSecurityNumber');
+        $year = substr($ssn, 0, 2);
+        $month = substr($ssn, 2, 2);
+        $day = substr($ssn, 4, 2);
+        $lastfour = substr($ssn, 6, 4);
+
+        // Add correct century, since it originaly doesn't contain it
+        if((int)$year > 40){
+            $year = "19" . $year;
+        }
+        else {
+            $year = "20" . $year;
+        }
+
+        // Build the birthday string
+        $birthday = $year . "-" . $month . "-" . $day;
+
         $registration->first_name = Request('firstName');
         $registration->last_name = Request('lastName');
-        $registration->birthdate = Request('birthdate');
-        $registration->last_four = Request('fourLast');
+        $registration->birthdate = $birthday;
+        $registration->last_four = $lastfour;
         $registration->address = Request('address');
         $registration->zip = Request('zip');
         $registration->city = Request('city');
@@ -125,7 +143,7 @@ class CampRegistrationController extends Controller
         $registration->member_place = Request('memberPlace');
         $registration->other = Request('other');
         $registration->terms = Request('terms');
-        $registration->terms = Request('dicount');
+        $registration->discount = Request('discount');
 
 
         $registrations = \App\registration::all();
@@ -170,11 +188,29 @@ class CampRegistrationController extends Controller
         
         $registration = new \App\registrations_leader();
         //return request()->all();
+
+        // parse birthdate and last four from personnummer
+        $ssn = Request('socialSecurityNumber');
+        $year = substr($ssn, 0, 2);
+        $month = substr($ssn, 2, 2);
+        $day = substr($ssn, 4, 2);
+        $lastfour = substr($ssn, 6, 4);
+
+        // Add correct century, since it originaly doesn't contain it
+        if((int)$year > 40){
+            $year = "19" . $year;
+        }
+        else {
+            $year = "20" . $year;
+        }
+
+        // Build the birthday string
+        $birthday = $year . "-" . $month . "-" . $day;
         
         $registration->first_name = Request('firstName');
         $registration->last_name = Request('lastName');
-        $registration->birthdate = Request('birthdate');
-        $registration->last_four = Request('fourLast');
+        $registration->birthdate = $birthday;
+        $registration->last_four = $lastfour;
         $registration->address = Request('address');
         $registration->zip = Request('zip');
         $registration->city = Request('city');
@@ -190,6 +226,7 @@ class CampRegistrationController extends Controller
         $registration->member_place = Request('memberPlace');
         $registration->other = Request('other');
         $registration->terms = Request('terms');
+        $registration->discount = Request('discount');
         $registration->kitchen = 0;
 
         $registrations = \App\registrations_leader::all();
@@ -242,11 +279,29 @@ class CampRegistrationController extends Controller
 
         $registration= new \App\registration();
         //return request()->all();
+
+        // parse birthdate and last four from personnummer
+        $ssn = Request('socialSecurityNumber');
+        $year = substr($ssn, 0, 2);
+        $month = substr($ssn, 2, 2);
+        $day = substr($ssn, 4, 2);
+        $lastfour = substr($ssn, 6, 4);
+
+        // Add correct century, since it originaly doesn't contain it
+        if((int)$year > 40){
+            $year = "19" . $year;
+        }
+        else {
+            $year = "20" . $year;
+        }
+
+        // Build the birthday string
+        $birthday = $year . "-" . $month . "-" . $day;
         
         $registration->first_name = Request('firstName');
         $registration->last_name = Request('lastName');
-        $registration->birthdate = Request('birthdate');
-        $registration->last_four = Request('fourLast');
+        $registration->birthdate = $birthday;
+        $registration->last_four = $lastfour;
         $registration->address = Request('address');
         $registration->zip = Request('zip');
         $registration->city = Request('city');
@@ -262,6 +317,7 @@ class CampRegistrationController extends Controller
         $registration->member_place = Request('memberPlace');
         $registration->other = Request('other');
         $registration->terms = Request('terms');
+        $registration->discount = Request('discount');
 
         $registrations = \App\registration::all();
         foreach($registrations as $otherReg){
@@ -309,11 +365,29 @@ class CampRegistrationController extends Controller
         
         $registration = new \App\registrations_leader();
         //return request()->all();
+
+        // parse birthdate and last four from personnummer
+        $ssn = Request('socialSecurityNumber');
+        $year = substr($ssn, 0, 2);
+        $month = substr($ssn, 2, 2);
+        $day = substr($ssn, 4, 2);
+        $lastfour = substr($ssn, 6, 4);
+
+        // Add correct century, since it originaly doesn't contain it
+        if((int)$year > 40){
+            $year = "19" . $year;
+        }
+        else {
+            $year = "20" . $year;
+        }
+
+        // Build the birthday string
+        $birthday = $year . "-" . $month . "-" . $day;
         
         $registration->first_name = Request('firstName');
         $registration->last_name = Request('lastName');
-        $registration->birthdate = Request('birthdate');
-        $registration->last_four = Request('fourLast');
+        $registration->birthdate = $birthday;
+        $registration->last_four = $lastfour;
         $registration->address = Request('address');
         $registration->zip = Request('zip');
         $registration->city = Request('city');
@@ -330,6 +404,7 @@ class CampRegistrationController extends Controller
         $registration->other = Request('other');
         $registration->terms = Request('terms');
         $registration->kitchen = Request('kitchen');
+        $registration->discount = Request('discount');
 
         $registrations = \App\registrations_leader::all();
         foreach($registrations as $otherReg){

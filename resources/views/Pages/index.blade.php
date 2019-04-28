@@ -79,7 +79,7 @@
             <div class="landingContentContainer">
                 <!-- Logo btns -->
                 <div class="logoTxt hideOnMobile">
-                    <h1>{{$camp->name}}</h1>
+                    <h1 style="text-shadow: 0px 0px 11px #bcbcbc78;">{{$camp->name}}</h1>
                 </div>
                 <!-- Logo btns -->
                 
@@ -123,7 +123,7 @@
                         </div>
                         <div class="containerItem contentTxt"  style="order: {{$counter % 2}}" id="explorelagretInfo">
                             <h2>{{$info->title}}</h2>
-                            <p>{{$info->body}}</p>
+                            <p> {!! $info->body !!}</p>
                         </div>
                     </div>
                 </div>
