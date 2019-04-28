@@ -28,6 +28,7 @@
     <link rel="stylesheet" href="{{URL::asset('css/mainstyle.css')}}">
     <link rel="stylesheet" href="{{URL::asset('css/registerstyle.css')}}">
     <link rel="stylesheet" href="{{URL::asset('css/mainSideMenu.css')}}">
+    <link rel="stylesheet" href="{{URL::asset('css/loadingscreenstyle.css')}}">
 
     <title>{{config('app.name', 'Explorelägret')}}</title>
 </head>
@@ -42,10 +43,13 @@
 
     <!-- Loading content -->
     <div class="loadingBG" id="loadingScreen">
-        <div class="loadingContent centerTextInDiv">
-            <img src="{{URL::asset('img/branaslogga_white.png')}}" type="img/PNG" class="rotating">
-            <p class="whiteColor">Vänta lite..</p>
-        </div>
+            <div class="box">
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+            </div>
+            <h3 class="loadingE">E</h3>
     </div>
     <!-- Loading content  end-->
 

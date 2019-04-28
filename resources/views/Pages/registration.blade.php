@@ -33,13 +33,9 @@
                             </div>
                         </div>
                         <div class="form-row">
-                            <div class="form-group col-9">
-                                    <label class="registerLabel" for="year">Föddelseår</label>
-                                <input type="text" class="form-control" id="birthdate" name="birthdate" placeholder="1337-13-37" required>
-                            </div>
-                            <div class="form-group col-3">
-                                <label class="registerLabel" for="inputAddress2">Fyra sista</label>
-                                <input type="text" class="form-control" id="fourLast" name="fourLast" placeholder="XXXX" required>
+                            <div class="form-group col-12">
+                                    <label class="registerLabel" for="year">Personnummer</label>
+                                <input type="text" class="form-control" id="socialSecurityNumber" name="socialSecurityNumber" placeholder="ÅÅMMDDXXXX" required>
                             </div>
                         </div>
                         <div>
