@@ -99,7 +99,7 @@ class CampRegistrationController extends Controller
     // Standard attendee
     public function store(){
         $count = \App\registrations_leader::count() + \App\registration::count();
-        if($count > 279) {
+        if($count > 379) {
             return redirect('/registrationfull');
         }
 
@@ -125,6 +125,8 @@ class CampRegistrationController extends Controller
         $registration->member_place = Request('memberPlace');
         $registration->other = Request('other');
         $registration->terms = Request('terms');
+        $registration->terms = Request('dicount');
+
 
         $registrations = \App\registration::all();
         foreach($registrations as $otherReg){
@@ -161,7 +163,7 @@ class CampRegistrationController extends Controller
     // leader attendee
     public function storeLeader(){
         $count = \App\registrations_leader::count() + \App\registration::count();
-        if($count > 279) {
+        if($count > 379) {
             return redirect('/registrationfull');
         }
 
@@ -188,7 +190,7 @@ class CampRegistrationController extends Controller
         $registration->member_place = Request('memberPlace');
         $registration->other = Request('other');
         $registration->terms = Request('terms');
-        $registration->kitchen = Request('kitchen');
+        $registration->kitchen = 0;
 
         $registrations = \App\registrations_leader::all();
         foreach($registrations as $otherReg){
@@ -198,10 +200,10 @@ class CampRegistrationController extends Controller
         }
 
         if(Request('kitchen') > 0){
-            $registration->cost = 1000;
+            $registration->cost = 600;
         }
         else{
-            $registration->cost = 1500;
+            $registration->cost = 600;
         }
 
         if(Request('memberPlace')==0){
