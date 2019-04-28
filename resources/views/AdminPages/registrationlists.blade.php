@@ -99,11 +99,11 @@
                             <td>{{$reg->birthdate}}</td>
                         @endcan
 
-                        <td>{{$reg->created_at}}</td> 
-                        
                         @can('persnr')
                             <td>{{$reg->last_four}}</td>
                         @endcan
+
+                        <td>{{$reg->created_at}}</td> 
 
                         @can('allergy')
                             <td class="tblheadcol" id="tbl-edit">{{$reg->allergy}}</td>

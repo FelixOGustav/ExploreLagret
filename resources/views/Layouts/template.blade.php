@@ -1,4 +1,11 @@
 <!DOCTYPE html>
+<!-- 
+****************************************************************************************
+*                                                                                      *
+*    Bygd av Gustav Råkeberg och Felix Brunnegård med Laravel och twitter bootstrap    *
+*                                                                                      *
+****************************************************************************************
+-->
 <html>
 <head lang="sv">
     <meta charset="ISO-8859-1">
@@ -53,7 +60,7 @@
     </div>
     <!-- Loading content  end-->
 
-    <!-- Navbar 
+    {{-- Navbar 
     <div class="navbar navbar-expand-lg navbar-light navbarBG fixed-top navbar-custom">
         <div>
             <a class="navbar-brand"  id="scrollToTopLogo" href="{{$links['navLogoLink'] ?? '/'}}"><img src="{{URL::asset('img/branaslagret.svg')}}" height="40" class="d-inline-block align-top"></a>
@@ -81,7 +88,7 @@
             </ul>
         </div>
     </div>
--->
+--}}
     <!-- Navbar end -->
 
     <!-- Main Site Content -->
@@ -102,7 +109,7 @@
                 </li>
 
                 <li class="sidebarbutton">
-                    <a href="{{$links['reglerLink'] ?? "/#ReglerInfo"}}" id="scrollToParentsBtn">
+                    <a href="{{$links['reglerLink'] ?? "/#ParentsInfo"}}" id="scrollToParentsBtn">
                         <i class="fas fa-user-edit"></i>
                         <span>För Föräldrar</span>
                     </a>

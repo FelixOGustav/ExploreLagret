@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use \Illuminate\Support\Facades\URL;
+use Artisan;
+use App;
 
 class PagesController extends Controller
 {
@@ -23,7 +25,11 @@ class PagesController extends Controller
 
     public function index(){
         $camp = \App\registration_state::find(1);
-        return view('Pages/index', ['links' => $this->StartPagelinkslinks, 'camp' => $camp]);
+        $infos = \App\startpage_info::all();
+        $contacts = \App\contact::all();
+        $groups = \App\contact::distinct('group')->pluck('group');
+        $faqs = \App\faq::all();
+        return view('Pages/index', ['links' => $this->StartPagelinkslinks, 'camp' => $camp, 'infos' => $infos, 'contacts' => $contacts, 'groups' => $groups, 'faqs' => $faqs]);
     }
 
     public function template(){
@@ -138,7 +144,8 @@ class PagesController extends Controller
 
     public function managecamps(){
         $camps = \App\registration_state::all();
-        return view('AdminPages/managecamps', ['camps' => $camps]);
+        $isInMaintenenceMode = App()->isDownForMaintenance();
+        return view('AdminPages/managecamps', ['camps' => $camps, 'maintenenceMode' => $isInMaintenenceMode]);
     }
 
     public function managecamp($id){
@@ -368,6 +375,114 @@ class PagesController extends Controller
         $registration->place = 0;
 
         return view('Emails/registeredemail', ['registration' => $registration, 'link' => 'branaslagret.test']);
+    }
+
+    public function ToggleMaintenenceMode(){
+        if(App()->isDownForMaintenance()){
+            Artisan::call('up');
+        }
+        else{
+            Artisan::call('down');
+        }
+        return redirect('admin/managecamps');
+    }
+
+    public function EditStart(){
+        $infos = \App\startpage_info::all();
+        $contacts = \App\contact::all();
+        $faqs = \App\faq::all();
+
+        return view('AdminPages/editstart', ['infos' => $infos,'faqs' => $faqs, 'contacts' => $contacts]);   
+    }
+
+    public function EditInfo($id){
+        $info = \App\startpage_info::find($id);
+        return view('AdminPages/editinfo', ['info' => $info]);   
+    }
+
+    public function SaveEditStart($id = false){
+        if($id){
+            $info = \App\startpage_info::find($id);
+        }
+        else {
+            $info = new \App\startpage_info();
+        }
+
+        $info->title = Request('title');
+        $info->body = Request('body');
+        $info->img = Request('image');
+        $info->type = Request('type');
+
+        $info->save();
+
+        return redirect('admin/editstart'); 
+    }
+
+    public function RemoveInfo($id){
+        $info = \App\startpage_info::find($id);
+
+        $info->delete();
+
+        return redirect('admin/editstart'); 
+    }
+
+    public function SaveStartFaq($id = false){
+        if($id){
+            $faq = \App\faq::find($id);
+        }
+        else {
+            $faq = new \App\faq();
+        }
+
+        $faq->question = Request('question');
+        $faq->answer = Request('answer');
+
+        $faq->save();
+
+        return redirect('admin/editstart'); 
+    }
+
+    public function RemoveStartFaq($id){
+        $faq = \App\faq::find($id);
+        
+        $faq->delete();
+
+        return redirect('admin/editstart'); 
+    }
+
+    public function EditStartFaq($id){
+        $faq = \App\faq::find($id);
+        return view('AdminPages/editfaq', ['faq' => $faq]);
+    }
+
+    public function SaveStartContact($id = false){
+        if($id){
+            $contact = \App\contact::find($id);
+        }
+        else {
+            $contact = new \App\contact();
+        }
+
+        $contact->group = Request('group');
+        $contact->name = Request('name');
+        $contact->contact_info = Request('contact_info');
+
+        $contact->save();
+
+        return redirect('admin/editstart'); 
+    }  
+    
+    public function RemoveStartContact($id){
+        $contact = \App\contact::find($id);
+
+        $contact->delete();
+
+        return redirect('admin/editstart'); 
+    }  
+    
+    public function EditStartContact($id){
+        $contact = \App\contact::find($id);
+        return view('AdminPages/editcontact', ['contact' => $contact]);
     }
 }
 

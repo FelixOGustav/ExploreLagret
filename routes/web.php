@@ -104,6 +104,17 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('/admin/gameofthrones/update', 'PagesController@UpdateGameOfThrones')->middleware('can:game_of_thrones');
     Route::get('/admin/insamling', 'PagesController@Insamling')->middleware('can:insamling');
     Route::post('/admin/insamling/update/{id}', 'PagesController@UpdateInsamling')->middleware('can:insamling');
+    Route::get('/admin/togglemaintenencemode', 'PagesController@ToggleMaintenenceMode')->middleware('can:admin');
+    Route::get('/admin/editstart', 'PagesController@EditStart')->middleware('can:admin');    
+    Route::post('/admin/editinfo/{id?}', 'PagesController@SaveEditStart')->middleware('can:admin');
+    Route::get('/admin/editinfo/{id}','PagesController@EditInfo')->middleware('can:admin');
+    Route::get('/admin/removeinfo/{id}','PagesController@RemoveInfo')->middleware('can:admin');
+    Route::post('/admin/editfaq/{id?}', 'PagesController@SaveStartFaq')->middleware('can:admin');
+    Route::get('/admin/editfaq/{id}', 'PagesController@EditStartFaq')->middleware('can:admin');
+    Route::get('/admin/removefaq/{id}', 'PagesController@RemoveStartFaq')->middleware('can:admin');
+    Route::post('/admin/editcontact/{id?}', 'PagesController@SaveStartContact')->middleware('can:admin');
+    Route::get('/admin/editcontact/{id}', 'PagesController@EditStartContact')->middleware('can:admin');
+    Route::get('/admin/removecontact/{id}', 'PagesController@RemoveStartContact')->middleware('can:admin');
 });
 
 

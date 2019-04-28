@@ -110,122 +110,40 @@
                 
             </div>
         </div>
+        @php $counter = 1 @endphp
+        @php $placedID = false @endphp
+        @foreach ($infos as $info)
+            @if($info->type == "sidebyside")
+                <!-- Explore info row -->
+                <div class="ContentRow">
+                    <div class="contentContainer">
+                        <div class="containerItem contentImg" style="order: {{$counter % 2}}">
+                                @php $counter++ @endphp
+                            <img  src="{{URL::asset($info->img)}}">
+                        </div>
+                        <div class="containerItem contentTxt"  style="order: {{$counter % 2}}" id="explorelagretInfo">
+                            <h2>{{$info->title}}</h2>
+                            <p>{{$info->body}}</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Explore info row end -->
 
-        <!-- Explore info row -->
-        <div class="ContentRow">
-            <div class="contentContainer">
-                <div class="containerItem contentImg" style="order: 1">
-                    <img  src="{{URL::asset('img/fun_laugh.jpg')}}">
+            @else
+                <div class="ContentRow" @if(!$placedID) id="ParentsInfo" @endif 
+                @php $placedID = true @endphp>
+                    <div class="contentTxt" style="background-color: #EBEBEB;">
+                        <h2>{{$info->title}}</h2>
+                        <p>{{$info->body}}</p>
+                    </div>
+                    
                 </div>
-                <div class="containerItem contentTxt"  style="order: 0" id="explorelagretInfo">
-                    <h2>Vad är EXPLORE?</h2>
-                    <p>Explore är ett sommarläger som varje år arrangeras av Equmeniaförsamlingarna i Vårgårda och Herrljungtrakten.
-                        Lägret bjuder på en vecka av bad, snack om Gud och bibel, gamla och nya vänner, aktiviteter av olika slag
-                        och mängder med tillfällen att njuta av livet
-                    </p>
+                <div class="inlineImgBanner">
+                    <img src="{{URL::asset($info->img)}}">
                 </div>
-            </div>
-        </div>
-        <!-- Explore info row end -->
-
-        <!-- Explore info row -->
-        <div class="ContentRow">
-            <div class="contentContainer">
-                <div class="containerItem contentImg"  style="order: 0">
-                    <img src="{{URL::asset('img/storsjostran_2.jpg')}}">
-                </div>
-                <div class="containerItem contentTxt"  style="order: 1" id="">
-                    <h2>Var?</h2>
-                    <p>Lägret ligger på Storsjöstrand, i metropolen Horla tio min från Vårgårda. 
-                        <br><br>
-                        Kyrkan är nyrenoverad och riktigt fina lokaler som är som gjort för Explorelägret.
-                    </p>
-                </div>
-            </div>
-        </div>
-        <!-- Explore info row end -->
-
-        <!-- Explore info row -->
-        <div class="ContentRow">
-            <div class="contentContainer">
-                <div class="containerItem contentImg" style="order: 1">
-                    <img src="{{URL::asset('img/wheet.jpg')}}">
-                </div>
-                <div class="containerItem contentTxt"  style="order: 0" id="prisInfo">
-                    <h2>Pris?</h2>
-                    <p>För att lägret ska gå runt måste vi tyvärr ta en liten för att man ska kunna delta på lägret. 
-                        Lägret bygger på ideella ledare och pengarna går mat, hyra av lokaler och annat för att lägret ska 
-                        bli så grymt som möjligt.
-                    </p>
-                </div>
-            </div>
-        </div>
-        <!-- Explore info row end -->
-
-        <!-- Explore info row -->
-        <div class="ContentRow">
-            <div class="contentContainer">
-                <div class="containerItem contentImg"  style="order: 0">
-                    <img src="{{URL::asset('img/andakt.jpg')}}">
-                </div>
-                <div class="containerItem contentTxt"  style="order: 1">
-                    <h2>Andakter</h2>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas bibendum sodales varius.
-                    </p>
-                </div>
-            </div>
-        </div>
-        <!-- Explore info row end -->
-        
-        <div class="ContentRow">
-            <div class="contentTxt" style="background-color: #EBEBEB;" id="ParentsInfo">
-                <h2>För föräldrar</h2>
-                <p>En vanlig dag börjar med gemensam frukost i mattältet. Därefter träffas tonåringar och ledare från 
-                    respektive ort för att snacka om hur tonåringarna upplever lägret, presentera dagens aktiviteter 
-                    och tema och kanske leka en lek tillsammans. På förmiddagen hålls ofta ett bibelstudie som följs av 
-                    samtal i tvärgrupperna. Tvärgruppen består av en grupp av tonåringar från olika orter men i ungefär 
-                    samma åldrar. Tillsammans med ett par ledare summerar grupperna bibelstudiet, lär känna varandra, 
-                    pratar och har roligt. Sen är det lunch, varpå deltagarna har fritid och sedan kan välja mellan ett 
-                    antal dagsaktiviteter. Dagsaktiviteterna är vitt skilda och kan innebära allt ifrån tennis och trädklättring 
-                    till pyssel och filmskapande. Mycket kul händer på dagarna men det finns också fritid då det är fritt 
-                    fram att ta det lugnt, spela fotboll, beachvolley eller bada. Under kvällen är det ofta spex och något 
-                    roligt program i stora salen innan det är dags för en andakt. Andakterna är delade i två delar. 
-                    Under den första stunden vill vi att alla detagare är med, sedan följer en frivillig del för dem som 
-                    vill stanna lite längre. På andakterna sjunger man tillsammans och lyssnar på någon som snackar. 
-                    För den som är hungrig finns det kvällsmacka efter andakten, och sen är det läggdags som gäller! 
-                    <br><br>
-                    Explore är ett läger med kristen grund. Alla som hjälper till med lägret har en relation till kyrkan 
-                    och en personlig tro till Gud. För oss är den kristna tron en central byggsten i våra liv, men oavsett 
-                    vilken tro eller livsåskådning du har är du alltid välkommen på våra läger!</p>
-            </div>
-            
-        </div>
-
-        <div class="inlineImgBanner">
-            <img src="{{URL::asset('img/canoe.jpg')}}">
-        </div>
-
-        <div class="ContentRow">
-            <div class="contentTxt" style="background-color: #EBEBEB;">
-                <h2>För föräldrar</h2>
-                <p>Explore är ett läger som anordnas av flera Equmeniaförsamlingar i Vårgårdatrakten. 
-                    Lägret är en plats där ungdomar får lära känna nya vänner i sin egen ålder, men också skapar viktiga 
-                    relationer till ledare och vuxna, vilket kan bli till ett stort stöd för tonåringarna. 
-                    <br><br>
-                    Detta lägret har funnits i många år men förekommit under olika namn. Lägret har fått vara en mötesplats 
-                    för nya bekantskaper och en plats där tonåringar och unga vuxna fått möjlighet att växa i sig själv och 
-                    i en eventuell tro. Explore är ett läger med kristen grund. Alla som hjälper till med lägret har en 
-                    relation till kyrkan och en personlig tro till Gud. För oss är den kristna tron en central byggsten i 
-                    våra liv, men oavsett tro eller livsåskådning är alla givetvis välkomna på våra läger! Vi ledare som är 
-                    med och jobbar inför lägret är väldigt förväntansfulla och ser fram emot ännu ett härligt sommarläger med 
-                    mycket bad, glädje, kärlek och Gud. Vi hoppas att alla som vill ska hänga med oss till Explore!</p>
-            </div>
-            
-        </div>
-
-        <div class="inlineImgBanner">
-            <img src="{{URL::asset('img/tents.jpg')}}">
-        </div>
+                @php $counter++ @endphp
+            @endif
+        @endforeach
 
         <!-- QnA -->
 
@@ -237,214 +155,50 @@
                 <div class="qnaRow">
                     <!-- Left row -->
                    <div class="qnaBound">
-                        <!-- Question 1-->
-                        <div class="col qnaBtnSize">
-                            <div class="">
-                                <div>
-                                    <h2 data-toggle="collapse" href="#question1" aria-expanded="false" aria-controls="collapseExample" class="faqTitle" style="cursor: pointer;">Vad är Explorelägret för något? +</h2>
-                                </div>
-                                <div class="collapse faqBody" id="question1">
-                                    <p>Till årets läger är syskonrabatten borttagen för att lägeravgiften är sänkt. Skulle ekonomin vara ett problem så kontakta din equmeniaförening så hjälper de till. Ekonomin ska inte vara ett hinder för att åka med på lägret.</p>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- Question 1 end-->
-                        <!-- Question 2-->
-                        <div class="col qnaBtnSize">
-                            <div class="">
-                                <div>
-                                    <h2 data-toggle="collapse" href="#question2" aria-expanded="false" aria-controls="collapseExample" class="faqTitle" style="cursor: pointer;">Var är lägret? +</h2>
-                                </div>
-                                <div class="collapse faqBody" id="question2">
-                                    <p>Betalningen görs via faktura som skickas till den epost som anges vid anmälan. Detta sker innan lägret och ska betalas innan lägret. OBS! Kan du av någon anledning inte ta emot fakturan via epost så måste du kontakta antingen lägerledningen eller webbansvarig.</p>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- Question 2 end-->
-                        <!-- Question 3-->
-                        <div class="col qnaBtnSize">
-                                <div class="">
-                                    <div>
-                                        <h2 data-toggle="collapse" href="#question3" aria-expanded="false" aria-controls="collapseExample" class="faqTitle" style="cursor: pointer;">Får mamma, pappa eller min kompis komma ut och hälsa på en dag? +</h2>
-                                    </div>
-                                    <div class="collapse faqBody" id="question3">
-                                        <p>Betalningen görs via faktura som skickas till den epost som anges vid anmälan. Detta sker innan lägret och ska betalas innan lägret. OBS! Kan du av någon anledning inte ta emot fakturan via epost så måste du kontakta antingen lägerledningen eller webbansvarig.</p>
+                        @php $counter = 0 @endphp
+                        @foreach($faqs as $faq)
+                            @if($counter % 2 == 0)
+                                <!-- Question {{$counter}}-->
+                                <div class="col qnaBtnSize">
+                                    <div class="">
+                                        <div>
+                                            <h2 data-toggle="collapse" href="#question{{$counter}}" aria-expanded="false" aria-controls="collapseExample" class="faqTitle" style="cursor: pointer;">{{$faq->question}}</h2>
+                                        </div>
+                                        <div class="collapse faqBody" id="question{{$counter}}">
+                                            <p>{{$faq->answer}}</p>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                            <!-- Question 3 end-->
-                            <!-- Question 4-->
-                        <div class="col qnaBtnSize">
-                                <div class="">
-                                    <div>
-                                        <h2 data-toggle="collapse" href="#question4" aria-expanded="false" aria-controls="collapseExample" class="faqTitle" style="cursor: pointer;">Hur går betalningen till? +</h2>
-                                    </div>
-                                    <div class="collapse faqBody" id="question4">
-                                        <p>Betalningen görs via faktura som skickas till den epost som anges vid anmälan. Detta sker innan lägret och ska betalas innan lägret. OBS! Kan du av någon anledning inte ta emot fakturan via epost så måste du kontakta antingen lägerledningen eller webbansvarig.</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- Question 4 end-->
-                            <!-- Question 5-->
-                        <div class="col qnaBtnSize">
-                            <div class="">
-                                <div>
-                                    <h2 data-toggle="collapse" href="#question5" aria-expanded="false" aria-controls="collapseExample" class="faqTitle" style="cursor: pointer;">Varför kostar det pengar att vara med? +</h2>
-                                </div>
-                                <div class="collapse faqBody" id="question5">
-                                    <p>Betalningen görs via faktura som skickas till den epost som anges vid anmälan. Detta sker innan lägret och ska betalas innan lägret. OBS! Kan du av någon anledning inte ta emot fakturan via epost så måste du kontakta antingen lägerledningen eller webbansvarig.</p>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- Question 5 end-->
-                        <!-- Question 6-->
-                        <div class="col qnaBtnSize">
-                            <div class="">
-                                <div>
-                                    <h2 data-toggle="collapse" href="#question6" aria-expanded="false" aria-controls="collapseExample" class="faqTitle" style="cursor: pointer;">Vilka åldrar får vara med? +</h2>
-                                </div>
-                                <div class="collapse faqBody" id="question6">
-                                    <p>Betalningen görs via faktura som skickas till den epost som anges vid anmälan. Detta sker innan lägret och ska betalas innan lägret. OBS! Kan du av någon anledning inte ta emot fakturan via epost så måste du kontakta antingen lägerledningen eller webbansvarig.</p>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- Question 6 end-->
-                        <!-- Question 7-->
-                        <div class="col qnaBtnSize">
-                            <div class="">
-                                <div>
-                                    <h2 data-toggle="collapse" href="#question7" aria-expanded="false" aria-controls="collapseExample" class="faqTitle" style="cursor: pointer;">Jag har anmält mig men inte fått något bekräftelse-mail? +</h2>
-                                </div>
-                                <div class="collapse faqBody" id="question7">
-                                    <p>Betalningen görs via faktura som skickas till den epost som anges vid anmälan. Detta sker innan lägret och ska betalas innan lägret. OBS! Kan du av någon anledning inte ta emot fakturan via epost så måste du kontakta antingen lägerledningen eller webbansvarig.</p>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- Question 7 end-->
-                        <!-- Question 8-->
-                        <div class="col qnaBtnSize">
-                            <div class="">
-                                <div>
-                                    <h2 data-toggle="collapse" href="#question8" aria-expanded="false" aria-controls="collapseExample" class="faqTitle" style="cursor: pointer;">Jag har inte fått någon faktura? +</h2>
-                                </div>
-                                <div class="collapse faqBody" id="question8">
-                                    <p>Betalningen görs via faktura som skickas till den epost som anges vid anmälan. Detta sker innan lägret och ska betalas innan lägret. OBS! Kan du av någon anledning inte ta emot fakturan via epost så måste du kontakta antingen lägerledningen eller webbansvarig.</p>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- Question 8 end-->
+                                <!-- Question {{$counter}} end-->
+                            @endif
+                        @php $counter++ @endphp                        
+                        @endforeach
                         <!-- Add more questions here. Dont forget to change href and id for the collapse-->
                     </div>
                     <!-- Left row end-->
                     <!-- Right row-->
-
                     <div  class="qnaBound">
-                        <!-- Question 9-->
-                        <div class="col qnaBtnSize">
-                            <div class="">
-                                <div>
-                                    <h2 data-toggle="collapse" href="#question9" aria-expanded="false" aria-controls="collapseExample" class="faqTitle" style="cursor: pointer;">Vad händer på lägret? +</h2>
-                                </div>
-                                <div class="collapse" id="question9">
-                                    <p class="">Den tjänst som hemsidan använder för att leverera säkra mail, kan ibland vara belastad. Därför kan det dröja mellan 5-10 minuter innan mailet kommer fram. I övrigt, ta en titt i alla de olika inkorgarna, kanske har det hamnat i skräpposten. Om mailet fortfarande inte kommit fram efter några timmar så kontakta din ungdomsledare, hen kan logga in och se om du är anmäld.</p>
-                                </div>
-                            </div>
-                        </div>            
-                        <!-- Question 9 end-->
-
-                        <!-- Question 10-->
-                        <div class="col qnaBtnSize">
-                            <div class="">
-                                <div>
-                                    <h2 data-toggle="collapse" href="#question10" aria-expanded="false" aria-controls="collapseExample" class="faqTitle" style="cursor: pointer;">När är lägret? +</h2>
-                                </div>
-                                <div class="collapse" id="question10">
-                                    <p class="">Ett mejl kommer att skickas ut med mer information angående lägret i mitten av december. Där kommer du få information om bland annat avgång, packlista m.m.</p>
-                                </div>
-                            </div>
-                        </div>                    
-                        <!-- Question 10 end-->
-
-                        <!-- Question 11-->
-                        <div class="col qnaBtnSize">
-                                <div class="">
-                                    <div>
-                                        <h2 data-toggle="collapse" href="#question11" aria-expanded="false" aria-controls="collapseExample" class="faqTitle" style="cursor: pointer;">När kan man anmäla sig? +</h2>
+                        @php $counter = 0 @endphp
+                        @foreach($faqs as $faq)
+                            @if($counter % 2 == 1)
+                                <!-- Question {{$counter}}-->
+                                <div class="col qnaBtnSize">
+                                    <div class="">
+                                        <div>
+                                            <h2 data-toggle="collapse" href="#question{{$counter}}" aria-expanded="false" aria-controls="collapseExample" class="faqTitle" style="cursor: pointer;">{{$faq->question}}</h2>
+                                        </div>
+                                        <div class="collapse" id="question{{$counter}}">
+                                            <p class="">{{$faq->answer}}</p>
+                                        </div>
                                     </div>
-                                    <div class="collapse" id="question11">
-                                        <p class="">Ett mejl kommer att skickas ut med mer information angående lägret i mitten av december. Där kommer du få information om bland annat avgång, packlista m.m.</p>
-                                    </div>
-                                </div>
-                            </div>                    
-                            <!-- Question 11 end-->
-
-                            <!-- Question 12-->
-                        <div class="col qnaBtnSize">
-                                <div class="">
-                                    <div>
-                                        <h2 data-toggle="collapse" href="#question12" aria-expanded="false" aria-controls="collapseExample" class="faqTitle" style="cursor: pointer;">Hur fungerar det med boende? +</h2>
-                                    </div>
-                                    <div class="collapse" id="question12">
-                                        <p class="">Ett mejl kommer att skickas ut med mer information angående lägret i mitten av december. Där kommer du få information om bland annat avgång, packlista m.m.</p>
-                                    </div>
-                                </div>
-                            </div>                    
-                            <!-- Question 12 end-->
-
-                            <!-- Question 13-->
-                        <div class="col qnaBtnSize">
-                                <div class="">
-                                    <div>
-                                        <h2 data-toggle="collapse" href="#question13" aria-expanded="false" aria-controls="collapseExample" class="faqTitle" style="cursor: pointer;">Syskonrabatt +</h2>
-                                    </div>
-                                    <div class="collapse" id="question13">
-                                        <p class="">Ett mejl kommer att skickas ut med mer information angående lägret i mitten av december. Där kommer du få information om bland annat avgång, packlista m.m.</p>
-                                    </div>
-                                </div>
-                            </div>                    
-                            <!-- Question 13 end-->
-
-                            <!-- Question 14-->
-                        <div class="col qnaBtnSize">
-                                <div class="">
-                                    <div>
-                                        <h2 data-toggle="collapse" href="#question14" aria-expanded="false" aria-controls="collapseExample" class="faqTitle" style="cursor: pointer;">Bekräfta epost och anmälan +</h2>
-                                    </div>
-                                    <div class="collapse" id="question14">
-                                        <p class="">Ett mejl kommer att skickas ut med mer information angående lägret i mitten av december. Där kommer du få information om bland annat avgång, packlista m.m.</p>
-                                    </div>
-                                </div>
-                            </div>                    
-                            <!-- Question 14 end-->
-
-                            <!-- Question 15-->
-                        <div class="col qnaBtnSize">
-                                <div class="">
-                                    <div>
-                                        <h2 data-toggle="collapse" href="#question15" aria-expanded="false" aria-controls="collapseExample" class="faqTitle" style="cursor: pointer;">Viktig information inför lägret +</h2>
-                                    </div>
-                                    <div class="collapse" id="question15">
-                                        <p class="">Ett mejl kommer att skickas ut med mer information angående lägret i mitten av december. Där kommer du få information om bland annat avgång, packlista m.m.</p>
-                                    </div>
-                                </div>
-                            </div>                    
-                            <!-- Question 15 end-->
-
-                            <!-- Question 16-->
-                        <div class="col qnaBtnSize">
-                                <div class="">
-                                    <div>
-                                        <h2 data-toggle="collapse" href="#question16" aria-expanded="false" aria-controls="collapseExample" class="faqTitle" style="cursor: pointer;">Jag ska inte längre med på lägret, vad ska jag göra? +</h2>
-                                    </div>
-                                    <div class="collapse" id="question16">
-                                        <p class="">Ett mejl kommer att skickas ut med mer information angående lägret i mitten av december. Där kommer du få information om bland annat avgång, packlista m.m.</p>
-                                    </div>
-                                </div>
-                            </div>                    
-                            <!-- Question 16 end-->
-                        <!-- Add more questions here. Dont forget to change href and id for the collapse-->
+                                </div>  
+                                <!-- Question {{$counter}} end-->
+                            @endif
+                        @php $counter++ @endphp                        
+                        @endforeach
                     </div>
                     <!-- Right row end -->
+
                 </div>
             </div>
         </div>
@@ -458,109 +212,30 @@
                     <div>
                         <h1>info@explorelagret.se</h1>
                     </div>
-                    <!-- Kontakt lägerchefer -->
+                    <!-- Kontakt -->
                     <div>
-                        <h2><br>Lägerledning</h2>
-                        <table style="display: flex; justify-content: center;">
-                            <tbody>
-                                <tr>
-                                    <td>
-                                        <h5 style="margin-right: 5px;">Jonatan Davidsson</h5>
-                                    </td>
-                                    <td>
-                                        <p style="margin-top: 8px; margin-left: 5px;">0703 27 40 31</p>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <h5 style="margin-right: 5px;">Louise Persson</h5>
-                                    </td>
-                                    <td>
-                                        <p style="margin-top: 8px; margin-left: 5px;">0709-80 90 14</p>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <h5 style="margin-right: 5px;">Alice Rydsom</h5>
-                                    </td>
-                                    <td>
-                                        <p style="margin-top: 8px; margin-left: 5px;">0767-07 19 95</p>
-                                    </td>
-                                </tr>
-                           </tbody>
-                        </table>
+                        @foreach ($groups as $group)
+                            <h2><br>{{$group}}</h2>
+                            <table style="display: flex; justify-content: center;">
+                                <tbody>
+                                    @foreach ($contacts as $contact)
+                                        @if($contact->group == $group)
+                                        <tr>
+                                            <td>
+                                                <h5 style="margin-right: 5px;">{{$contact->name}}</h5>
+                                            </td>
+                                            <td>
+                                                <p style="margin-top: 8px; margin-left: 5px;">{{$contact->contact_info}}</p>
+                                            </td>
+                                        </tr>
+                                        @endif
+                                    @endforeach                                    
+                            </tbody>
+                            </table>  
+                        @endforeach                        
                     </div>
-                    <!-- Kontakt lägerchefer end -->
+                    <!-- Kontakt end -->
 
-                    <!-- Kontakt krisgrupp -->
-                    <div>
-                        <h2><br>krisgrupp</h2>
-                        <table style="display: flex; justify-content: center;">
-                            <tbody>
-                                <tr>
-                                    <td>
-                                        <h5 style="margin-right: 5px;">Alice Marinder</h5>
-                                    </td>
-                                    <td>
-                                        <p style="margin-top: 8px; margin-left: 5px;">0730-81 88 89</p>
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                    <!-- Kontakt krisgrupp end -->
-                    <!-- Kontakt webbadmin start -->
-                    <div>
-                        <h2><br>Webb-admin</h2>
-                        <table style="display: flex; justify-content: center;">
-                            <tbody>
-                                <tr>
-                                    <td>
-                                        <h5 style="margin-right: 5px;">Gustav Råkeberg och Felix Brunnegård</h5>
-                                    </td>
-                                    <td>
-                                        <p style="margin-top: 8px; margin-left: 5px;">webb@explorelagret.se</p>
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                    <!-- Kontakt sjukvårdsansvarig -->
-                    <div>
-                        <h2><br>Sjukvårdsansvarig</h2>
-                        <table style="display: flex; justify-content: center;">
-                            <tbody>
-                                <tr>
-                                    <td>
-                                        <h5 style="margin-right: 5px;">Namn Namnsson</h5>
-                                    </td>
-                                    <td>
-                                        <p style="margin-top: 8px; margin-left: 5px;">0713-371337</p>
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                    <!-- Kontakt sjukvårdsansvarig end -->
-
-                    
-                    <!-- Kontakt köksansvarig -->
-                    <div>
-                        <h2><br>Köksansvarig</h2>
-                        <table style="display: flex; justify-content: center;">
-                            <tbody>
-                                <tr>
-                                    <td>
-                                        <h5 style="margin-right: 5px;">Hemligt</h5>
-                                    </td>
-                                    <td>
-                                        <p style="margin-top: 8px; margin-left: 5px;">Hemligt</p>
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                    <!-- Kontakt köksansvarig end -->
                 </div>
             </div>
             <!-- Kontakt info end -->
