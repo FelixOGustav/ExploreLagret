@@ -73,10 +73,10 @@ class PagesController extends Controller
             $placesIDArray[] = \App\place::where('placename', '=', 'Ljung')->first()->placeID;
         }
         if($user->can('asklanda_ornunga')){
-            $placesIDArray[] = \App\place::where('placename', '=', 'Asklanda-Ornunga')->first()->placeID;
+            $placesIDArray[] = \App\place::where('placename', '=', 'Asklanda/Ornunga')->first()->placeID;
         }
         if($user->can('bergstena_ostadkulle')){
-            $placesIDArray[] = \App\place::where('placename', '=', 'Bergstena-Östadkulle')->first()->placeID;
+            $placesIDArray[] = \App\place::where('placename', '=', 'Bergstena/Östadkulle')->first()->placeID;
         }
         if($user->can('borgstena_tamta')){
             $placesIDArray[] = \App\place::where('placename', '=', 'Borgstena/Tämta')->first()->placeID;
@@ -95,6 +95,18 @@ class PagesController extends Controller
         }
         if($user->can('vargarda')){
             $placesIDArray[] = \App\place::where('placename', '=', 'Vårgårda')->first()->placeID;
+        }
+        if($user->can('alingsas')){
+            $placesIDArray[] = \App\place::where('placename', '=', 'Alingsås')->first()->placeID;
+        }
+        if($user->can('loo/langared')){
+            $placesIDArray[] = \App\place::where('placename', '=', 'Loo/Långared')->first()->placeID;
+        }
+        if($user->can('grabo')){
+            $placesIDArray[] = \App\place::where('placename', '=', 'Gråbo')->first()->placeID;
+        }
+        if($user->can('toarp')){
+            $placesIDArray[] = \App\place::where('placename', '=', 'Toarp')->first()->placeID;
         }
 
 
