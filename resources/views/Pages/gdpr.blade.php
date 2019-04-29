@@ -20,7 +20,7 @@
         </h4>
         <h2>Dina uppgifter</h2>
         <h4>Tveka inte att kontakta Equmenia Region Väst om du har några frågor om denna personuppgiftspolicy eller om behandlingen 
-            av dina personuppgifter. Du kan kontakta oss på info@equmeniase. Du kan också ringa oss på 08-58003200.</h4>
+            av dina personuppgifter. Du kan kontakta oss på info@explorelagret.se</h4>
         <h2>Hur vi samlar in information om dig?</h2>
         <h4>Vi samlar in information om dig som du lämnar när du exempelvis anmäler dig till nationella arrangemang, 
             när du registrerar dig för våra nyhetsbrev, när du svarar på enkäter/undersökningar osv.</h4>

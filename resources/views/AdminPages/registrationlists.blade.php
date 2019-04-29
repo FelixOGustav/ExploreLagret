@@ -8,9 +8,9 @@
         <h4 style="text-align:left;">Antal avanmälda: {{$count}}</h4>
     @endif
     @if($type == 'leader')
-        <h1> @if($cancelled != false)avanmälda @endif Ledare</h1>
+        <h1> @if($cancelled != false)Avanmälda @endif Ledare</h1>
     @else
-        <h1>@if($cancelled != false)avanmälda @endif Deltagare</h1>
+        <h1>@if($cancelled != false)Avanmälda @endif Deltagare</h1>
     @endif
     <div class="sidescrollcontent">
         <table id="regtbl" class="table table-hover" style="min-width: 100%;">
@@ -65,6 +65,7 @@
                         @endif
                     @endcan
                     
+                    <th class="tblheadcol" id="tbl-discount">Syskonrabatt</th>
                     <th class="tblheadcol def-vis-col" id="tbl-confirmed">Bekräftat</th>
 
                     @can('editregistration')
@@ -144,12 +145,18 @@
                         @can('kitchen')
                             @if($type == 'leader')
                                 @if($reg->kitchen > 0)
-                                    <td>Ja</td>
+                                    <td class="tblheadcol" id="tbl-edit">Ja</td>
                                 @else
-                                    <td>Nej</td>
+                                    <td class="tblheadcol" id="tbl-edit">Nej</td>
                                 @endif
                             @endif
                         @endcan
+                        
+                        @if($reg->discount == 0)
+                            <td>Nej</td>
+                        @else 
+                            <td>Ja</td>
+                        @endif
 
                         @if($reg->verified_at != null)
                             <td><img src="{{URL::asset('img/greenDot.png')}}"></td>
