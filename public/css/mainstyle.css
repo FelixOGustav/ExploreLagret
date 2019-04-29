@@ -700,3 +700,7 @@ form label {
 .linkHover:hover {
     text-decoration: underline white;
 }
+
+.datapolicy h2 {
+    margin-top: 40px;
+}
