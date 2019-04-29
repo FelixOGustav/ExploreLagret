@@ -168,8 +168,12 @@
                             @endcan
                         @endif
                         
-                        @can('editregistration')                    
-                            <td><a href="/admin/editregistration/participant/{{$reg->id}}"><i class="fas fa-edit" style="color: #606569;"></i></a></td>
+                        @can('editregistration')   
+                            @if($type == 'leader')          
+                                <td><a href="/admin/editregistration/leader/{{$reg->id}}"><i class="fas fa-edit" style="color: #606569;"></i></a></td>
+                            @else
+                                <td><a href="/admin/editregistration/participant/{{$reg->id}}"><i class="fas fa-edit" style="color: #606569;"></i></a></td>
+                            @endif
                         @endcan 
 
                         @can('admin')

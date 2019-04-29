@@ -115,11 +115,10 @@
         <h1>Skicka Mass utskick</h1>
     </div>
     <p>
-        Tjänsten som levererar våra mail som skickas genom hemsidan (mass utskick och bekräftningsmail t.ex.) har en 
-        gräns på 100 mail/timme. Detta gör att vi inte kan skicka ut mass mail till alla samtidigt. Istället skickas 
-        mailen med 1 minut intervall tills alla är skickade. Om det redan finns köade mail kommer nya mail att behandlas 
-        direkt efter. Detta leder då till att tiden det tar att skicka alla mail tar en lång stund, så se till att skicka 
-        mailen i tid!<br>
+        Här kan du skriva mailen som du vill skicka ut. När du har skrivit ett mail och sparat det dyker det upp i listan nedan 
+        och där kan du hantera den. För att skicka att mail klickar du på "välj mottagare" och där väljer du vilken eller vilka 
+        grupper som ska ta emot mailet. Du kan även skriva i en mottagare i fältet om du endast vill skicka till den. Användbart 
+        om någon av någon anledning inte mottagit ett mail.<br>
     </p>
     <hr>
     <h3>Mails</h3>
@@ -151,7 +150,7 @@
         @endif
     </div>
     <hr>
-    <h2 id="queuedAmount">I kö: {{$queued}}</h2>
+    {{-- <h2 id="queuedAmount">I kö: {{$queued}}</h2> --}}
 </div>
 
 <div class="panel">
@@ -173,7 +172,7 @@
                     <textarea name="body" id="body" cols="30" rows="10" form="newMail" style="width: calc(100% - 14px);"></textarea>
                 </div>
             </div>  
-            <button type="submit" class="buttonStyle"><p>Spara</p></button>
+            <button type="submit" class="buttonStyle" style="background-color: #606569;"><p>Spara</p></button>
         </form>
     </div>
 </div>
@@ -215,9 +214,9 @@
 
 
     $(document).ready(function() {
-        //$('#sendmails').on('submit', function() {
-            setInterval(UpdateProgressBar, 1000);
-        //});
+        $('#sendmails').on('submit', function() {
+            setInterval(UpdateProgressBar, 500);
+        });
     });
 
     var CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
@@ -230,7 +229,8 @@
             data: {_token: CSRF_TOKEN},
             dataType: 'JSON',
             success: function (data) {
-                $('#queuedAmount').text("I kö: " + data);
+                $('#sendingprogress').css('width', data+'%').attr('aria-valuenow', data);
+                //$('#queuedAmount').text("I kö: " + data);
             }
         });
     }

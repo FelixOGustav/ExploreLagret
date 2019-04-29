@@ -22,7 +22,7 @@ class SendMassEmailJob implements ShouldQueue
      *
      * @return void
      */
-    public function __construct($address, $mailid = 3)
+    public function __construct($address, $mailid)
     {
         $this->mailid = $mailid;
         $this->address = $address;

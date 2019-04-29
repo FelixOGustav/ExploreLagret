@@ -54,7 +54,7 @@
                     </span>
                 </div>
                 <div class="row">
-                    <button type="submit" class="buttonStyle">
+                    <button type="submit" class="buttonStyle" style="background-color: #606569;">
                         <p style="font-size: 25px;">Lägg till</p>
                     </button>
                 </div>

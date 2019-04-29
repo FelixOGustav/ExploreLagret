@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+ini_set('max_execution_time', 180); //3 minutes
+
 use Illuminate\Http\Request;
 use Carbon\Carbon;
 use App\Mail\MassMail;
@@ -12,17 +14,20 @@ class MailController extends Controller
 {
     function SendMail($addresses, $mailid){
         $counter = 0;
+        $mail = \App\mail::find($mailid);
         foreach($addresses as $address){
-            dispatch(new SendMassEmailJob($address, $mailid));
+            //dispatch(new SendMassEmailJob($address, $mailid));  // Puts mails in queue and will be sent one per minute (currently setup with a cronjob "php artisan queue:work --once")
+            \Mail::to($address)->send(new MassMail($mail));
             $counter++;
-            $i = $counter / count($addresses);
+            $i = ($counter / count($addresses)) * 100;
             Session::put('progress', $i);
             Session::save();
         }
     }
 
     public function Progress(){
-        return response()->json(array(\App\job::count()));
+        return response()->json(array(Session::get('progress')));
+        //return response()->json(array(\App\job::count()));
     }
 
     // Return admin page mail view

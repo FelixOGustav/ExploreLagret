@@ -30,7 +30,7 @@
         </p>
         
         <div style="text-align:left;">
-            <p style="color:#606569; font-style:italic; margin-top: 35px; font-size: 15px;">
+            <p style="color:#EAC15B; font-style:italic; margin-top: 35px; font-size: 15px;">
                 Ledarna, Explorelägret
             </p>
         </div>

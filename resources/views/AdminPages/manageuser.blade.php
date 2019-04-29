@@ -138,7 +138,7 @@
             </div>
             
             <div class="container-fluid d-flex justify-content-center">
-                <button type="submit" class="buttonStyle"><p>spara</p></button>
+                <button type="submit" class="buttonStyle" style="background-color: #606569;"><p>spara</p></button>
             </div>
         </form>
     </div>
