@@ -26,6 +26,7 @@
     <link rel="stylesheet" href="{{URL::asset('css/mainstyle.css')}}">
     <link rel="stylesheet" href="{{URL::asset('css/adminstyle.css')}}">
     <link rel="stylesheet" href="{{URL::asset('css/jquery.dynatable.css')}}">
+    <link rel="stylesheet" href="{{URL::asset('css/loadingscreenstyle.css')}}">
     <!-- Scrollbar Custom CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.min.css">
     
@@ -59,10 +60,13 @@
     <!-- Loading content -->
 
     <div class="loadingBG" id="loadingScreen">
-        <div class="loadingContent centerTextInDiv">
-            <img src="{{URL::asset('img/branaslogga_white.png')}}" type="img/PNG" class="rotating">
-            <p class="whiteColor">Vänta lite..</p>
+        <div class="box">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
         </div>
+        <h3 class="loadingE">E</h3>
     </div>
     
     <!-- Loading content  end-->

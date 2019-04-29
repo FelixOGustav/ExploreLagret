@@ -18,6 +18,9 @@ class CheckForMaintenanceMode extends Middleware
      */
     protected $except = [
         '/admin/login',
+        /*'/admin/password/reset',
+        '/admin/password/reset/{token}',
+        '/admin/password/email',*/
     ];
 
     /**
