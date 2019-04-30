@@ -146,7 +146,7 @@
                             </div>
                             <div class="form-group col-md-6">
                                 <div>
-                                    <h1 style=" color:#EAC15B;">Priset för lägret:<br>900kr</h1>
+                                    <h1 style=" color:#EAC15B;">Priset för lägret:<br>600kr</h1>
                                 </div>
                                 <div>
                                         <p style=" color:#EAC15B; ">Jag vill ansöka om syskonrabatt</p>
