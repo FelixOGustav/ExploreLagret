@@ -93,7 +93,8 @@ class CampRegistrationController extends Controller
             $reg = \App\registrations_leader::find($id);
             $leader = true;
         }
-        return view('AdminPages/editregistration', ['reg' => $reg, 'leader' => $leader]);
+        $places = \App\place::orderBy('placename', 'ASC')->get();
+        return view('AdminPages/editregistration', ['reg' => $reg, 'leader' => $leader, 'places' => $places]);
     }
     
     // Standard attendee
@@ -417,7 +418,7 @@ class CampRegistrationController extends Controller
         $registration->member_place = Request('memberPlace');
         $registration->other = Request('other');
         $registration->terms = Request('terms');
-        $registration->kitchen = Request('kitchen');
+        $registration->kitchen = '0';
         if(Request('discount')){
             $registration->discount = Request('discount');
         }
@@ -486,6 +487,12 @@ class CampRegistrationController extends Controller
         $registration->last_name = Request('lastName');
         $registration->email = Request('email');
         $registration->email_advocate = Request('emailAdvocate');
+        $registration->place = Request('place');
+        $registration->address = Request('address');
+        $registration->zip = Request('zip');
+        $registration->city = Request('city');
+        $registration->phonenumber = Request('phoneNumber');
+        $registration->phone_number_advocate = Request('phoneNumberAdvocate');
         // Add more column changes here when adding them to the view
 
         // Save new data to database
