@@ -38,7 +38,7 @@
                         <div class="form-row">
                             <div class="form-group col-12">
                                     <label class="registerLabel" for="year">Personnummer</label>
-                                <input type="text" class="form-control" id="socialSecurityNumber" name="socialSecurityNumber" placeholder="ÅÅMMDDXXXX" required>
+                                <input type="text" class="form-control" maxlength="10" id="socialSecurityNumber" name="socialSecurityNumber" placeholder="ÅÅMMDDXXXX" required>
                             </div>
                         </div>
                         <div>

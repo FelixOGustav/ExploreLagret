@@ -109,6 +109,7 @@ class CampRegistrationController extends Controller
         
         // parse birthdate and last four from personnummer
         $ssn = Request('socialSecurityNumber');
+        $ssn = preg_replace('/[^0-9]/', '', $ssn);
         $year = substr($ssn, 0, 2);
         $month = substr($ssn, 2, 2);
         $day = substr($ssn, 4, 2);
@@ -196,6 +197,7 @@ class CampRegistrationController extends Controller
 
         // parse birthdate and last four from personnummer
         $ssn = Request('socialSecurityNumber');
+        $ssn = preg_replace('/[^0-9]/', '', $ssn);
         $year = substr($ssn, 0, 2);
         $month = substr($ssn, 2, 2);
         $day = substr($ssn, 4, 2);
@@ -292,6 +294,7 @@ class CampRegistrationController extends Controller
 
         // parse birthdate and last four from personnummer
         $ssn = Request('socialSecurityNumber');
+        $ssn = preg_replace('/[^0-9]/', '', $ssn);
         $year = substr($ssn, 0, 2);
         $month = substr($ssn, 2, 2);
         $day = substr($ssn, 4, 2);
@@ -383,6 +386,7 @@ class CampRegistrationController extends Controller
 
         // parse birthdate and last four from personnummer
         $ssn = Request('socialSecurityNumber');
+        $ssn = preg_replace('/[^0-9]/', '', $ssn);
         $year = substr($ssn, 0, 2);
         $month = substr($ssn, 2, 2);
         $day = substr($ssn, 4, 2);
