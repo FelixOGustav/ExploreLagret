@@ -6,7 +6,7 @@ $('#formNextPage').click(function(){
     var foundFaults = false;
     var allInputsForCurrentPage = $('.formPage.current input');
         allInputsForCurrentPage.each(function() {
-            if($(this).val().length <= 0){
+            if($(this).val().length <= 0 && $(this).attr("reqiered")){
                 console.log("found an invalid input")
                 $(this).css("border-color", "red");
                 foundFaults = true;

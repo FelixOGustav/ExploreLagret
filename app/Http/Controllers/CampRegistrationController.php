@@ -143,8 +143,12 @@ class CampRegistrationController extends Controller
         $registration->member_place = Request('memberPlace');
         $registration->other = Request('other');
         $registration->terms = Request('terms');
-        $registration->discount = Request('discount');
-
+        if(Request('discount')){
+            $registration->discount = Request('discount');
+        }
+        else {
+            $registration->discount = '0';
+        }
 
         $registrations = \App\registration::all();
         foreach($registrations as $otherReg){
@@ -226,7 +230,12 @@ class CampRegistrationController extends Controller
         $registration->member_place = Request('memberPlace');
         $registration->other = Request('other');
         $registration->terms = Request('terms');
-        $registration->discount = Request('discount');
+        if(Request('discount')){
+            $registration->discount = Request('discount');
+        }
+        else {
+            $registration->discount = '0';
+        }
         $registration->kitchen = 0;
 
         $registrations = \App\registrations_leader::all();
@@ -317,7 +326,12 @@ class CampRegistrationController extends Controller
         $registration->member_place = Request('memberPlace');
         $registration->other = Request('other');
         $registration->terms = Request('terms');
-        $registration->discount = Request('discount');
+        if(Request('discount')){
+            $registration->discount = Request('discount');
+        }
+        else {
+            $registration->discount = '0';
+        }
 
         $registrations = \App\registration::all();
         foreach($registrations as $otherReg){
@@ -404,7 +418,12 @@ class CampRegistrationController extends Controller
         $registration->other = Request('other');
         $registration->terms = Request('terms');
         $registration->kitchen = Request('kitchen');
-        $registration->discount = Request('discount');
+        if(Request('discount')){
+            $registration->discount = Request('discount');
+        }
+        else {
+            $registration->discount = '0';
+        }
 
         $registrations = \App\registrations_leader::all();
         foreach($registrations as $otherReg){

@@ -148,7 +148,7 @@
                                 <div>
                                         <p style=" color:#EAC15B; ">Jag vill ansöka om syskonrabatt</p>
                                         <label class="switch">
-                                            <input type="checkbox" id="discount" name="discount" value="1" required>
+                                            <input type="checkbox" id="discount" name="discount" value="1">
                                             <span class="slider round"></span>
                                         </label>
                                         </div>

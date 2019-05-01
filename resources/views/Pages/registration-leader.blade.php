@@ -18,7 +18,7 @@
                     <li class="active">Info deltagare</li>
                     <li>Adress</li>
                     <li>Övrigt</li>
-                    <li>Målsman</li>
+                    <li>Anhörig</li>
                     <li>Vilkor och pris</li>
                 </ul>
             </div>
@@ -102,11 +102,11 @@
                     <div class="formPage" form-index="3">
                         <div class="form-row">
                             <div class="form-group col-md-6">
-                                <label class="registerLabel" for="firstNameAdvocate">Förnamn målsman</label>
+                                <label class="registerLabel" for="firstNameAdvocate">Förnamn anhörig</label>
                                 <input type="text" class="form-control" id="firstNameAdvocate" name="firstNameAdvocate" placeholder="Namn" required>
                             </div>
                             <div class="form-group col-md-6">
-                                <label class="registerLabel" for="lastNameAdvocate">Efternamn målsman</label>
+                                <label class="registerLabel" for="lastNameAdvocate">Efternamn anhörig</label>
                                 <input type="text" class="form-control" id="lastNameAdvocate" name="lastNameAdvocate" placeholder="Namnsson" required>
                             </div>
                         </div>
@@ -151,7 +151,7 @@
                                 <div>
                                         <p style=" color:#EAC15B; ">Jag vill ansöka om syskonrabatt</p>
                                         <label class="switch">
-                                            <input type="checkbox" id="discount" name="discount" value="1" required>
+                                            <input type="checkbox" id="discount" name="discount" value="1">
                                             <span class="slider round"></span>
                                         </label>
                                         </div>
