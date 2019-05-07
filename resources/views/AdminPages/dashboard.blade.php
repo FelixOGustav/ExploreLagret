@@ -24,6 +24,10 @@
                 "{{$placesStats[6]->place}}",
                 "{{$placesStats[7]->place}}",
                 "{{$placesStats[8]->place}}",
+                "{{$placesStats[9]->place}}",
+                "{{$placesStats[10]->place}}",
+                "{{$placesStats[11]->place}}",
+                "{{$placesStats[12]->place}}",
             ],
             datasets: [{
                 label: "Fördelning mellan församlingar",
@@ -36,7 +40,11 @@
                     'rgb(202, 65, 244)',
                     'rgb(244, 65, 65)',
                     'rgb(65, 65, 244)',
-                    'rgb(244, 65, 145)'
+                    'rgb(244, 65, 145)',
+                    'rgb(48, 153, 140)',
+                    'rgb(140, 51, 76)',
+                    'rgb(255, 246, 0)',
+                    'rgb(135, 0, 255)'
                     ],
                 borderColor: [
                     'rgb(255, 99, 132)',
@@ -47,7 +55,11 @@
                     'rgb(202, 65, 244)',
                     'rgb(244, 65, 65)',
                     'rgb(65, 65, 244)',
-                    'rgb(244, 65, 145)'
+                    'rgb(244, 65, 145)',
+                    'rgb(48, 153, 140)',
+                    'rgb(140, 51, 76)',
+                    'rgb(255, 246, 0)',
+                    'rgb(135, 0, 255)'
                     ],
                 data: [
                     {{$placesStats[0]->amount}}, 
@@ -59,6 +71,10 @@
                     {{$placesStats[6]->amount}},
                     {{$placesStats[7]->amount}},
                     {{$placesStats[8]->amount}},
+                    {{$placesStats[9]->amount}},
+                    {{$placesStats[10]->amount}},
+                    {{$placesStats[11]->amount}},
+                    {{$placesStats[12]->amount}},
                     ],
             }]
         },

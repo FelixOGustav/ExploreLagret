@@ -132,6 +132,23 @@
                 </div>
 
                 <div style="margin: 10px;">
+                    <label style="vertical-align:middle;">Loo/Långared</label>
+                    <input type="checkbox" value="1" name="loo_langared" id="loo_langared" @if($access->loo_langared) checked @endif>
+                </div>
+                <div style="margin: 10px;">
+                    <label style="vertical-align:middle;">Gråbo</label>
+                    <input type="checkbox" value="1" name="grabo" id="grabo" @if($access->grabo) checked @endif>
+                </div>
+                <div style="margin: 10px;">
+                    <label style="vertical-align:middle;">Alingsås</label>
+                    <input type="checkbox" value="1" name="alingsas" id="alingsas" @if($access->alingsas) checked @endif>
+                </div>
+                <div style="margin: 10px;">
+                    <label style="vertical-align:middle;">Toarp</label>
+                    <input type="checkbox" value="1" name="toarp" id="toarp" @if($access->toarp) checked @endif>
+                </div>
+
+                <div style="margin: 10px;">
                     <label style="vertical-align:middle;">Personummer</label>
                     <input type="checkbox" value="1" name="persnr" id="persnr" @if($access->persnr) checked @endif>
                 </div>

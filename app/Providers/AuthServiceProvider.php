@@ -139,6 +139,22 @@ class AuthServiceProvider extends ServiceProvider
         Gate::define('herrljunga', function() {
             return \App\accesslevel::find(Auth::user()->id)->herrljunga;
         });
+
+        Gate::define('loo_langared', function() {
+            return \App\accesslevel::find(Auth::user()->id)->loo_langared;
+        });
+
+        Gate::define('grabo', function() {
+            return \App\accesslevel::find(Auth::user()->id)->grabo;
+        });
+
+        Gate::define('alingsas', function() {
+            return \App\accesslevel::find(Auth::user()->id)->alingsas;
+        });
+
+        Gate::define('toarp', function() {
+            return \App\accesslevel::find(Auth::user()->id)->toarp;
+        });
         
         Gate::define('age', function() {
             return \App\accesslevel::find(Auth::user()->id)->age;
@@ -169,7 +185,11 @@ class AuthServiceProvider extends ServiceProvider
             Auth::user()->can('storsjostrand') ||
             Auth::user()->can('borgstena_tamta') ||
             Auth::user()->can('t_r_e') ||
-            Auth::user()->can('ljurhalla')){
+            Auth::user()->can('ljurhalla')||
+            Auth::user()->can('loo_langared')||
+            Auth::user()->can('grabo')||
+            Auth::user()->can('alingsas')||
+            Auth::user()->can('toarp')){
                 return true;
             }
             else {

@@ -99,7 +99,7 @@ class PagesController extends Controller
         if($user->can('alingsas')){
             $placesIDArray[] = \App\place::where('placename', '=', 'Alingsås')->first()->placeID;
         }
-        if($user->can('loo/langared')){
+        if($user->can('loo_langared')){
             $placesIDArray[] = \App\place::where('placename', '=', 'Loo/Långared')->first()->placeID;
         }
         if($user->can('grabo')){

@@ -88,21 +88,21 @@ class AccessLevelController extends Controller
         if($access->herrljunga == null){
             $access->herrljunga = 0;
         }
-        $access->herrljunga = Request('Loo/Långared');
-        if($access->herrljunga == null){
-            $access->herrljunga = 0;
+        $access->loo_langared = Request('loo_langared');
+        if($access->loo_langared == null){
+            $access->loo_langared = 0;
         }
-        $access->herrljunga = Request('Gråbo');
-        if($access->herrljunga == null){
-            $access->herrljunga = 0;
+        $access->grabo = Request('grabo');
+        if($access->grabo == null){
+            $access->grabo = 0;
         }
-        $access->herrljunga = Request('Alingsås');
-        if($access->herrljunga == null){
-            $access->herrljunga = 0;
+        $access->alingsas = Request('alingsas');
+        if($access->alingsas == null){
+            $access->alingsas = 0;
         }
-        $access->herrljunga = Request('Toarp');
-        if($access->herrljunga == null){
-            $access->herrljunga = 0;
+        $access->toarp = Request('toarp');
+        if($access->toarp == null){
+            $access->toarp = 0;
         }
         $access->add_user = Request('add_user');
         if($access->add_user == null){
