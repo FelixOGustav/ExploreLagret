@@ -162,7 +162,11 @@
                             <td><img src="{{URL::asset('img/greenDot.png')}}"></td>
                         @else
                             @can('verifieregistration')
-                                <td><a href="/admin/registrationlists/participant/{{$reg->id}}" class="btn btn-primary">Skicka mail igen</a></td>
+                                @if($type == 'participant')
+                                    <td><a href="/admin/resendverificationmail/participant/{{$reg->id}}" class="btn btn-primary">Skicka mail igen</a></td>
+                                @else
+                                    <td><a href="/admin/resendverificationmail/leader/{{$reg->id}}" class="btn btn-primary">Skicka mail igen</a></td>
+                                @endif
                             @else
                                 <td></td>
                             @endcan
