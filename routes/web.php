@@ -69,7 +69,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/admin/managecamp/open/{id}', 'PagesController@OpenRegistration')->middleware('can:managecamps');
     Route::get('/admin/managecamp/closelate/{id}', 'PagesController@CloseLateRegistration')->middleware('can:managecamps');
     Route::get('/admin/managecamp/openlate/{id}', 'PagesController@OpenLateRegistration')->middleware('can:managecamps');
-    Route::get('/admin/resendverificationmail/{type}/{id}', 'CampRegistrationController@ResendVerificationEmail')->middleware('can:editregistration');
+    Route::get('/admin/resendverificationmail/{type}/{id}', 'CampRegistrationController@ResendVerificationEmail')->middleware('can:verifieregistration');
     Route::get('/admin/editregistration/{type}/{id}', 'CampRegistrationController@EditRegistration')->middleware('can:editregistration');
     Route::post('/admin/editregistration/done/{type}/{id}', 'CampRegistrationController@StoreEdit')->middleware('can:editregistration');
     Route::get('/admin/removeregistration/{type}/{id}', 'CampRegistrationController@MoveRegistrationToCancelled')->middleware('can:admin');
