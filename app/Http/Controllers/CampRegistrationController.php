@@ -563,7 +563,7 @@ class CampRegistrationController extends Controller
         $mailable = Request('name') .' :: ' .Request('email');
         \Mail::raw($mailable, function ($message) {
             $message->from(Request('email'), Request('name'));
-            $message->to('latereglist@branaslagret.se', 'Sen anmälan');
+            $message->to('latereglist@explorelagret.se', 'Sen anmälan');
             $message->subject('Sen Anmälan för '.Request('name'));
         });
 

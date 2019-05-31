@@ -29,7 +29,7 @@
                 <!-- Modal content-->
                 <div class="modal-content">
                     <div class="modal-header justify-content-center">
-                        <h4 class="text-center">Intresseanmälan</h4>
+                        <h4 class="text-center" style="font-size: 3rem;">Intresseanmälan</h4>
                     </div>
                     <div class="modal-body ">
                         <div class="row" style="padding: 10px; text-align:center;">
@@ -60,10 +60,10 @@
                                     </tbody>                                    
                                 </table>
                                 <div class="container-fluid" style="text-align: center;">
-                                    <i>OBS!!! Se till epost addressen är rätt ifylld! Om den är fel kommer vi inte kunna kontakta er och ni kommer förlora platsen</i>
+                                    <i style="color: #606569;">OBS!!! Se till epost addressen är rätt ifylld! Om den är fel kommer vi inte kunna kontakta er och ni kommer förlora platsen</i>
                                 </div>
                                 <div class="container-fluid d-flex justify-content-center">
-                                    <button type="submit" class="buttonStyle" >
+                                    <button type="submit" class="buttonStyle" style="background-color: #606569; margin-top: 1rem;">
                                         <p>Efteranmäl mig!</p>
                                     </button>
                                 </div>
