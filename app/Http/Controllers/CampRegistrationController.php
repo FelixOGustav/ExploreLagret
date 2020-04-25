@@ -8,6 +8,7 @@ use Illuminate\Routing\UrlGenerator;
 use Carbon\Carbon;
 use App\Mail\CampRegistration;
 use \Illuminate\Support\Facades\URL;
+use App\Rules\EmailExist;
 
 class CampRegistrationController extends Controller
 {
@@ -98,11 +99,19 @@ class CampRegistrationController extends Controller
     }
     
     // Standard attendee
-    public function store(){
+    public function store(Request $request){
         $count = \App\registrations_leader::count() + \App\registration::count();
         if($count > 379) {
             return redirect('/registrationfull');
         }
+
+        // Validation of request
+        $validation = $request->validate([
+            'firstName' => 'required',
+            'lastName' => 'required',
+            'email' => ['email', new EmailExist],
+            'emailAdvocate' => ['email', new EmailExist]
+        ]);
 
         $registration= new \App\registration();
         //return request()->all();
@@ -185,12 +194,19 @@ class CampRegistrationController extends Controller
     }
 
     // leader attendee
-    public function storeLeader(){
+    public function storeLeader(Request $request){
         $count = \App\registrations_leader::count() + \App\registration::count();
         if($count > 379) {
             return redirect('/registrationfull');
         }
 
+        // Validation of request
+        $validation = $request->validate([
+            'firstName' => 'required',
+            'lastName' => 'required',
+            'email' => ['email', new EmailExist],
+            'emailAdvocate' => ['email', new EmailExist]
+        ]);
         
         $registration = new \App\registrations_leader();
         //return request()->all();
@@ -380,7 +396,7 @@ class CampRegistrationController extends Controller
         if($linkEntry == null || $linkEntry->leader == 0) {
             return redirect('/invalidaddress');
         }
-        
+
         $registration = new \App\registrations_leader();
         //return request()->all();
 
