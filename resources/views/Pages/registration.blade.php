@@ -1,13 +1,6 @@
 @extends('Layouts/template')
 @section('content')
 <div>
-    <!-- TODO This error display is ugly AF.. -->
-    @if($errors->any())
-        @foreach ($errors->all() as $error)
-            <li style="color: black;">{{$error}}</li> 
-        @endforeach
-    @endif
-
     @if($key)
     <form method="POST" action="/registration/{{$key}}/done">
     @else
@@ -17,6 +10,16 @@
         {{ csrf_field() }}
         <div class="container" style="margin-top:10%">
             <h1 style=" margin-top: 3rem; text-align: center; color:#EAC15B;" class="anmalan">Anmälan</h1>
+            
+        <!-- TODO This error display is ugly AF.. -->
+        @if($errors->any())
+            <div class="invalidFormInputContainer">
+                <h2>Följande information du angivigt är ej giltig</h2>
+                @foreach ($errors->all() as $error)
+                    <li>- {{$error}}</li> 
+                @endforeach
+            </div>
+        @endif
             <div>
                 <ul class="progressbar" style="padding-inline-start: 0px;">
                     <li class="active">Info deltagare</li>
@@ -32,17 +35,17 @@
                         <div class="form-row">
                             <div class="form-group col-md-6">
                                 <label class="registerLabel" for="firstName">Förnamn</label>
-                                <input type="text" class="form-control" id="firstName" name="firstName" placeholder="Namn" required>
+                                <input type="text" class="form-control" id="firstName" name="firstName" placeholder="Namn" value="{{ old('firstName') }}" required>
                             </div>
                             <div class="form-group col-md-6">
                                 <label class="registerLabel" for="lastName">Efternamn</label>
-                                <input type="text" class="form-control" id="lastName" name="lastName" placeholder="Namnsson" required>
+                                <input type="text" class="form-control" id="lastName" name="lastName" placeholder="Namnsson" value="{{ old('lastName') }}" required>
                             </div>
                         </div>
                         <div class="form-row">
                             <div class="form-group col-12">
                                     <label class="registerLabel" for="year">Personnummer</label>
-                                <input type="text" class="form-control" maxlength="10" id="socialSecurityNumber" name="socialSecurityNumber" placeholder="ÅÅMMDDXXXX" required>
+                                <input type="text" class="form-control" maxlength="10" id="socialSecurityNumber" name="socialSecurityNumber" placeholder="ÅÅMMDDXXXX" value="{{ old('socialSecurityNumber') }}" required>
                             </div>
                         </div>
                         <div>
@@ -50,7 +53,7 @@
                             <select id="place" name="place" class="form-control"  required>
                                     <option value="">Välj...</option>
                                 @foreach($places as $place)
-                                    <option value="{{$place->placeID}}">{{$place->placename}}</option>
+                                    <option value="{{$place->placeID}}" {{old("place") == $place->placeID ? "selected":""}}>{{$place->placename}}</option>
                                 @endforeach
                             </select>
                         </div>
@@ -59,29 +62,29 @@
                     <div class="formPage" form-index="1">
                         <div class="form-group container-fluid noPadding">
                             <label class="registerLabel" for="inputCity">Adress</label>
-                            <input type="text" class="form-control" id="address" name="address" placeholder="Sommargatan 42" required> 
+                            <input type="text" class="form-control" id="address" name="address" placeholder="Sommargatan 42" value="{{ old('address') }}" required> 
                         </div>
                         <div class="form-row">
                             <div class="form-group col-md-4">
                                         <label class="registerLabel" for="inputZip">Postnummer</label>
-                                        <input type="text" class="form-control" id="zip" name="zip" placeholder="13337" required>
+                                        <input type="text" class="form-control" id="zip" name="zip" placeholder="13337" value="{{ old('zip') }}" required>
                             </div>
                             <div class="form-group col-md-8">
                                 <label class="registerLabel" for="inputCity">Postort</label>
-                                <input type="text" class="form-control" id="city" name="city" placeholder="Sommargårda" required>
+                                <input type="text" class="form-control" id="city" name="city" placeholder="Sommargårda" value="{{ old('city') }}" required>
                             </div>
                         </div>
                             <div class="form-group col-md-12 noPadding">
                                 <label class="registerLabel" for="firstName">E-post</label>
-                                <input type="email" class="form-control" id="email" name="email" placeholder="namn.namnsson@mail.se" required>
+                                <input type="email" class="form-control" id="email" name="email" placeholder="namn.namnsson@mail.se" value="{{ old('email') }}" required>
                             </div>
                             <div class="form-group col-md-12 noPadding">
                                 <label class="registerLabel" for="firstName">Bekräfta E-post</label>
-                                <input type="email" class="form-control" id="emailConfirm" name="emailConfirm" placeholder="namn.namnsson@mail.se" onpaste="return false;" required>
+                                <input type="email" class="form-control" id="emailConfirm" name="emailConfirm" placeholder="namn.namnsson@mail.se" onpaste="return false;" value="{{ old('emailConfirm') }}" required>
                             </div>
                             <div class="form-group container-fluid noPadding">
                                     <label class="registerLabel" for="inputCity">Telefon</label>
-                                    <input type="text" class="form-control" id="phoneNumber" name="phoneNumber" placeholder="0713-371337" required>
+                                    <input type="text" class="form-control" id="phoneNumber" name="phoneNumber" placeholder="0713-371337" value="{{ old('phoneNumber') }}" required>
                             </div>
                     </div>
                     <div class="formPage" form-index="2">
@@ -90,45 +93,45 @@
                                     <select id="memberPlace" name="memberPlace" class="form-control" required>
                                             <option value="null">Nej, jag är inte medlem i någon Equmeniaförening</option>
                                         @foreach($places as $place)
-                                            <option value="{{$place->placeID}}">Ja, jag är med i {{$place->placename}}</option>
+                                            <option value="{{$place->placeID}}" {{old("memberPlace") == $place->placeID ? "selected":""}}>Ja, jag är med i {{$place->placename}}</option>
                                         @endforeach
                                     </select>
                             </div>
                         <div>
                             <label class="registerLabel" for="allergy">Allergi</label>
-                            <textarea class="form-control container-fluid" name="allergy" id="allergy" cols="165" rows="5"></textarea>
+                            <textarea class="form-control container-fluid" name="allergy" id="allergy" cols="165" rows="5" value="{{ old('allergy') }}"></textarea>
                         </div>
                         <div>
                             <label class="registerLabel" for="other">Övrigt</label>
-                            <textarea class="form-control container-fluid" name="other" id="other" cols="165" rows="5"></textarea>
+                            <textarea class="form-control container-fluid" name="other" id="other" cols="165" rows="5" value="{{ old('other') }}"></textarea>
                         </div>
                     </div>
                     <div class="formPage" form-index="3">
                         <div class="form-row">
                             <div class="form-group col-md-6">
                                 <label class="registerLabel" for="firstNameAdvocate">Förnamn målsman</label>
-                                <input type="text" class="form-control" id="firstNameAdvocate" name="firstNameAdvocate" placeholder="Namn" required>
+                                <input type="text" class="form-control" id="firstNameAdvocate" name="firstNameAdvocate" placeholder="Namn" value="{{ old('firstNameAdvocate') }}" required>
                             </div>
                             <div class="form-group col-md-6">
                                 <label class="registerLabel" for="lastNameAdvocate">Efternamn målsman</label>
-                                <input type="text" class="form-control" id="lastNameAdvocate" name="lastNameAdvocate" placeholder="Namnsson" required>
+                                <input type="text" class="form-control" id="lastNameAdvocate" name="lastNameAdvocate" placeholder="Namnsson" value="{{ old('lastNameAdvocate') }}" required>
                             </div>
                         </div>
                         <div class="form-group col-md-12 noPadding">
                                 <label class="registerLabel" for="firstName">E-post</label>
-                                <input type="email" class="form-control" id="emailAdvocate" name="emailAdvocate" placeholder="namn.namnsson@namn.se" required>
+                                <input type="email" class="form-control" id="emailAdvocate" name="emailAdvocate" placeholder="namn.namnsson@namn.se" value="{{ old('emailAdvocate') }}" required>
                         </div>
                         <div class="form-group col-md-12 noPadding">
                                 <label class="registerLabel" for="firstName">Berkäfta E-post</label>
-                                <input type="email" class="form-control" id="emailAdvocateConfirm" name="emailAdvocateConfirm" placeholder="namn.namnsson@namn.se" onpaste="return false;" required>
+                                <input type="email" class="form-control" id="emailAdvocateConfirm" name="emailAdvocateConfirm" placeholder="namn.namnsson@namn.se" onpaste="return false;" value="{{ old('emailAdvocateConfirm') }}" required>
                         </div>
                         <div class="form-group container-fluid noPadding">
                                 <label class="registerLabel" for="inputCity">Telefon</label>
-                                <input type="text" class="form-control" id="phoneNumberAdvocate" name="phoneNumberAdvocate" placeholder="0713-371337" required> 
+                                <input type="text" class="form-control" id="phoneNumberAdvocate" name="phoneNumberAdvocate" placeholder="0713-371337" value="{{ old('phoneNumberAdvocate') }}" required> 
                         </div>
                         <div class="form-group container-fluid noPadding">
                                 <label class="registerLabel" for="inputCity">Hemtelefon</label>
-                                <input type="text" class="form-control" id="homeNumberAdvocate" name="homeNumberAdvocate" placeholder="0713-371337"> 
+                                <input type="text" class="form-control" id="homeNumberAdvocate" name="homeNumberAdvocate" placeholder="0713-371337" value="{{ old('homeNumberAdvocate') }}"> 
                         </div>
                     </div>
 

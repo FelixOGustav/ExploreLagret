@@ -202,3 +202,29 @@
     visibility: visible;
     opacity: 1;
   }
+
+  .invalidFormInputContainer {
+    font-family: ChampagneLimousines;
+    width: calc(100% - 30px);
+    margin-left: auto;
+    margin-right: auto;
+    padding: 15px;
+    margin-bottom: 30px;
+    background-color: #ffd5d5;
+    border-color: red;
+    border-radius: 15px;
+    border-width: 1px;
+    border-style: solid;
+    list-style-type: none;
+  }
+
+  .invalidFormInputContainer>li{
+    font-family: ChampagneLimousines;
+    font-size: 20px;
+    color: red;
+  }
+
+  .invalidFormInputContainer>h2 {
+    font-family: ChampagneLimousines;
+    color: red;
+  }
