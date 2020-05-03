@@ -80,42 +80,7 @@ $('input, select').on('change', function(){
     } else {
         $(this).css("border-color", "red");
     }
-});
-
-// Detects a key change on input element with an id and calls CheckInputsEqual function
-$('#email').on('keyup', function(){
-    CheckInputsEqual($('#email'), $('#emailConfirm')) // Change to first email id
-});
-$('#emailConfirm').on('keyup', function(){
-    CheckInputsEqual($('#email'), $('#emailConfirm')) // change to second email id
 }); 
-
-$('#emailAdvocate').on('keyup', function(){
-    CheckInputsEqual($('#emailAdvocate'), $('#emailAdvocateConfirm')) // Change to first email id
-}); 
-$('#emailAdvocateConfirm').on('keyup', function(){
-    CheckInputsEqual($('#emailAdvocate'), $('#emailAdvocateConfirm')) // change to second email id
-}); 
-
-// Checks if two input elements have the same value. If not, a btn will be disabled
-function CheckInputsEqual(email, repeatEmail){
-    //var email = $('#email').val(); // Change to first email id
-    //var repeatEmail = $('#emailConfirm').val(); // change to second email id
-
-    if(email.val().length < 1 || repeatEmail.val().length < 1)
-        return;
-
-    if(email.val() == repeatEmail.val()){
-        $('#formNextPage').removeAttr('disabled');
-        $(email).css('border', 'inherit');
-        $(repeatEmail).css('border', 'inherit');
-    }
-    else{
-        $('#formNextPage').attr('disabled', true);
-        $(email).css('border', '2px solid red');
-        $(repeatEmail).css('border', '2px solid red');
-    }
-}
 
 $("#terms").on('change', function() {
     if($(this).checked) {        

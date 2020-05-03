@@ -78,10 +78,10 @@
                                 <label class="registerLabel" for="firstName">E-post</label>
                                 <input type="email" class="form-control" id="email" name="email" placeholder="namn.namnsson@mail.se" value="{{ old('email') }}" required>
                             </div>
-                            <div class="form-group col-md-12 noPadding">
+                            <!--<div class="form-group col-md-12 noPadding">
                                 <label class="registerLabel" for="firstName">Bekräfta E-post</label>
-                                <input type="email" class="form-control" id="emailConfirm" name="emailConfirm" placeholder="namn.namnsson@mail.se" onpaste="return false;" value="{{ old('emailConfirm') }}" required>
-                            </div>
+                                <input type="email" class="form-control" id="emailConfirm" name="emailConfirm" placeholder="namn.namnsson@mail.se" value="{{ old('emailConfirm') }}" required>
+                            </div>-->
                             <div class="form-group container-fluid noPadding">
                                     <label class="registerLabel" for="inputCity">Telefon</label>
                                     <input type="text" class="form-control" id="phoneNumber" name="phoneNumber" placeholder="0713-371337" value="{{ old('phoneNumber') }}" required>
@@ -121,10 +121,10 @@
                                 <label class="registerLabel" for="firstName">E-post</label>
                                 <input type="email" class="form-control" id="emailAdvocate" name="emailAdvocate" placeholder="namn.namnsson@namn.se" value="{{ old('emailAdvocate') }}" required>
                         </div>
-                        <div class="form-group col-md-12 noPadding">
+                        <!--<div class="form-group col-md-12 noPadding">
                                 <label class="registerLabel" for="firstName">Berkäfta E-post</label>
-                                <input type="email" class="form-control" id="emailAdvocateConfirm" name="emailAdvocateConfirm" placeholder="namn.namnsson@namn.se" onpaste="return false;" value="{{ old('emailAdvocateConfirm') }}" required>
-                        </div>
+                                <input type="email" class="form-control" id="emailAdvocateConfirm" name="emailAdvocateConfirm" placeholder="namn.namnsson@namn.se" value="{{ old('emailAdvocateConfirm') }}" required>
+                        </div>-->
                         <div class="form-group container-fluid noPadding">
                                 <label class="registerLabel" for="inputCity">Telefon</label>
                                 <input type="text" class="form-control" id="phoneNumberAdvocate" name="phoneNumberAdvocate" placeholder="0713-371337" value="{{ old('phoneNumberAdvocate') }}" required> 
@@ -136,6 +136,14 @@
                     </div>
 
                     <div class="formPage" form-index="last">
+                        <div class="invalidFormInputContainer">
+                            <h2><strong>Observera<strong></h2>
+                            <ul>
+                                <li style="color: red">På grund av Covid-19 kommer Explorelägret 2020 se lite annorlunda ut. Läs mer om hur vi hanterar Covid-19 här.</li>
+                                <li style="color: red">Betalningen för lägret kommer skötas av varje ort för sig. Kontakta ortsansvarig för mer infomration</li>
+                                <li style="color: red">Varje ort har 35 deltagare som maxtak</li>
+                            </ul>
+                        </div>
                         <div class="form-row">    
                             <div class="form-group col-md-6">   
                                 <h4 style="color: #EAC15B;">
@@ -153,16 +161,16 @@
                             </div>
                             <div class="form-group col-md-6">
                                 <div>
-                                    <h1 style=" color:#EAC15B;">Priset för lägret:<br>900kr</h1>
+                                    <h1 style=" color:#EAC15B;">Priset för lägret:<br>300kr</h1>
                                 </div>
-                                <div>
+                                <!--<div>
                                         <p style=" color:#EAC15B; ">Jag vill ansöka om syskonrabatt</p>
                                         <label class="switch">
                                             <input type="checkbox" id="discount" name="discount" value="1">
                                             <span class="slider round"></span>
                                         </label>
                                         </div>
-                                <div>
+                                <div>-->
                                 <p style=" color:#EAC15B; ">Jag har läst förstått och godkänt vilkoren och <a href="https://equmenia.se/personuppgiftspolicy/" target="_blank">hanteringen</a> av personuppgifter inför lägret</p>
                                 <label class="switch">
                                     <input type="checkbox" id="terms" name="terms" value="1" required>
