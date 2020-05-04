@@ -11,7 +11,6 @@
         <div class="container" style="margin-top:10%">
             <h1 style=" margin-top: 3rem; text-align: center; color:#EAC15B;" class="anmalan">Anmälan</h1>
             
-        <!-- TODO This error display is ugly AF.. -->
         @if($errors->any())
             <div class="invalidFormInputContainer">
                 <h2>Följande information du angivigt är ej giltig</h2>
@@ -53,7 +52,7 @@
                             <select id="place" name="place" class="form-control"  required>
                                     <option value="">Välj...</option>
                                 @foreach($places as $place)
-                                    <option value="{{$place->placeID}}" {{old("place") == $place->placeID ? "selected":""}}>{{$place->placename}}</option>
+                                    <option value="{{$place->placeID}}" {{old("place") == $place->placeID ? "selected":""}} {{$takenMap[$place->placeID] ? "disabled":""}}>{{$place->placename}} {{$takenMap[$place->placeID] ? "(Fullt)":""}}</option>
                                 @endforeach
                             </select>
                         </div>
@@ -78,10 +77,6 @@
                                 <label class="registerLabel" for="firstName">E-post</label>
                                 <input type="email" class="form-control" id="email" name="email" placeholder="namn.namnsson@mail.se" value="{{ old('email') }}" required>
                             </div>
-                            <!--<div class="form-group col-md-12 noPadding">
-                                <label class="registerLabel" for="firstName">Bekräfta E-post</label>
-                                <input type="email" class="form-control" id="emailConfirm" name="emailConfirm" placeholder="namn.namnsson@mail.se" value="{{ old('emailConfirm') }}" required>
-                            </div>-->
                             <div class="form-group container-fluid noPadding">
                                     <label class="registerLabel" for="inputCity">Telefon</label>
                                     <input type="text" class="form-control" id="phoneNumber" name="phoneNumber" placeholder="0713-371337" value="{{ old('phoneNumber') }}" required>
@@ -121,10 +116,6 @@
                                 <label class="registerLabel" for="firstName">E-post</label>
                                 <input type="email" class="form-control" id="emailAdvocate" name="emailAdvocate" placeholder="namn.namnsson@namn.se" value="{{ old('emailAdvocate') }}" required>
                         </div>
-                        <!--<div class="form-group col-md-12 noPadding">
-                                <label class="registerLabel" for="firstName">Berkäfta E-post</label>
-                                <input type="email" class="form-control" id="emailAdvocateConfirm" name="emailAdvocateConfirm" placeholder="namn.namnsson@namn.se" value="{{ old('emailAdvocateConfirm') }}" required>
-                        </div>-->
                         <div class="form-group container-fluid noPadding">
                                 <label class="registerLabel" for="inputCity">Telefon</label>
                                 <input type="text" class="form-control" id="phoneNumberAdvocate" name="phoneNumberAdvocate" placeholder="0713-371337" value="{{ old('phoneNumberAdvocate') }}" required> 
@@ -163,14 +154,6 @@
                                 <div>
                                     <h1 style=" color:#EAC15B;">Priset för lägret:<br>300kr</h1>
                                 </div>
-                                <!--<div>
-                                        <p style=" color:#EAC15B; ">Jag vill ansöka om syskonrabatt</p>
-                                        <label class="switch">
-                                            <input type="checkbox" id="discount" name="discount" value="1">
-                                            <span class="slider round"></span>
-                                        </label>
-                                        </div>
-                                <div>-->
                                 <p style=" color:#EAC15B; ">Jag har läst förstått och godkänt vilkoren och <a href="https://equmenia.se/personuppgiftspolicy/" target="_blank">hanteringen</a> av personuppgifter inför lägret</p>
                                 <label class="switch">
                                     <input type="checkbox" id="terms" name="terms" value="1" required>

@@ -16,24 +16,34 @@ class CampRegistrationController extends Controller
 
     // Return view for normal registration
     public function registration(){
+        $camp = \App\registration_state::where('active', 1)->first();
         // Returns a 403 forbidden access if registration is closed
-        if(!\App\registration_state::find(1)->open){
+        if(!$camp->open){
             abort(403);
         }
         
+        $takenMap = array();
         $places = \App\place::orderBy('placename', 'ASC')->get();
-        return view('Pages/registration', ['places' => $places, 'key' => null]);
+        foreach($places as $place){
+            $takenMap[$place->placeID] = !$this->isSpotsAvailable($place, false);
+        }
+
+        return view('Pages/registration', ['places' => $places, 'key' => null, 'takenMap' => $takenMap]);
     }
 
     // Return view for leaders registration
     public function registrationLeader(){
+        $camp = \App\registration_state::where('active', 1)->first();
         // Returns a 403 forbidden access if registration is closed
-        if(!\App\registration_state::find(1)->open){
+        if(!$camp->open){
             abort(403);
         }
 
         $places = \App\place::orderBy('placename', 'ASC')->get();
-        return view('Pages/registration-leader', ['places' => $places, 'key' => null]);
+        foreach($places as $place){
+            $takenMap[$place->placeID] = !$this->isSpotsAvailable($place, true);
+        }
+        return view('Pages/registration-leader', ['places' => $places, 'key' => null, 'takenMap' => $takenMap]);
     }
 
     public function lateRegistration($key){
@@ -100,7 +110,10 @@ class CampRegistrationController extends Controller
     
     // Standard attendee
     public function store(Request $request){
-        $count = \App\registrations_leader::count() + \App\registration::count();
+        $camp = \App\registration_state::where('active', 1)->first();
+        $leadersCount = \App\registrations_leader::count();
+        $participantsCount = \App\registration::count();
+        $count = $leadersCount + $participantsCount;
         if($count > 379) {
             return redirect('/registrationfull');
         }
@@ -110,7 +123,13 @@ class CampRegistrationController extends Controller
             'firstName' => 'required',
             'lastName' => 'required',
             'email' => ['email', new EmailExist],
-            'emailAdvocate' => ['email', new EmailExist]
+            'emailAdvocate' => ['email', new EmailExist],
+            'place' => [function ($attribute, $value, $fail) {
+                $place = \App\place::find($value[0]);
+                if (!$this->isSpotsAvailable($place, false)) {
+                    $fail('Plattserna i den ort du valt är tyvärr slut. Välj en annan ort om du vågar');
+                }
+            }]
         ]);
 
         $registration= new \App\registration();
@@ -154,6 +173,7 @@ class CampRegistrationController extends Controller
         $registration->member_place = Request('memberPlace');
         $registration->other = Request('other');
         $registration->terms = Request('terms');
+        $registration->camp_id = $camp->id;
         if(Request('discount')){
             $registration->discount = Request('discount');
         }
@@ -195,7 +215,10 @@ class CampRegistrationController extends Controller
 
     // leader attendee
     public function storeLeader(Request $request){
-        $count = \App\registrations_leader::count() + \App\registration::count();
+        $camp = \App\registration_state::where('active', 1)->first();
+        $leadersCount = \App\registrations_leader::count();
+        $participantsCount = \App\registration::count();
+        $count = $leadersCount + $participantsCount;
         if($count > 379) {
             return redirect('/registrationfull');
         }
@@ -205,7 +228,13 @@ class CampRegistrationController extends Controller
             'firstName' => 'required',
             'lastName' => 'required',
             'email' => ['email', new EmailExist],
-            'emailAdvocate' => ['email', new EmailExist]
+            'emailAdvocate' => ['email', new EmailExist],
+            'place' => [function ($attribute, $value, $fail) {
+                $place = \App\place::find($value[0]);
+                if (!$this->isSpotsAvailable($place, true)) {
+                    $fail('Plattserna i den ort du valt är tyvärr slut. Välj en annan ort om du vågar');
+                }
+            }]
         ]);
         
         $registration = new \App\registrations_leader();
@@ -249,6 +278,7 @@ class CampRegistrationController extends Controller
         $registration->member_place = Request('memberPlace');
         $registration->other = Request('other');
         $registration->terms = Request('terms');
+        $registration->camp_id = $camp->id;
         if(Request('discount')){
             $registration->discount = Request('discount');
         }
@@ -305,6 +335,7 @@ class CampRegistrationController extends Controller
             return redirect('/invalidaddress');
         }
 
+        $camp = \App\registration_state::where('active', 1)->first();
         $registration= new \App\registration();
         //return request()->all();
 
@@ -397,6 +428,7 @@ class CampRegistrationController extends Controller
             return redirect('/invalidaddress');
         }
 
+        $camp = \App\registration_state::where('active', 1)->first();
         $registration = new \App\registrations_leader();
         //return request()->all();
 
@@ -630,6 +662,7 @@ class CampRegistrationController extends Controller
         $cancelled_registration->other = $registration->other;
         $cancelled_registration->terms = $registration->terms;
         $cancelled_registration->verification_key = $registration->verification_key;
+        $cancelled_registration->camp_id = $registration->camp_id;
         if($type != "participant")
             $cancelled_registration->kitchen = $registration->kitchen;
 
@@ -677,6 +710,7 @@ class CampRegistrationController extends Controller
         $registration->other = $cancelled_registration->other;
         $registration->terms = $cancelled_registration->terms;
         $registration->verification_key = $cancelled_registration->verification_key;
+        $registration->camp_id = $cancelled_registration->camp_id;
         if($type != "participant")
             $registration->kitchen = $cancelled_registration->kitchen;
 
@@ -702,6 +736,17 @@ class CampRegistrationController extends Controller
         }
         else {
             return 'Tjej';
+        }
+    }
+
+    public static function isSpotsAvailable($place, $leader){
+        $leadersCount = \App\registrations_leader::all()->where('place', $place->placeID)->count();
+        $participantsCount = \App\registration::all()->where('place', $place->placeID)->count();
+        
+        if($leader){
+            return $leadersCount < $place->leaderSpots && $leadersCount + $participantsCount < $place->spots;
+        } else {            
+            return $participantsCount < $place->participateSpots && $leadersCount + $participantsCount < $place->spots;
         }
     }
 }

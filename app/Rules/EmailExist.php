@@ -11,6 +11,7 @@ class EmailExist implements Rule
 
     private $email;
     private $requestAddress = 'https://app.verify-email.org/api/v1/tbtJfT74U8AMN10zfmPNDCMs6kLt6kQVTh6fdwVJBGwvfduekE/verify/';
+    private $badMailDomains = ["@hotmail.com", "@live.se", "@outlook.com"];
 
     /**
      * Create a new rule instance.
@@ -79,7 +80,23 @@ class EmailExist implements Rule
      */
     public function message()
     {
-        return 'Den angivna mailaddressen ' . $this->email . ' kunde inte valideras att den finns. Vänligen ange en mailaddress som existerar';
+        $suffix = "";
+        if($this->contains($this->email, $this->badMailDomains)){
+            $suffix = ". Undvik mailaddresser som slutar på: ";
+            foreach($this->badMailDomains as $badMailDomain){
+                $suffix .= $badMailDomain . ", ";
+            }
+        }
+
+        return 'Den angivna mailaddressen ' . $this->email . ' kunde inte valideras att den finns. Vänligen ange en mailaddress som existerar' . $suffix;
+    }
+
+    function contains($str, array $arr)
+    {
+        foreach($arr as $a) {
+            if (stripos($str,$a) !== false) return true;
+        }
+        return false;
     }
 
 }
