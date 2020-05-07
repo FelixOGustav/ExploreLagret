@@ -39,6 +39,7 @@ class OpenRegistration extends Command
     public function handle()
     {
         $camp = \App\registration_state::where('active', 1)->first();
+        $places = \App\place::all();
         $currentTime = Carbon::now();
 
         // If no active camp is found, do nothing
@@ -59,6 +60,10 @@ class OpenRegistration extends Command
             $camp->open = 1;
             $camp->save();
             $logMsg = "\n[OPEN] :: Registration opened at: " . $currentTime;
+            file_put_contents(storage_path('logs/registrationLog.log'), $logMsg, FILE_APPEND);
+        }
+        else{
+            $logMsg = "\n[OPEN] :: Registration kept close: " . $currentTime;
             file_put_contents(storage_path('logs/registrationLog.log'), $logMsg, FILE_APPEND);
         }
     }
