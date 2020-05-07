@@ -210,6 +210,8 @@ class CampRegistrationController extends Controller
         // Send Email
         \Mail::to($registration->email_advocate)->send(new CampRegistration($registration, $verificationLink));
 
+        $this->checkAndCloseRegistrationIfFull();
+
         return redirect('/registration/done/participant/' . $registration->id);
     }
 
@@ -323,6 +325,8 @@ class CampRegistrationController extends Controller
         // Send Email
         \Mail::to($registration->email)->send(new CampRegistration($registration, $verificationLink));
 
+        $this->checkAndCloseRegistrationIfFull();
+        
         return redirect('/registration/done/leader/' . $registration->id);
     }
 
@@ -739,7 +743,7 @@ class CampRegistrationController extends Controller
         }
     }
 
-    public static function isSpotsAvailable($place, $leader){
+    public function isSpotsAvailable($place, $leader){
         $leadersCount = \App\registrations_leader::all()->where('place', $place->placeID)->count();
         $participantsCount = \App\registration::all()->where('place', $place->placeID)->count();
         
@@ -748,5 +752,20 @@ class CampRegistrationController extends Controller
         } else {            
             return $participantsCount < $place->participateSpots && $leadersCount + $participantsCount < $place->spots;
         }
+    }
+
+    public function checkAndCloseRegistrationIfFull(){
+        $places = \App\place::all();
+        foreach($places as $place){
+            if($this->isSpotsAvailable($place, true) || $this->isSpotsAvailable($place, false)){
+                return;
+            }
+        }
+
+        // no available spots found. Closing registration
+        $camp = \App\registration_state::where('active', 1)->first();
+        $camp->open = 0;
+        $camp->late_open = 1;
+        $camp->save();
     }
 }
