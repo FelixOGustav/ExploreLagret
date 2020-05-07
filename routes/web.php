@@ -42,7 +42,7 @@ Route::get('/lateregistration-leader/{key}', 'CampRegistrationController@lateReg
 Route::post('/registration/leader/{key}/done', 'CampRegistrationController@LateStoreLeader');
 Route::post('/registration/{key}/done', 'CampRegistrationController@LateStore');
 
-Route::post('/lateregistrationsignup', 'CampRegistrationController@Lateregistrationsignup');
+Route::post('/lateregistrationsignup', 'PagesController@Lateregistrationsignup');
 
 Route::get('/registration/verify/{type}/{id}', 'CampRegistrationController@VerifyRegistration')->name('event.verifyRegistration')->middleware('signed');
 
@@ -115,6 +115,9 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('/admin/editcontact/{id?}', 'PagesController@SaveStartContact')->middleware('can:admin');
     Route::get('/admin/editcontact/{id}', 'PagesController@EditStartContact')->middleware('can:admin');
     Route::get('/admin/removecontact/{id}', 'PagesController@RemoveStartContact')->middleware('can:admin');
+    Route::get('/admin/lateregistration/queues', 'PagesController@lateRegistrationQueue')->middleware('can:admin');
+    Route::get('/admin/lateregistration/queues/sendlink/{leader}/{registrationid}', 'PagesController@sendLateRegLink')->middleware('can:admin');
+    Route::get('/admin/lateregistration/queues/remove/{id}', 'PagesController@RemoveLateRegistrationFromQueue')->middleware('can:admin');
 });
 
 

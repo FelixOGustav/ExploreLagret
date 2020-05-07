@@ -610,17 +610,17 @@ class CampRegistrationController extends Controller
     }
 
     // Signup for late registration list
-    public function Lateregistrationsignup(){
-
-        $mailable = Request('name') .' :: ' .Request('email');
-        \Mail::raw($mailable, function ($message) {
-            $message->from(Request('email'), Request('name'));
-            $message->to('latereglist@explorelagret.se', 'Sen anmälan');
-            $message->subject('Sen Anmälan för '.Request('name'));
-        });
-
-        return redirect('/');
-    }
+    //public function Lateregistrationsignup(){
+//
+    //    $mailable = Request('name') .' :: ' .Request('email');
+    //    \Mail::raw($mailable, function ($message) {
+    //        $message->from(Request('email'), Request('name'));
+    //        $message->to('latereglist@explorelagret.se', 'Sen anmälan');
+    //        $message->subject('Sen Anmälan för '.Request('name'));
+    //    });
+//
+    //    return redirect('/');
+    //}
 
     private function SpotFree(){
         $count = Registrations_leader::count() + Registration::count();

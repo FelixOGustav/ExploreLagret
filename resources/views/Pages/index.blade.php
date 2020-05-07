@@ -23,13 +23,32 @@
             </div>
         </div>
     @else 
-        <!-- Modal efter registration-->
+        
+        <!-- Modal efter registrering val-->
         <div class="modal fade" id="registerChoiseModal" role="dialog">
-            <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-dialog">
+
                 <!-- Modal content-->
                 <div class="modal-content">
                     <div class="modal-header justify-content-center">
-                        <h4 class="text-center" style="font-size: 3rem;">Intresseanmälan</h4>
+                        <h4 class="text-center">Deltagare Eller Ledare?</h4>
+                    </div>
+                    <div class="modal-body ">
+                        <div class="row">
+                            <button class="col modalButtonStyle lateRegTypeChoice" data-toggle="modal" data-target="#registerModal" data-dismiss="modal" data-regtype="participant"><h3 class="whiteColor">Deltagare</h3></button>
+                            <button class="col modalButtonStyle lateRegTypeChoice" data-toggle="modal" data-target="#registerModal" data-dismiss="modal" data-regtype="leader"><h3 class="whiteColor">Ledare</h3></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Modal efter registrering-->
+        <div class="modal fade" id="registerModal" role="dialog">
+            <div class="modal-dialog">
+                <!-- Modal content-->
+                <div class="modal-content">
+                    <div class="modal-header justify-content-center">
+                        <h4 class="text-center">Intresseanmälan</h4>
                     </div>
                     <div class="modal-body ">
                         <div class="row" style="padding: 10px; text-align:center;">
@@ -57,14 +76,23 @@
                                                 <input type="email" name="email" id="email"  style="width: 100%" placeholder="namn.namnsson@namn.se">
                                             </td>
                                         </tr>
+                                        <tr>
+                                            <td style="width: 15%;">
+                                                <label for="phoneNumber" style="float:right">Telefonnummer</label>
+                                            </td>
+                                            <td style="width: 85%; padding-right: 40px;">
+                                                <input type="text" name="phoneNumber" id="phoneNumber"  style="width: 100%" placeholder="0713-371337">
+                                            </td>
+                                        </tr>
+                                        <input type="hidden" id="leader" name="leader">
                                     </tbody>                                    
                                 </table>
                                 <div class="container-fluid" style="text-align: center;">
-                                    <i style="color: #606569;">OBS!!! Se till epost addressen är rätt ifylld! Om den är fel kommer vi inte kunna kontakta er och ni kommer förlora platsen</i>
+                                    <i style="color: #606569">OBS!!! Se till epost addressen är rätt ifylld! Om den är fel kommer vi inte kunna kontakta er och ni kommer förlora platsen</i>
                                 </div>
                                 <div class="container-fluid d-flex justify-content-center">
-                                    <button type="submit" class="buttonStyle" style="background-color: #606569; margin-top: 1rem;">
-                                        <p>Efteranmäl mig!</p>
+                                    <button type="submit" class="buttonStyle" style="background-color: #606569">
+                                        <p>Ställ mig i kö!</p>
                                     </button>
                                 </div>
                             </form>
@@ -318,6 +346,22 @@
                 $("html,body").animate({scrollTop: $("#KontaktInfo").offset().top},"1000");
                 toggleHiddenSidebarClass();
                 return false
+            })
+        })
+
+        $(function(){
+            $(".lateRegTypeChoice").click(function(){
+                console.log($(this).data("regtype"));
+                
+                var $target = $(event.target);
+                if($(this).data("regtype") == "leader"){
+                    console.log("Found type: leader");
+                    $("#leader").val(1);
+                }
+                else{
+                    console.log("Found type: participant");
+                    $("#leader").val(0);
+                }
             })
         })
 
