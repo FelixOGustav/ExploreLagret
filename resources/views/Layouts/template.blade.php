@@ -109,6 +109,13 @@
                 </li>
 
                 <li class="sidebarbutton">
+                    <a href="/covid-19">
+                        <i class="fas fa-home"></i>
+                        <span>Covid-19</span>
+                    </a>
+                </li>
+
+                <li class="sidebarbutton">
                     <a href="{{$links['reglerLink'] ?? "/#ParentsInfo"}}" id="scrollToParentsBtn">
                         <i class="fas fa-user-edit"></i>
                         <span>För Föräldrar</span>
@@ -156,8 +163,8 @@
 
         <div class="footerBG row" style="margin: 0px;" id="footerId">
             <div class="col" style="margin-top: auto; margin-bottom: auto; text-align: center">
-                <a href="/contact" class="footerLink scaleFooterTextToMobile">Kontakt ><br><br></a>
-                <a href="http://www.equmenia.se/" class="footerLink scaleFooterTextToMobile" style="color: white;" target="blank">Equmenia ></a> 
+                <a href="/covid-19" class="footerLink scaleFooterTextToMobile">Covid-19<br><br></a>
+                <a href="http://www.equmenia.se/" class="footerLink scaleFooterTextToMobile" style="color: white;" target="blank">Equmenia</a> 
             </div>
 
             <div class="col" style="margin-top: auto; margin-bottom: auto; text-align: center">
@@ -165,8 +172,8 @@
                 <p class="footerRights scaleFooterRightsToMobile">© Equmenia Väst</p>
             </div>
             <div  class="col" style="margin-top: auto; margin-bottom: auto; text-align: center">
-                <a href="/gdpr" class="footerLink scaleFooterTextToMobile">GDPR ><br><br></a>
-                <a href="/admin/login" class="footerLink scaleFooterTextToMobile">Admin ></a>
+                <a href="/gdpr" class="footerLink scaleFooterTextToMobile">GDPR<br><br></a>
+                <a href="/admin/login" class="footerLink scaleFooterTextToMobile">Admin</a>
             </div>
         </div>
     </div>

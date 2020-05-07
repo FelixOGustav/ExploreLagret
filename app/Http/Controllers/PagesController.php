@@ -14,6 +14,7 @@ class PagesController extends Controller
     protected $StartPagelinkslinks = [
         'navLogoLink' => '#',
         'infoLink' => '#',
+        'covidInfo'=> '#',
         'prisLink' => '#',
         'reglerLink' => '#',
         'faqLink' => '#',
@@ -323,6 +324,10 @@ class PagesController extends Controller
 
     public function About(){
         return view('Pages/about');
+    }
+
+    public function Covid19(){
+        return view('Pages/covid-19');
     }
 
     public function invalidaddress(){
