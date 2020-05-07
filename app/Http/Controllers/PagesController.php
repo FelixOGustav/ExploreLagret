@@ -26,7 +26,7 @@ class PagesController extends Controller
     protected $camp;
 
     public function index(){
-        $camp = \App\registration_state::find(1);
+        $camp = \App\registration_state::where('active', 1)->first();
         $infos = \App\startpage_info::all();
         $contacts = \App\contact::all();
         $groups = \App\contact::distinct('group')->pluck('group');

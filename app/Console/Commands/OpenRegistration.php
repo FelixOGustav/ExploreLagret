@@ -73,7 +73,7 @@ class OpenRegistration extends Command
         //$registeredLeaders = \App\registrations_leader::count();
 
         // Check if limit is reached
-        if(!$this->isSpotsAvailable()){
+        if(!$this->isSpotsAvailable($camp)){
             return true;
         }
         
@@ -94,19 +94,25 @@ class OpenRegistration extends Command
         return false;
     }
 
-    public function isSpotsAvailable(){
+    public function isSpotsAvailable($camp){
         $places = \App\place::all();
         foreach($places as $place){
-            if($this->isSpotsAvailableInPlace($place, true) || $this->isSpotsAvailableInPlace($place, false)){
+            if($this->isSpotsAvailableInPlace($camp, $place, true) || $this->isSpotsAvailableInPlace($camp, $place, false)){
                 return true;
             }
         }
         return false;
     }
 
-    public function isSpotsAvailableInPlace($place, $leader){
-        $leadersCount = \App\registrations_leader::all()->where('place', $place->placeID)->count();
-        $participantsCount = \App\registration::all()->where('place', $place->placeID)->count();
+    public function isSpotsAvailableInPlace($camp, $place, $leader){
+        $leadersCount = \App\registrations_leader::all()
+                ->where('place', $place->placeID)
+                ->where('camp_id', $camp->id)
+                ->count();
+        $participantsCount = \App\registration::all()
+                ->where('place', $place->placeID)
+                ->where('camp_id', $camp->id)
+                ->count();
         
         if($leader){
             return $leadersCount < $place->leaderSpots && $leadersCount + $participantsCount < $place->spots;

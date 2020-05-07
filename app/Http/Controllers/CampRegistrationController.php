@@ -25,7 +25,7 @@ class CampRegistrationController extends Controller
         $takenMap = array();
         $places = \App\place::orderBy('placename', 'ASC')->get();
         foreach($places as $place){
-            $takenMap[$place->placeID] = !$this->isSpotsAvailable($place, false);
+            $takenMap[$place->placeID] = !$this->isSpotsAvailable($camp, $place, false);
         }
 
         return view('Pages/registration', ['places' => $places, 'key' => null, 'takenMap' => $takenMap]);
@@ -41,7 +41,7 @@ class CampRegistrationController extends Controller
 
         $places = \App\place::orderBy('placename', 'ASC')->get();
         foreach($places as $place){
-            $takenMap[$place->placeID] = !$this->isSpotsAvailable($place, true);
+            $takenMap[$place->placeID] = !$this->isSpotsAvailable($camp, $place, true);
         }
         return view('Pages/registration-leader', ['places' => $places, 'key' => null, 'takenMap' => $takenMap]);
     }
@@ -126,7 +126,8 @@ class CampRegistrationController extends Controller
             'emailAdvocate' => ['email', new EmailExist],
             'place' => [function ($attribute, $value, $fail) {
                 $place = \App\place::find($value[0]);
-                if (!$this->isSpotsAvailable($place, false)) {
+                $campForValidation = \App\registration_state::where('active', 1)->first();
+                if (!$this->isSpotsAvailable($campForValidation, $place, false)) {
                     $fail('Plattserna i den ort du valt är tyvärr slut. Välj en annan ort om du vågar');
                 }
             }]
@@ -210,7 +211,7 @@ class CampRegistrationController extends Controller
         // Send Email
         \Mail::to($registration->email_advocate)->send(new CampRegistration($registration, $verificationLink));
 
-        $this->checkAndCloseRegistrationIfFull();
+        $this->checkAndCloseRegistrationIfFull($camp);
 
         return redirect('/registration/done/participant/' . $registration->id);
     }
@@ -233,7 +234,8 @@ class CampRegistrationController extends Controller
             'emailAdvocate' => ['email', new EmailExist],
             'place' => [function ($attribute, $value, $fail) {
                 $place = \App\place::find($value[0]);
-                if (!$this->isSpotsAvailable($place, true)) {
+                $campForValidation = \App\registration_state::where('active', 1)->first();
+                if (!$this->isSpotsAvailable($campForValidation, $place, true)) {
                     $fail('Plattserna i den ort du valt är tyvärr slut. Välj en annan ort om du vågar');
                 }
             }]
@@ -325,7 +327,7 @@ class CampRegistrationController extends Controller
         // Send Email
         \Mail::to($registration->email)->send(new CampRegistration($registration, $verificationLink));
 
-        $this->checkAndCloseRegistrationIfFull();
+        $this->checkAndCloseRegistrationIfFull($camp);
         
         return redirect('/registration/done/leader/' . $registration->id);
     }
@@ -742,10 +744,19 @@ class CampRegistrationController extends Controller
             return 'Tjej';
         }
     }
-
-    public function isSpotsAvailable($place, $leader){
-        $leadersCount = \App\registrations_leader::all()->where('place', $place->placeID)->count();
-        $participantsCount = \App\registration::all()->where('place', $place->placeID)->count();
+    
+    public function isSpotsAvailable($camp, $place, $leader){
+        $leadersCount = \App\registrations_leader::all()
+                ->where('place', $place->placeID)
+                ->where('camp_id', $camp->id)
+                ->count();
+        $participantsCount = \App\registration::all()
+                ->where('place', $place->placeID)
+                ->where('camp_id', $camp->id)
+                ->count();
+        
+        //$leadersCount = 55;
+        //$participantsCount = 66;
         
         if($leader){
             return $leadersCount < $place->leaderSpots && $leadersCount + $participantsCount < $place->spots;
@@ -754,10 +765,10 @@ class CampRegistrationController extends Controller
         }
     }
 
-    public function checkAndCloseRegistrationIfFull(){
+    public function checkAndCloseRegistrationIfFull($camp){
         $places = \App\place::all();
         foreach($places as $place){
-            if($this->isSpotsAvailable($place, true) || $this->isSpotsAvailable($place, false)){
+            if($this->isSpotsAvailable($camp, $place, true) || $this->isSpotsAvailable($camp, $place, false)){
                 return;
             }
         }
