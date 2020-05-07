@@ -39,6 +39,7 @@ class OpenRegistration extends Command
     public function handle()
     {
         $camp = \App\registration_state::where('active', 1)->first();
+        $places = \App\places::all();
         $currentTime = Carbon::now();
 
         // If no active camp is found, do nothing
