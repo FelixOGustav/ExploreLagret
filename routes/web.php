@@ -23,6 +23,7 @@ Route::get('/', function () {
 
 Route::get('/', 'PagesController@index')->name('start');
 Route::get('/about', 'PagesController@About');
+Route::get('/covid-19', 'PagesController@Covid19');
 Route::get('/template', 'PagesController@template');
 Route::get('/registration', 'CampRegistrationController@registration');
 Route::get('/registration/leader', 'CampRegistrationController@registrationLeader');
