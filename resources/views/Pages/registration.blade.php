@@ -130,7 +130,7 @@
                         <div class="invalidFormInputContainer">
                             <h2><strong>Observera<strong></h2>
                             <ul>
-                                <li style="color: red">På grund av Covid-19 kommer Explorelägret 2020 se lite annorlunda ut. Läs mer om hur vi hanterar Covid-19 här.</li>
+                                <li style="color: red">På grund av Covid-19 kommer Explorelägret 2020 se lite annorlunda ut. Läs mer om hur vi hanterar Covid-19 <a href="{{$links['infoLink'] ?? "/#branaslagretInfo"}}" id="scrollToInfoBtn">här.</a></li>
                                 <li style="color: red">Betalningen för lägret kommer skötas av varje ort för sig. Kontakta ortsansvarig för mer infomration</li>
                                 <li style="color: red">Varje ort har 35 deltagare som maxtak</li>
                             </ul>
@@ -139,20 +139,19 @@
                             <div class="form-group col-md-6">   
                                 <h4 style="color: #EAC15B;">
                                     <ul>
+                                        <li>OM DU KÄNNER DIG SJUK, STANNA HEMMA</li>
                                         <li>TIDER SKA FÖLJAS</li>
-                                        <li>LEDARNA ÄR DE SOM BESTÄMMER</li>
-                                        <li>KILLAR OCH TJEJER SOVER ÅTSKILJT </li>
+                                        <li>LEDARNA ÄR DE SOM BESTÄMMER</li> 
                                         <li>DU SKA VARA MED På DE OBLIGATORISKA AKTIVITETERNA </li>
                                         <li>NOLLTOLERANS MOT ALKOHOL OCH DROGER</li>
-                                        <li>DET GÅR EJ AVANMÄLAN EFTER SISTA ANMÄLNINGSDAGEN UTAN GILTIGT LÄKARINTYG </li>
-                                        <li>ANMÄLAN ÄR BINDANDE </li>
+                                        <li>ANMÄLAN ÄR BINDANDE</li>
                                         <li>ATT DELTAGAREN ÄR MED I BILD OCH VIDEO SOM SEDAN PUBLICERAS PÅ SOCIALMEDIER (OM DETTA SKULLE VARA ETT PROBLEM, KONTAKTA INFO@EXPLORELAGRET.SE)</li>
                                     </ul>
                                 </h4>
                             </div>
                             <div class="form-group col-md-6">
                                 <div>
-                                    <h1 style=" color:#EAC15B;">Priset för lägret:<br>300kr</h1>
+                                    <h1 style=" color:#EAC15B;">Priset för lägret:<br>250kr</h1>
                                 </div>
                                 <p style=" color:#EAC15B; ">Jag har läst förstått och godkänt vilkoren och <a href="https://equmenia.se/personuppgiftspolicy/" target="_blank">hanteringen</a> av personuppgifter inför lägret</p>
                                 <label class="switch">

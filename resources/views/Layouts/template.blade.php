@@ -108,12 +108,12 @@
                     </a>
                 </li>
 
-                <li class="sidebarbutton">
+                <!--<li class="sidebarbutton">
                     <a href="/covid-19">
                         <i class="fas fa-home"></i>
                         <span>Covid-19</span>
                     </a>
-                </li>
+                </li>-->
 
                 <li class="sidebarbutton">
                     <a href="{{$links['reglerLink'] ?? "/#ParentsInfo"}}" id="scrollToParentsBtn">
