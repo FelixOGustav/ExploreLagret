@@ -48,6 +48,8 @@ class OpenRegistration extends Command
 
         // Check if some criterias are met. If they are, keep the registration closed
         if($this->keepClosed($camp, $currentTime)){
+            $logMsg = "\n[OPEN] :: Registration kept: " . $currentTime;
+            file_put_contents(storage_path('logs/registrationLog.log'), $logMsg, FILE_APPEND);
             return;
         }
 
@@ -62,11 +64,11 @@ class OpenRegistration extends Command
     }
 
     private function keepClosed($camp, $currentTime){
-        $registeredParticipants = \App\registration::count();
-        $registeredLeaders = \App\registrations_leader::count();
+        //$registeredParticipants = \App\registration::count();
+        //$registeredLeaders = \App\registrations_leader::count();
 
         // Check if limit is reached
-        if($registeredLeaders >= $camp->leaderSpots && $registeredParticipants >= $camp->participantSpots){
+        if(!$this->isSpotsAvailable()){
             return true;
         }
         
@@ -85,5 +87,26 @@ class OpenRegistration extends Command
         }
 
         return false;
+    }
+
+    public function isSpotsAvailable(){
+        $places = \App\place::all();
+        foreach($places as $place){
+            if($this->isSpotsAvailableInPlace($place, true) || $this->isSpotsAvailableInPlace($place, false)){
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public function isSpotsAvailableInPlace($place, $leader){
+        $leadersCount = \App\registrations_leader::all()->where('place', $place->placeID)->count();
+        $participantsCount = \App\registration::all()->where('place', $place->placeID)->count();
+        
+        if($leader){
+            return $leadersCount < $place->leaderSpots && $leadersCount + $participantsCount < $place->spots;
+        } else {            
+            return $participantsCount < $place->participateSpots && $leadersCount + $participantsCount < $place->spots;
+        }
     }
 }
