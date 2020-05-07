@@ -2,6 +2,84 @@
 @section('content')
 <div>
     
+    <!-- Modal efter registrering val-->
+    <div class="modal fade" id="registerChoiseModal" role="dialog">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header justify-content-center">
+                    <h4 class="text-center">Deltagare Eller Ledare?</h4>
+                </div>
+                <div class="modal-body ">
+                    <div class="row">
+                        <button class="col modalButtonStyle lateRegTypeChoice" data-toggle="modal" data-target="#registerModal" data-dismiss="modal" data-regtype="participant"><h3 class="whiteColor">Deltagare</h3></button>
+                        <button class="col modalButtonStyle lateRegTypeChoice" data-toggle="modal" data-target="#registerModal" data-dismiss="modal" data-regtype="leader"><h3 class="whiteColor">Ledare</h3></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Modal efter registrering-->
+    <div class="modal fade" id="registerModal" role="dialog">
+        <div class="modal-dialog">
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header justify-content-center">
+                    <h4 class="text-center">Intresseanmälan</h4>
+                </div>
+                <div class="modal-body ">
+                    <div class="row" style="padding: 10px; text-align:center;">
+                        <p>Platserna är slut, men det går att skriva upp sig på kö ifall det blir en ledig plats.<p>
+                        <p>Vi Kontaktar er via email för vidare instruktioner för riktiga anmälan om en plats skulle bli ledig.</p>
+                    </div>
+                    <div class="row" style="padding: 10px;">
+                        <form style="width: 100%" method="POST" action="/lateregistrationsignup">
+                            {{ csrf_field() }}
+                            <table style="width: 100%">
+                                <tbody>
+                                    <tr>
+                                        <td style="width: 15%;">
+                                                <label for="name" style="float:right">Namn</label>
+                                        </td>
+                                        <td style="width: 85%; padding-right: 40px;">
+                                                <input type="text" id="name" name="name" style="width: 100%" placeholder="Namn Namnsson">
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="width: 15%;">
+                                            <label for="email" style="float:right">Epost</label>
+                                        </td>
+                                        <td style="width: 85%; padding-right: 40px;">
+                                            <input type="email" name="email" id="email"  style="width: 100%" placeholder="namn.namnsson@namn.se">
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="width: 15%;">
+                                            <label for="phoneNumber" style="float:right">Telefonnummer</label>
+                                        </td>
+                                        <td style="width: 85%; padding-right: 40px;">
+                                            <input type="text" name="phoneNumber" id="phoneNumber"  style="width: 100%" placeholder="0713-371337">
+                                        </td>
+                                    </tr>
+                                    <input type="hidden" id="leader" name="leader">
+                                </tbody>                                    
+                            </table>
+                            <div class="container-fluid" style="text-align: center;">
+                                <i style="color: #606569">OBS!!! Se till epost addressen är rätt ifylld! Om den är fel kommer vi inte kunna kontakta er och ni kommer förlora platsen</i>
+                            </div>
+                            <div class="container-fluid d-flex justify-content-center">
+                                <button type="submit" class="buttonStyle" style="background-color: #606569">
+                                    <p>Ställ mig i kö!</p>
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
     @if($key)
     <form method="POST" action="/registration/leader/{{$key}}/done">
     @else
@@ -57,6 +135,9 @@
                                     <option value="{{$place->placeID}}" {{old("place") == $place->placeID ? "selected":""}} {{$takenMap[$place->placeID] ? "disabled":""}}>{{$place->placename}} {{$takenMap[$place->placeID] ? "(Fullt)":""}}</option>
                                 @endforeach
                             </select>
+                            <button class="buttonStyle linkHover" data-toggle="modal" data-target="#registerChoiseModal">
+                                <p style="font-family: ChampagneLimousines; font-weight: bold; font-size: 20px; color: #EAC15B; margin-top: 5px;">Plattserna slut i den ort du ville åka med? intresseanmäl dig här</p>
+                            </button>
                         </div>
                     </div>
 
