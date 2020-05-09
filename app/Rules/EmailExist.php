@@ -43,6 +43,18 @@ class EmailExist implements Rule
             case 1: // OK                
                 return true;
                 break;
+            case -1: // Might be bad domain
+                if($response->smtp_log == "unknown"){
+                    foreach($this->badMailDomains as $bad){
+                        if(strpos($response->email, $bad)){
+                            return true;
+                        }
+                    }
+                    return false;
+                } else {
+                    return false;
+                }
+                break;
             default: // Not OK
                 return false;
                 break;

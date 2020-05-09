@@ -128,7 +128,7 @@ class CampRegistrationController extends Controller
             'email' => ['email', new EmailExist],
             'emailAdvocate' => ['email', new EmailExist],
             'place' => [function ($attribute, $value, $fail) {
-                $place = \App\place::find($value[0]);
+                $place = \App\place::find((int)$value);
                 $campForValidation = \App\registration_state::where('active', 1)->first();
                 if($place->camp_id != $campForValidation->id){
                     $fail("Den ort du valt ingår ej i lägret. Försök igen eller välj en annan ort");
@@ -239,7 +239,7 @@ class CampRegistrationController extends Controller
             'email' => ['email', new EmailExist],
             'emailAdvocate' => ['email', new EmailExist],
             'place' => [function ($attribute, $value, $fail) {
-                $place = \App\place::find($value[0]);
+                $place = \App\place::find((int)$value);
                 $campForValidation = \App\registration_state::where('active', 1)->first();
                 if($place->camp_id != $campForValidation->id){
                     $fail("Den ort du valt ingår ej i lägret. Försök igen eller välj en annan ort");
