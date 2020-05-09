@@ -188,7 +188,7 @@ class CampRegistrationController extends Controller
             $registration->discount = '0';
         }
 
-        $registrations = \App\registration::all();
+        $registrations = \App\registration::where('camp_id', '=', $camp->id)->get();
         foreach($registrations as $otherReg){
             if($registration->birthdate == $otherReg->birthdate && $registration->last_four == $otherReg->last_four){
                 return redirect('/registrationExists');
@@ -300,7 +300,7 @@ class CampRegistrationController extends Controller
         }
         $registration->kitchen = 0;
 
-        $registrations = \App\registrations_leader::all();
+        $registrations = \App\registrations_leader::where('camp_id', '=', $camp->id)->get();
         foreach($registrations as $otherReg){
             if($registration->birthdate == $otherReg->birthdate && $registration->last_four == $otherReg->last_four){
                 return redirect('/registrationExists');
@@ -399,7 +399,7 @@ class CampRegistrationController extends Controller
             $registration->discount = '0';
         }
 
-        $registrations = \App\registration::all();
+        $registrations = \App\registration::where('camp_id', '=', $camp->id)->get();
         foreach($registrations as $otherReg){
             if($registration->birthdate == $otherReg->birthdate && $registration->last_four == $otherReg->last_four){
                 return redirect('/registrationExists');
@@ -493,7 +493,7 @@ class CampRegistrationController extends Controller
             $registration->discount = '0';
         }
 
-        $registrations = \App\registrations_leader::all();
+        $registrations = \App\registrations_leader::where('camp_id', '=', $camp->id)->get();
         foreach($registrations as $otherReg){
             if($registration->birthdate == $otherReg->birthdate && $registration->last_four == $otherReg->last_four){
                 return redirect('/registrationExists');
