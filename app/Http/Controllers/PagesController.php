@@ -74,46 +74,74 @@ class PagesController extends Controller
         $places = \App\place::all();
 
         if($user->can('ljung')){
-            $placesIDArray[] = \App\place::where('camp_id', $camp->id)->where('placename', '=', 'Ljung')->first()->placeID;
+            try{
+                $placesIDArray[] = \App\place::where('camp_id', $camp->id)->where('placename', '=', 'Ljung')->first()->placeID;
+        } catch(\Exception $e){} // Ignore if failure (expected behavior if place does not exist for active camp)
         }
         if($user->can('asklanda_ornunga')){
-            $placesIDArray[] = \App\place::where('camp_id', $camp->id)->where('placename', '=', 'Asklanda/Ornunga')->first()->placeID;
+            try{
+                $placesIDArray[] = \App\place::where('camp_id', $camp->id)->where('placename', '=', 'Asklanda/Ornunga')->first()->placeID;
+        } catch(\Exception $e){} // Ignore if failure (expected behavior if place does not exist for active camp)
         }
         if($user->can('bergstena_ostadkulle')){
-            $placesIDArray[] = \App\place::where('camp_id', $camp->id)->where('placename', '=', 'Bergstena/Östadkulle')->first()->placeID;
+            try{
+                $placesIDArray[] = \App\place::where('camp_id', $camp->id)->where('placename', '=', 'Bergstena/Östadkulle')->first()->placeID;
+        } catch(\Exception $e){} // Ignore if failure (expected behavior if place does not exist for active camp)
         }
         if($user->can('borgstena_tamta')){
-            $placesIDArray[] = \App\place::where('camp_id', $camp->id)->where('placename', '=', 'Borgstena/Tämta')->first()->placeID;
+            try{
+                $placesIDArray[] = \App\place::where('camp_id', $camp->id)->where('placename', '=', 'Borgstena/Tämta')->first()->placeID;
+        } catch(\Exception $e){} // Ignore if failure (expected behavior if place does not exist for active camp)
         }
         if($user->can('herrljunga')){
-            $placesIDArray[] = \App\place::where('camp_id', $camp->id)->where('placename', '=', 'Herrljunga')->first()->placeID;
+            try{
+                $placesIDArray[] = \App\place::where('camp_id', $camp->id)->where('placename', '=', 'Herrljunga')->first()->placeID;
+        } catch(\Exception $e){} // Ignore if failure (expected behavior if place does not exist for active camp)
         }
         if($user->can('ljurhalla')){
-            $placesIDArray[] = \App\place::where('camp_id', $camp->id)->where('placename', '=', 'Ljurhalla')->first()->placeID;
+            try{
+                $placesIDArray[] = \App\place::where('camp_id', $camp->id)->where('placename', '=', 'Ljurhalla')->first()->placeID;
+        } catch(\Exception $e){} // Ignore if failure (expected behavior if place does not exist for active camp)
         }
         if($user->can('storsjostrand')){
-            $placesIDArray[] = \App\place::where('camp_id', $camp->id)->where('placename', '=', 'Storsjöstrand')->first()->placeID;
+            try{
+                $placesIDArray[] = \App\place::where('camp_id', $camp->id)->where('placename', '=', 'Storsjöstrand')->first()->placeID;
+        } catch(\Exception $e){} // Ignore if failure (expected behavior if place does not exist for active camp)
         }
         if($user->can('t_r_e')){
-            $placesIDArray[] = \App\place::where('camp_id', $camp->id)->where('placename', '=', 'Tåstorp/Rensvist/Eggvena/Lagmansholm')->first()->placeID;
+            try{
+                $placesIDArray[] = \App\place::where('camp_id', $camp->id)->where('placename', '=', 'Tåstorp/Rensvist/Eggvena/Lagmansholm')->first()->placeID;
+        } catch(\Exception $e){} // Ignore if failure (expected behavior if place does not exist for active camp)
         }
         if($user->can('vargarda')){
-            $placesIDArray[] = \App\place::where('camp_id', $camp->id)->where('placename', '=', 'Vårgårda')->first()->placeID;
+            try{
+                $placesIDArray[] = \App\place::where('camp_id', $camp->id)->where('placename', '=', 'Vårgårda')->first()->placeID;
+        } catch(\Exception $e){} // Ignore if failure (expected behavior if place does not exist for active camp)
         }
         if($user->can('alingsas')){
-            $placesIDArray[] = \App\place::where('camp_id', $camp->id)->where('placename', '=', 'Alingsås')->first()->placeID;
+            try{
+                $placesIDArray[] = \App\place::where('camp_id', $camp->id)->where('placename', '=', 'Alingsås')->first()->placeID;
+            } catch(\Exception $e){} // Ignore if failure (expected behavior if place does not exist for active camp)
         }
         if($user->can('loo_langared')){
-            $placesIDArray[] = \App\place::where('camp_id', $camp->id)->where('placename', '=', 'Loo/Långared')->first()->placeID;
+            try{
+                $placesIDArray[] = \App\place::where('camp_id', $camp->id)->where('placename', '=', 'Loo/Långared')->first()->placeID;
+        } catch(\Exception $e){} // Ignore if failure (expected behavior if place does not exist for active camp)
         }
         if($user->can('grabo')){
-            $placesIDArray[] = \App\place::where('camp_id', $camp->id)->where('placename', '=', 'Gråbo')->first()->placeID;
+            try{
+                $placesIDArray[] = \App\place::where('camp_id', $camp->id)->where('placename', '=', 'Gråbo')->first()->placeID;
+        } catch(\Exception $e){} // Ignore if failure (expected behavior if place does not exist for active camp)
         }
         if($user->can('toarp')){
-            $placesIDArray[] = \App\place::where('camp_id', $camp->id)->where('placename', '=', 'Toarp')->first()->placeID;
+            try{
+                $placesIDArray[] = \App\place::where('camp_id', $camp->id)->where('placename', '=', 'Toarp')->first()->placeID;
+        } catch(\Exception $e){} // Ignore if failure (expected behavior if place does not exist for active camp)
         }
         if($user->can('sollebrunn_grafsnas_magra')){
-            $placesIDArray[] = \App\place::where('camp_id', $camp->id)->where('placename', '=', 'Sollebrunn/ Gräfsnäs/ Magra')->first()->placeID;
+            try{
+                $placesIDArray[] = \App\place::where('camp_id', $camp->id)->where('placename', '=', 'Sollebrunn/ Gräfsnäs/ Magra')->first()->placeID;
+        } catch(\Exception $e){} // Ignore if failure (expected behavior if place does not exist for active camp)
         }
 
 
