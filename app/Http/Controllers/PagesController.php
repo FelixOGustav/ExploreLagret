@@ -49,7 +49,8 @@ class PagesController extends Controller
     
 
     public function dashboard(){
-        $places = \App\place::all();
+        $camp = \App\registration_state::where('active', 1)->first();
+        $places = \App\place::where('camp_id', $camp->id)->get();
         $placesStats = [];
 
         for($i = 0; $i < count($places); $i++){
@@ -73,43 +74,46 @@ class PagesController extends Controller
         $places = \App\place::all();
 
         if($user->can('ljung')){
-            $placesIDArray[] = \App\place::where('placename', '=', 'Ljung')->first()->placeID;
+            $placesIDArray[] = \App\place::where('camp_id', $camp->id)->where('placename', '=', 'Ljung')->first()->placeID;
         }
         if($user->can('asklanda_ornunga')){
-            $placesIDArray[] = \App\place::where('placename', '=', 'Asklanda/Ornunga')->first()->placeID;
+            $placesIDArray[] = \App\place::where('camp_id', $camp->id)->where('placename', '=', 'Asklanda/Ornunga')->first()->placeID;
         }
         if($user->can('bergstena_ostadkulle')){
-            $placesIDArray[] = \App\place::where('placename', '=', 'Bergstena/Östadkulle')->first()->placeID;
+            $placesIDArray[] = \App\place::where('camp_id', $camp->id)->where('placename', '=', 'Bergstena/Östadkulle')->first()->placeID;
         }
         if($user->can('borgstena_tamta')){
-            $placesIDArray[] = \App\place::where('placename', '=', 'Borgstena/Tämta')->first()->placeID;
+            $placesIDArray[] = \App\place::where('camp_id', $camp->id)->where('placename', '=', 'Borgstena/Tämta')->first()->placeID;
         }
         if($user->can('herrljunga')){
-            $placesIDArray[] = \App\place::where('placename', '=', 'Herrljunga')->first()->placeID;
+            $placesIDArray[] = \App\place::where('camp_id', $camp->id)->where('placename', '=', 'Herrljunga')->first()->placeID;
         }
         if($user->can('ljurhalla')){
-            $placesIDArray[] = \App\place::where('placename', '=', 'Ljurhalla')->first()->placeID;
+            $placesIDArray[] = \App\place::where('camp_id', $camp->id)->where('placename', '=', 'Ljurhalla')->first()->placeID;
         }
         if($user->can('storsjostrand')){
-            $placesIDArray[] = \App\place::where('placename', '=', 'Storsjöstrand')->first()->placeID;
+            $placesIDArray[] = \App\place::where('camp_id', $camp->id)->where('placename', '=', 'Storsjöstrand')->first()->placeID;
         }
         if($user->can('t_r_e')){
-            $placesIDArray[] = \App\place::where('placename', '=', 'Tåstorp/Rensvist/Eggvena/Lagmansholm')->first()->placeID;
+            $placesIDArray[] = \App\place::where('camp_id', $camp->id)->where('placename', '=', 'Tåstorp/Rensvist/Eggvena/Lagmansholm')->first()->placeID;
         }
         if($user->can('vargarda')){
-            $placesIDArray[] = \App\place::where('placename', '=', 'Vårgårda')->first()->placeID;
+            $placesIDArray[] = \App\place::where('camp_id', $camp->id)->where('placename', '=', 'Vårgårda')->first()->placeID;
         }
         if($user->can('alingsas')){
-            $placesIDArray[] = \App\place::where('placename', '=', 'Alingsås')->first()->placeID;
+            $placesIDArray[] = \App\place::where('camp_id', $camp->id)->where('placename', '=', 'Alingsås')->first()->placeID;
         }
         if($user->can('loo_langared')){
-            $placesIDArray[] = \App\place::where('placename', '=', 'Loo/Långared')->first()->placeID;
+            $placesIDArray[] = \App\place::where('camp_id', $camp->id)->where('placename', '=', 'Loo/Långared')->first()->placeID;
         }
         if($user->can('grabo')){
-            $placesIDArray[] = \App\place::where('placename', '=', 'Gråbo')->first()->placeID;
+            $placesIDArray[] = \App\place::where('camp_id', $camp->id)->where('placename', '=', 'Gråbo')->first()->placeID;
         }
         if($user->can('toarp')){
-            $placesIDArray[] = \App\place::where('placename', '=', 'Toarp')->first()->placeID;
+            $placesIDArray[] = \App\place::where('camp_id', $camp->id)->where('placename', '=', 'Toarp')->first()->placeID;
+        }
+        if($user->can('sollebrunn_grafsnas_magra')){
+            $placesIDArray[] = \App\place::where('camp_id', $camp->id)->where('placename', '=', 'Sollebrunn/ Gräfsnäs/ Magra')->first()->placeID;
         }
 
 
