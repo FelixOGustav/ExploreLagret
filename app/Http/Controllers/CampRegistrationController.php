@@ -23,7 +23,7 @@ class CampRegistrationController extends Controller
         }
         
         $takenMap = array();
-        $places = \App\place::orderBy('placename', 'ASC')->get();
+        $places = \App\place::where('camp_id', $camp->id)->orderBy('placename', 'ASC')->get();
         foreach($places as $place){
             $takenMap[$place->placeID] = !$this->isSpotsAvailable($camp, $place, false);
         }
@@ -39,7 +39,7 @@ class CampRegistrationController extends Controller
             abort(403);
         }
 
-        $places = \App\place::orderBy('placename', 'ASC')->get();
+        $places = \App\place::where('camp_id', $camp->id)->orderBy('placename', 'ASC')->get();
         foreach($places as $place){
             $takenMap[$place->placeID] = !$this->isSpotsAvailable($camp, $place, true);
         }
@@ -47,11 +47,12 @@ class CampRegistrationController extends Controller
     }
 
     public function lateRegistration($key){
+        $camp = \App\registration_state::where('active', 1)->first();
         $links = \App\late_registration_key::where('leader', '=', 0)->get();
 
         foreach($links as $link){
             if($key == $link->link_key){
-                $places = \App\place::all();
+                $places = \App\place::where('camp_id', $camp->id)->orderBy('placename', 'ASC')->get();
                 return view('Pages/registration', ['places' => $places, 'key' => $key]);
             }
         }
@@ -60,10 +61,11 @@ class CampRegistrationController extends Controller
     }
 
     public function lateRegistrationLeader($key){
+        $camp = \App\registration_state::where('active', 1)->first();
         $links = \App\late_registration_key::where('leader', '=', 1)->get();
         foreach($links as $link){
             if($key == $link->link_key){
-                $places = \App\place::all();
+                $places = \App\place::where('camp_id', $camp->id)->orderBy('placename', 'ASC')->get();
                 return view('Pages/registration-leader', ['places' => $places, 'key' => $key]);
             }
         }
@@ -96,6 +98,7 @@ class CampRegistrationController extends Controller
     
     // Fetch registration and return view for edit registration
     public function EditRegistration($type, $id){
+        $camp = \App\registration_state::where('active', 1)->first();
         if($type == 'participant'){
             $reg = \App\registration::find($id);
             $leader = false;
@@ -104,7 +107,7 @@ class CampRegistrationController extends Controller
             $reg = \App\registrations_leader::find($id);
             $leader = true;
         }
-        $places = \App\place::orderBy('placename', 'ASC')->get();
+        $places = \App\place::where('camp_id', $camp->id)->orderBy('placename', 'ASC')->get();
         return view('AdminPages/editregistration', ['reg' => $reg, 'leader' => $leader, 'places' => $places]);
     }
     
@@ -127,6 +130,9 @@ class CampRegistrationController extends Controller
             'place' => [function ($attribute, $value, $fail) {
                 $place = \App\place::find($value[0]);
                 $campForValidation = \App\registration_state::where('active', 1)->first();
+                if($place->camp_id != $campForValidation->id){
+                    $fail("Den ort du valt ingår ej i lägret. Försök igen eller välj en annan ort");
+                }
                 if (!$this->isSpotsAvailable($campForValidation, $place, false)) {
                     $fail('Plattserna i den ort du valt är tyvärr slut. Välj en annan ort om du vågar');
                 }
@@ -235,6 +241,9 @@ class CampRegistrationController extends Controller
             'place' => [function ($attribute, $value, $fail) {
                 $place = \App\place::find($value[0]);
                 $campForValidation = \App\registration_state::where('active', 1)->first();
+                if($place->camp_id != $campForValidation->id){
+                    $fail("Den ort du valt ingår ej i lägret. Försök igen eller välj en annan ort");
+                }
                 if (!$this->isSpotsAvailable($campForValidation, $place, true)) {
                     $fail('Plattserna i den ort du valt är tyvärr slut. Välj en annan ort om du vågar');
                 }
