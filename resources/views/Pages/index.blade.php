@@ -138,41 +138,42 @@
                 
             </div>
         </div>
-        @php $counter = 1 @endphp
-        @php $placedID = false @endphp
-        @foreach ($infos as $info)
-            @if($info->type == "sidebyside")
-                <!-- Explore info row -->
-                <div class="ContentRow">
-                    <div class="contentContainer">
-                        <div class="containerItem contentImg" style="order: {{$counter % 2}}">
-                                @php $counter++ @endphp
-                            <img  src="{{URL::asset($info->img)}}">
+        <div id="explorelagretInfo">
+            @php $counter = 1 @endphp
+            @php $placedID = false @endphp
+            @foreach ($infos as $info)
+                @if($info->type == "sidebyside")
+                    <!-- Explore info row -->
+                    <div class="ContentRow">
+                        <div class="contentContainer">
+                            <div class="containerItem contentImg" style="order: {{$counter % 2}}">
+                                    @php $counter++ @endphp
+                                <img  src="{{URL::asset($info->img)}}">
+                            </div>
+                            <div class="containerItem contentTxt"  style="order: {{$counter % 2}}">
+                                <h2>{{$info->title}}</h2>
+                                <p> {!! $info->body !!}</p>
+                            </div>
                         </div>
-                        <div class="containerItem contentTxt"  style="order: {{$counter % 2}}" id="explorelagretInfo">
+                    </div>
+                    <!-- Explore info row end -->
+
+                @else
+                    <div class="ContentRow" @if(!$placedID) id="ParentsInfo" @endif 
+                    @php $placedID = true @endphp>
+                        <div class="contentTxt" style="background-color: #EBEBEB;">
                             <h2>{{$info->title}}</h2>
-                            <p> {!! $info->body !!}</p>
+                            <p>{{$info->body}}</p>
                         </div>
+                        
                     </div>
-                </div>
-                <!-- Explore info row end -->
-
-            @else
-                <div class="ContentRow" @if(!$placedID) id="ParentsInfo" @endif 
-                @php $placedID = true @endphp>
-                    <div class="contentTxt" style="background-color: #EBEBEB;">
-                        <h2>{{$info->title}}</h2>
-                        <p>{{$info->body}}</p>
+                    <div class="inlineImgBanner">
+                        <img src="{{URL::asset($info->img)}}">
                     </div>
-                    
-                </div>
-                <div class="inlineImgBanner">
-                    <img src="{{URL::asset($info->img)}}">
-                </div>
-                @php $counter++ @endphp
-            @endif
-        @endforeach
-
+                    @php $counter++ @endphp
+                @endif
+            @endforeach
+        </div>
         <!-- QnA -->
 
         <div class="ContentRow">

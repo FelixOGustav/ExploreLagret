@@ -102,7 +102,7 @@
             <!-- Menu navigation buttons -->
             <ul style="padding: 0px;">
                 <li class="sidebarbutton">
-                    <a href="{{$links['infoLink'] ?? "/#branaslagretInfo"}}" id="scrollToInfoBtn">
+                    <a href="{{$links['infoLink'] ?? "/#explorelagretInfo"}}" id="scrollToInfoBtn">
                         <i class="fas fa-home"></i>
                         <span>Info</span>
                     </a>
@@ -115,12 +115,12 @@
                     </a>
                 </li>-->
 
-                <li class="sidebarbutton">
+                <!--<li class="sidebarbutton">
                     <a href="{{$links['reglerLink'] ?? "/#ParentsInfo"}}" id="scrollToParentsBtn">
                         <i class="fas fa-user-edit"></i>
                         <span>För Föräldrar</span>
                     </a>
-                </li>
+                </li>-->
 
                 <li class="sidebarbutton">
                     <a href="{{$links['faqLink'] ?? "/#faqInfo"}}" id="scrollTofaqBtn">
