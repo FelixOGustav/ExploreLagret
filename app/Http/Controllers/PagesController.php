@@ -67,6 +67,7 @@ class PagesController extends Controller
 
     public function registrationlists($type, $cancelled = false){
 
+        $camp = \App\registration_state::where('active', 1)->first();
         $placesIDArray = [];
         $user = Auth::user();
         $places = \App\place::all();
@@ -114,22 +115,22 @@ class PagesController extends Controller
 
         if($type == 'participant'){
             if($cancelled == "cancelled"){
-                $regAmount = \App\registrations_cancel::count();
-                $registrations = \App\registrations_cancel::whereIn('place', $placesIDArray)->get();
+                $regAmount = \App\registrations_cancel::where('camp_id', $camp->id)->count();
+                $registrations = \App\registrations_cancel::where('camp_id', $camp->id)->whereIn('place', $placesIDArray)->get();
             }
             else{
-                $regAmount = \App\registration::count();
-                $registrations = \App\registration::whereIn('place', $placesIDArray)->get();
+                $regAmount = \App\registration::where('camp_id', $camp->id)->count();
+                $registrations = \App\registration::where('camp_id', $camp->id)->whereIn('place', $placesIDArray)->get();
             }
             return view('AdminPages/registrationlists', ['registrations' => $registrations, 'places' => $places, 'count' => $regAmount, 'type' => $type, 'cancelled' => $cancelled]);
         }else if($type == 'leader'){
             if($cancelled == "cancelled"){
-                $regAmount = \App\registrations_leaders_cancel::count();
-                $registrations_leaders = \App\registrations_leaders_cancel::whereIn('place', $placesIDArray)->get();
+                $regAmount = \App\registrations_leaders_cancel::where('camp_id', $camp->id)->count();
+                $registrations_leaders = \App\registrations_leaders_cancel::where('camp_id', $camp->id)->whereIn('place', $placesIDArray)->get();
             }
             else{
-                $regAmount = \App\registrations_leader::count();
-                $registrations_leaders = \App\registrations_leader::whereIn('place', $placesIDArray)->get();
+                $regAmount = \App\registrations_leader::where('camp_id', $camp->id)->count();
+                $registrations_leaders = \App\registrations_leader::where('camp_id', $camp->id)->whereIn('place', $placesIDArray)->get();
             }
             return view('AdminPages/registrationlists', ['registrations' => $registrations_leaders, 'places' => $places, 'count' => $regAmount, 'type' => $type, 'cancelled' => $cancelled]);
         }else {

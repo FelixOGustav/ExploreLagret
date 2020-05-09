@@ -104,6 +104,10 @@ class AccessLevelController extends Controller
         if($access->toarp == null){
             $access->toarp = 0;
         }
+        $access->sollebrunn_grafsnas_magra = Request('sollebrunn_grafsnas_magra');
+        if($access->sollebrunn_grafsnas_magra == null){
+            $access->sollebrunn_grafsnas_magra = 0;
+        }
         $access->add_user = Request('add_user');
         if($access->add_user == null){
             $access->add_user = 0;

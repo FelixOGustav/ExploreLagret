@@ -151,6 +151,10 @@ class AuthServiceProvider extends ServiceProvider
         Gate::define('alingsas', function() {
             return \App\accesslevel::find(Auth::user()->id)->alingsas;
         });
+        
+        Gate::define('sollebrunn_grafsnas_magra', function() {
+            return \App\accesslevel::find(Auth::user()->id)->sollebrunn_grafsnas_magra;
+        });
 
         Gate::define('toarp', function() {
             return \App\accesslevel::find(Auth::user()->id)->toarp;

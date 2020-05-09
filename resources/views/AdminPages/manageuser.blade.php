@@ -147,6 +147,10 @@
                     <label style="vertical-align:middle;">Toarp</label>
                     <input type="checkbox" value="1" name="toarp" id="toarp" @if($access->toarp) checked @endif>
                 </div>
+                <div style="margin: 10px;">
+                    <label style="vertical-align:middle;">Sollebrunn/ Gräfsnäs/ Magra</label>
+                    <input type="checkbox" value="1" name="sollebrunn_grafsnas_magra" id="sollebrunn_grafsnas_magra" @if($access->sollebrunn_grafsnas_magra) checked @endif>
+                </div>
 
                 <div style="margin: 10px;">
                     <label style="vertical-align:middle;">Personummer</label>
