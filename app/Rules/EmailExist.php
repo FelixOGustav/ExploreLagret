@@ -51,6 +51,12 @@ class EmailExist implements Rule
                         }
                     }
                     return false;
+                } else if($response->smtp_log == "TransientNetworkFault"){
+                    if(strpos($response->email, "@icloud.com")){
+                        return true;
+                    } else{
+                        return false;
+                    }
                 } else {
                     return false;
                 }
