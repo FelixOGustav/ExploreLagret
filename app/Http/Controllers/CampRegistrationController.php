@@ -117,14 +117,15 @@ class CampRegistrationController extends Controller
         $leadersCount = \App\registrations_leader::count();
         $participantsCount = \App\registration::count();
         $count = $leadersCount + $participantsCount;
-        if($count > 379) {
-            return redirect('/registrationfull');
-        }
+        //if($count > 379) {
+        //    return redirect('/registrationfull');
+        //}
 
         // Validation of request
         $validation = $request->validate([
             'firstName' => 'required',
             'lastName' => 'required',
+            'socialSecurityNumber' => 'required|alpha_num|size:10',
             'email' => ['email', new EmailExist],
             'emailAdvocate' => ['email', new EmailExist],
             'place' => [function ($attribute, $value, $fail) {
@@ -234,14 +235,15 @@ class CampRegistrationController extends Controller
         $leadersCount = \App\registrations_leader::count();
         $participantsCount = \App\registration::count();
         $count = $leadersCount + $participantsCount;
-        if($count > 379) {
-            return redirect('/registrationfull');
-        }
+        //if($count > 379) {
+        //    return redirect('/registrationfull');
+        //}
 
         // Validation of request
         $validation = $request->validate([
             'firstName' => 'required',
             'lastName' => 'required',
+            'socialSecurityNumber' => 'required|alpha_num|size:10',
             'email' => ['email', new EmailExist],
             'emailAdvocate' => ['email', new EmailExist],
             'place' => [function ($attribute, $value, $fail) {
