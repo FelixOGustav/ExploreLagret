@@ -6,7 +6,12 @@
     <h2 style="text-align:center;">Fördelning mellan församlingarna</h2>
     <canvas id="placesChart" width="250" height="250"></canvas>
 </div>
+<div class="panel" style="width: 800px; height: 650px;">
+    <h2 style="text-align:center;">Fördelning av platser</h2>
+    <canvas id="spotsChart" width="550" height="450"></canvas>
+</div>
 <script>
+    // Pie chart
     var ctx = document.getElementById('placesChart').getContext('2d');
     var chart = new Chart(ctx, {
         // The type of chart we want to create
@@ -15,18 +20,18 @@
         // The data for our dataset
         data: {
             labels: [
-                "{{$placesStats[0]->place}}",
-                "{{$placesStats[1]->place}}",
-                "{{$placesStats[2]->place}}",
-                "{{$placesStats[3]->place}}",
-                "{{$placesStats[4]->place}}",
-                "{{$placesStats[5]->place}}",
-                "{{$placesStats[6]->place}}",
-                "{{$placesStats[7]->place}}",
-                "{{$placesStats[8]->place}}",
-                "{{$placesStats[9]->place}}",
-                "{{$placesStats[10]->place}}",
-                "{{$placesStats[11]->place}}",
+                "{{$placesStats[0]->place->placename}}",
+                "{{$placesStats[1]->place->placename}}",
+                "{{$placesStats[2]->place->placename}}",
+                "{{$placesStats[3]->place->placename}}",
+                "{{$placesStats[4]->place->placename}}",
+                "{{$placesStats[5]->place->placename}}",
+                "{{$placesStats[6]->place->placename}}",
+                "{{$placesStats[7]->place->placename}}",
+                "{{$placesStats[8]->place->placename}}",
+                "{{$placesStats[9]->place->placename}}",
+                "{{$placesStats[10]->place->placename}}",
+                "{{$placesStats[11]->place->placename}}",
             ],
             datasets: [{
                 label: "Fördelning mellan församlingar",
@@ -85,6 +90,66 @@
                 }]
             }
         }*/
+    });
+
+    // Stacked bar chart
+    var placesStats = {!! json_encode($placesStats) !!};
+    console.log(placesStats);
+    
+    var labels = placesStats.map(element => element.place.placename);
+    var totalMax = placesStats.map(element => element.place.spots);
+    var participants = placesStats.map(element => element.participants);
+    var leaders = placesStats.map(element => element.leaders);
+
+    var maxColor = placesStats.map(element => 'rgba(255, 99, 132, 0.5)');
+    var participantsColor = placesStats.map(element => 'rgba(255, 159, 64, 0.5)');
+    var leadersColor = placesStats.map(element => 'rgba(15, 115, 255, 0.5)');
+
+    var ctx = document.getElementById("spotsChart");
+    var myChart = new Chart(ctx, {
+    type: 'bar',
+    data: {
+        labels: labels,
+        datasets: [{
+            label: 'Tillgängliga platser',
+            data: totalMax,
+            backgroundColor: maxColor,
+            borderColor: maxColor,
+            borderWidth: 2
+        },
+        {
+            label: 'Deltagare',
+            data: participants,
+            backgroundColor: participantsColor,
+            borderColor: participantsColor,
+            borderWidth: 2
+        },
+        {
+            label: 'Ledare',
+            data: leaders,
+            backgroundColor: leadersColor,
+            borderColor: leadersColor,
+            borderWidth: 2
+        }
+        ]
+    },
+    options: {
+        scales: {
+        yAxes: [{
+            stacked: false,
+            ticks: {
+            beginAtZero: true
+            }
+        }],
+        xAxes: [{
+            stacked: false,
+            ticks: {
+            beginAtZero: true
+            }
+        }]
+
+        }
+    }
     });
 </script>
 @endsection

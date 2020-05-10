@@ -55,11 +55,13 @@ class PagesController extends Controller
 
         for($i = 0; $i < count($places); $i++){
             $placesStats[] = new PlacesStats();
-            end($placesStats)->place = $places[$i]->placename;
+            end($placesStats)->place = $places[$i];
 
             $amountLeaders = \App\registrations_leader::where('place', '=', $places[$i]->placeID)->count();
             $amounParticipants = \App\registration::where('place', '=', $places[$i]->placeID)->count();
 
+            end($placesStats)->participants = $amounParticipants;
+            end($placesStats)->leaders = $amountLeaders;
             end($placesStats)->amount = $amountLeaders + $amounParticipants;
         }
 
@@ -649,4 +651,6 @@ class PagesController extends Controller
 class PlacesStats {
     public $place;
     public $amount;
+    public $participants;
+    public $leaders;
 }
