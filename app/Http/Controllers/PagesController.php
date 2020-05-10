@@ -140,7 +140,7 @@ class PagesController extends Controller
         }
         if($user->can('sollebrunn_grafsnas_magra')){
             try{
-                $placesIDArray[] = \App\place::where('camp_id', $camp->id)->where('placename', '=', 'Sollebrunn/ Gräfsnäs/ Magra')->first()->placeID;
+                $placesIDArray[] = \App\place::where('camp_id', $camp->id)->where('placename', '=', 'Sollebrunn/Gräfsnäs/Magra')->first()->placeID;
         } catch(\Exception $e){} // Ignore if failure (expected behavior if place does not exist for active camp)
         }
 
