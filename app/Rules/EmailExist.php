@@ -48,21 +48,9 @@ class EmailExist implements Rule
                 $newLine = "\n";
                 $logFilePath = 'logs/registrationLog.log';
                 
-                if($response->smtp_log == "unknown"){
-                    foreach($this->badMailDomains as $bad){
-                        if(strpos($response->email, $bad)){
-                            file_put_contents(storage_path($logFilePath), $prefix . 'Allowing any way..' . $newLine, FILE_APPEND);
-                            return true;
-                        }
-                    }
-                    return false;
-                } else if($response->smtp_log == "TransientNetworkFault"){
-                    if(strpos($response->email, "@icloud.com")){
-                        file_put_contents(storage_path($logFilePath), $prefix . 'Allowing any way..' . $newLine, FILE_APPEND);
-                        return true;
-                    } else{
-                        return false;
-                    }
+                if($response->smtp_log == "unknown" || $response->smtp_log == "TransientNetworkFault"){
+                    file_put_contents(storage_path($logFilePath), $prefix . 'Allowing any way..' . $newLine, FILE_APPEND);
+                    return true;
                 } else {
                     return false;
                 }
