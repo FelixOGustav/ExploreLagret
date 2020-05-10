@@ -49,8 +49,6 @@ class OpenRegistration extends Command
 
         // Check if some criterias are met. If they are, keep the registration closed
         if($this->keepClosed($camp, $currentTime)){
-            $logMsg = "\n[OPEN] :: Registration kept: " . $currentTime;
-            file_put_contents(storage_path('logs/registrationLog.log'), $logMsg, FILE_APPEND);
             return;
         }
 

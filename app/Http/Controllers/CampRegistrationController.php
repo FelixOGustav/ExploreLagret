@@ -191,6 +191,12 @@ class CampRegistrationController extends Controller
         $registrations = \App\registration::where('camp_id', '=', $camp->id)->get();
         foreach($registrations as $otherReg){
             if($registration->birthdate == $otherReg->birthdate && $registration->last_four == $otherReg->last_four){
+                $prefix = '[' . Carbon::now() . '] | [ Registration ] | ';
+                $newLine = "\n";
+                $logFilePath = 'logs/registrationLog.log';
+                file_put_contents(storage_path($logFilePath), $prefix . 'Registration with same SSN found' . $newLine, FILE_APPEND);
+                file_put_contents(storage_path($logFilePath), $prefix . 'SSN: ' . $birthday . '-' . $lastfour . $newLine, FILE_APPEND);
+                file_put_contents(storage_path($logFilePath), $prefix . 'Registration id of match: ' . $otherReg->id . $newLine, FILE_APPEND);
                 return redirect('/registrationExists');
             }
         }
@@ -302,7 +308,12 @@ class CampRegistrationController extends Controller
 
         $registrations = \App\registrations_leader::where('camp_id', '=', $camp->id)->get();
         foreach($registrations as $otherReg){
-            if($registration->birthdate == $otherReg->birthdate && $registration->last_four == $otherReg->last_four){
+            if($registration->birthdate == $otherReg->birthdate && $registration->last_four == $otherReg->last_four){$prefix = '[' . Carbon::now() . '] | [ Registration ] | ';
+                $newLine = "\n";
+                $logFilePath = 'logs/registrationLog.log';
+                file_put_contents(storage_path($logFilePath), $prefix . 'Registration with same SSN found' . $newLine, FILE_APPEND);
+                file_put_contents(storage_path($logFilePath), $prefix . 'SSN: ' . $birthday . '-' . $lastfour . $newLine, FILE_APPEND);
+                file_put_contents(storage_path($logFilePath), $prefix . 'Registration id of match: ' . $otherReg->id . $newLine, FILE_APPEND);
                 return redirect('/registrationExists');
             }
         }
@@ -401,7 +412,12 @@ class CampRegistrationController extends Controller
 
         $registrations = \App\registration::where('camp_id', '=', $camp->id)->get();
         foreach($registrations as $otherReg){
-            if($registration->birthdate == $otherReg->birthdate && $registration->last_four == $otherReg->last_four){
+            if($registration->birthdate == $otherReg->birthdate && $registration->last_four == $otherReg->last_four){$prefix = '[' . Carbon::now() . '] | [ Registration ] | ';
+                $newLine = "\n";
+                $logFilePath = 'logs/registrationLog.log';
+                file_put_contents(storage_path($logFilePath), $prefix . 'Registration with same SSN found' . $newLine, FILE_APPEND);
+                file_put_contents(storage_path($logFilePath), $prefix . 'SSN: ' . $birthday . '-' . $lastfour . $newLine, FILE_APPEND);
+                file_put_contents(storage_path($logFilePath), $prefix . 'Registration id of match: ' . $otherReg->id . $newLine, FILE_APPEND);
                 return redirect('/registrationExists');
             }
         }
@@ -495,7 +511,12 @@ class CampRegistrationController extends Controller
 
         $registrations = \App\registrations_leader::where('camp_id', '=', $camp->id)->get();
         foreach($registrations as $otherReg){
-            if($registration->birthdate == $otherReg->birthdate && $registration->last_four == $otherReg->last_four){
+            if($registration->birthdate == $otherReg->birthdate && $registration->last_four == $otherReg->last_four){$prefix = '[' . Carbon::now() . '] | [ Registration ] | ';
+                $newLine = "\n";
+                $logFilePath = 'logs/registrationLog.log';
+                file_put_contents(storage_path($logFilePath), $prefix . 'Registration with same SSN found' . $newLine, FILE_APPEND);
+                file_put_contents(storage_path($logFilePath), $prefix . 'SSN: ' . $birthday . '-' . $lastfour . $newLine, FILE_APPEND);
+                file_put_contents(storage_path($logFilePath), $prefix . 'Registration id of match: ' . $otherReg->id . $newLine, FILE_APPEND);
                 return redirect('/registrationExists');
             }
         }
