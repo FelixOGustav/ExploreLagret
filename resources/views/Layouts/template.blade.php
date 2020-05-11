@@ -149,8 +149,7 @@
             </div>
 
             <div class="toplogo" id="scrollToTopLogo" class="scrollToTop">
-                <h1>EXPLORE</h1>
-                <p>2019</p>
+                <h1 style="margin-top: 15px">EXPLORE</h1>
             </div>
             
             <!-- Main site content -->
