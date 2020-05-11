@@ -135,6 +135,20 @@ class CampRegistrationController extends Controller
                     $fail("Den ort du valt ingår ej i lägret. Försök igen eller välj en annan ort");
                 }
                 if (!$this->isSpotsAvailable($campForValidation, $place, false)) {
+                    $prefix = '[' . Carbon::now() . '] | [ Registration ] | ';
+                    $newLine = "\n";
+                    $logFilePath = 'logs/registrationLog.log';
+                    $leadersCount = \App\registrations_leader::all()
+                        ->where('place', $place->placeID)
+                        ->where('camp_id', $camp->id)
+                        ->count();
+                    $participantsCount = \App\registration::all()
+                        ->where('place', $place->placeID)
+                        ->where('camp_id', $camp->id)
+                        ->count();
+                    file_put_contents(storage_path($logFilePath), $prefix . 'Spots full in: ' . $place->placename . $newLine, FILE_APPEND);
+                    file_put_contents(storage_path($logFilePath), $prefix . 'Registrations: ' . $participantsCount . $newLine, FILE_APPEND);
+                    file_put_contents(storage_path($logFilePath), $prefix . 'Leaders: ' . $leadersCount . $newLine, FILE_APPEND);
                     $fail('Plattserna i den ort du valt är tyvärr slut. Välj en annan ort om du vågar');
                 }
             }]
@@ -253,6 +267,20 @@ class CampRegistrationController extends Controller
                     $fail("Den ort du valt ingår ej i lägret. Försök igen eller välj en annan ort");
                 }
                 if (!$this->isSpotsAvailable($campForValidation, $place, true)) {
+                    $prefix = '[' . Carbon::now() . '] | [ Registration ] | ';
+                    $newLine = "\n";
+                    $logFilePath = 'logs/registrationLog.log';
+                    $leadersCount = \App\registrations_leader::all()
+                        ->where('place', $place->placeID)
+                        ->where('camp_id', $camp->id)
+                        ->count();
+                    $participantsCount = \App\registration::all()
+                        ->where('place', $place->placeID)
+                        ->where('camp_id', $camp->id)
+                        ->count();
+                    file_put_contents(storage_path($logFilePath), $prefix . 'Spots full in: ' . $place->placename . $newLine, FILE_APPEND);
+                    file_put_contents(storage_path($logFilePath), $prefix . 'Registrations: ' . $participantsCount . $newLine, FILE_APPEND);
+                    file_put_contents(storage_path($logFilePath), $prefix . 'Leaders: ' . $leadersCount . $newLine, FILE_APPEND);
                     $fail('Plattserna i den ort du valt är tyvärr slut. Välj en annan ort om du vågar');
                 }
             }]
