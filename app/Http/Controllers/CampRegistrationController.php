@@ -212,7 +212,15 @@ class CampRegistrationController extends Controller
                 file_put_contents(storage_path($logFilePath), $prefix . 'Registration with same SSN found' . $newLine, FILE_APPEND);
                 file_put_contents(storage_path($logFilePath), $prefix . 'SSN: ' . $birthday . '-' . $lastfour . $newLine, FILE_APPEND);
                 file_put_contents(storage_path($logFilePath), $prefix . 'Registration id of match: ' . $otherReg->id . $newLine, FILE_APPEND);
-                return redirect('/registrationExists');
+                
+                $diff = $otherReg->created_at->diffInSeconds();
+                if($diff > 2){
+                    return redirect('/registrationExists');
+                } else {
+                    file_put_contents(storage_path($logFilePath), $prefix . 'Difference in time: ' . $diff . $newLine, FILE_APPEND);
+                    file_put_contents(storage_path($logFilePath), $prefix . 'Acting like registration happened like normal' . $newLine, FILE_APPEND);
+                    return redirect('/registration/done/participant/' . $otherReg->id);
+                }
             }
         }
 
@@ -344,7 +352,15 @@ class CampRegistrationController extends Controller
                 file_put_contents(storage_path($logFilePath), $prefix . 'Registration with same SSN found' . $newLine, FILE_APPEND);
                 file_put_contents(storage_path($logFilePath), $prefix . 'SSN: ' . $birthday . '-' . $lastfour . $newLine, FILE_APPEND);
                 file_put_contents(storage_path($logFilePath), $prefix . 'Registration id of match: ' . $otherReg->id . $newLine, FILE_APPEND);
-                return redirect('/registrationExists');
+                
+                $diff = $otherReg->created_at->diffInSeconds();
+                if($diff > 2){
+                    return redirect('/registrationExists');
+                } else {
+                    file_put_contents(storage_path($logFilePath), $prefix . 'Difference in time: ' . $diff . $newLine, FILE_APPEND);
+                    file_put_contents(storage_path($logFilePath), $prefix . 'Acting like registration happened like normal' . $newLine, FILE_APPEND);
+                    return redirect('/registration/done/participant/' . $otherReg->id);
+                }
             }
         }
 
@@ -448,7 +464,15 @@ class CampRegistrationController extends Controller
                 file_put_contents(storage_path($logFilePath), $prefix . 'Registration with same SSN found' . $newLine, FILE_APPEND);
                 file_put_contents(storage_path($logFilePath), $prefix . 'SSN: ' . $birthday . '-' . $lastfour . $newLine, FILE_APPEND);
                 file_put_contents(storage_path($logFilePath), $prefix . 'Registration id of match: ' . $otherReg->id . $newLine, FILE_APPEND);
-                return redirect('/registrationExists');
+                
+                $diff = $otherReg->created_at->diffInSeconds();
+                if($diff > 2){
+                    return redirect('/registrationExists');
+                } else {
+                    file_put_contents(storage_path($logFilePath), $prefix . 'Difference in time: ' . $diff . $newLine, FILE_APPEND);
+                    file_put_contents(storage_path($logFilePath), $prefix . 'Acting like registration happened like normal' . $newLine, FILE_APPEND);
+                    return redirect('/registration/done/participant/' . $otherReg->id);
+                }
             }
         }
 
@@ -547,7 +571,15 @@ class CampRegistrationController extends Controller
                 file_put_contents(storage_path($logFilePath), $prefix . 'Registration with same SSN found' . $newLine, FILE_APPEND);
                 file_put_contents(storage_path($logFilePath), $prefix . 'SSN: ' . $birthday . '-' . $lastfour . $newLine, FILE_APPEND);
                 file_put_contents(storage_path($logFilePath), $prefix . 'Registration id of match: ' . $otherReg->id . $newLine, FILE_APPEND);
-                return redirect('/registrationExists');
+                
+                $diff = $otherReg->created_at->diffInSeconds();
+                if($diff > 2){
+                    return redirect('/registrationExists');
+                } else {
+                    file_put_contents(storage_path($logFilePath), $prefix . 'Difference in time: ' . $diff . $newLine, FILE_APPEND);
+                    file_put_contents(storage_path($logFilePath), $prefix . 'Acting like registration happened like normal' . $newLine, FILE_APPEND);
+                    return redirect('/registration/done/participant/' . $otherReg->id);
+                }
             }
         }
 
