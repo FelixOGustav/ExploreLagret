@@ -11,7 +11,8 @@
                 <td>Name</td>
                 <td>Epost</td>
                 <td>Telefon</td>
-                <td>Länk Skickad</td>
+                <td>Önskad Ort</td>
+                <td>Länk Skickad</>
                 <td>Skicka länk</td> 
                 <td>Ta bort</td>               
             </thead>
@@ -34,6 +35,17 @@
                                 <p style="color: #d5e0e8"><i>-</i></p>
                             @else
                                 <p>{{$registration->phone}}</p>
+                            @endif
+                        </td>
+                        <td>
+                            @if($registration->place_id == 0)
+                                <p style="color: #d5e0e8"><i>-</i></p>
+                            @else
+                                @foreach ($places as $place)
+                                    @if ($place->placeID == $registration->place_id)
+                                        <p>{{$place->placename}}</p>
+                                    @endif
+                                @endforeach
                             @endif
                         </td>
                         <td>
@@ -66,6 +78,7 @@
                 <td>Name</td>
                 <td>Epost</td>
                 <td>Telefon</td>
+                <td>Önskad Ort</td>
                 <td>Länk Skickad</td>
                 <td>Skicka länk</td> 
                 <td>Ta bort</td>               
@@ -89,6 +102,17 @@
                                 <p style="color: #d5e0e8"><i>-</i></p>
                             @else
                                 <p>{{$registration->phone}}</p>
+                            @endif
+                        </td>
+                        <td>
+                            @if($registration->place_id == null)
+                                <p style="color: #d5e0e8"><i>-</i></p>
+                            @else
+                                @foreach ($places as $place)
+                                    @if ($place->placeID == $registration->place_id)
+                                        <p>{{$place->placename}}</p>
+                                    @endif
+                                @endforeach
                             @endif
                         </td>
                         <td>

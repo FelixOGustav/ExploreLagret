@@ -552,6 +552,7 @@ class PagesController extends Controller
 
         $registration->name = Request('name');
         $registration->email = Request('email');
+        $registration->place_id = Request('place');
         if(Request('phoneNumber') != null)
             $registration->phone = Request('phoneNumber');
         if(Request('leader') != null)
@@ -561,9 +562,11 @@ class PagesController extends Controller
     }
 
     public function lateRegistrationQueue(){
+        $camp = \App\registration_state::where('active', 1)->first();
         $registrationparticipants = \App\registrationqueue::where('leader', 0)->get();
         $registrationleaders = \App\registrationqueue::where('leader', 1)->get();
-        return view('AdminPages/lateregistrationqueue', ['registrationparticipants' => $registrationparticipants, 'registrationleaders' => $registrationleaders]);
+        $places = \App\place::where('camp_id', $camp->id)->orderBy('placename', 'ASC')->get();
+        return view('AdminPages/lateregistrationqueue', ['registrationparticipants' => $registrationparticipants, 'registrationleaders' => $registrationleaders, 'places' => $places]);
     }
 
     public function sendLateRegLink($leader, $registrationid){

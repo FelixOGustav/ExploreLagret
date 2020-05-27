@@ -52,8 +52,12 @@ class CampRegistrationController extends Controller
 
         foreach($links as $link){
             if($key == $link->link_key){
+                $takenMap = array();
                 $places = \App\place::where('camp_id', $camp->id)->orderBy('placename', 'ASC')->get();
-                return view('Pages/registration', ['places' => $places, 'key' => $key]);
+                foreach($places as $place){
+                    $takenMap[$place->placeID] = false;
+                }
+                return view('Pages/registration', ['places' => $places, 'key' => $key, 'takenMap' => $takenMap]);
             }
         }
 
@@ -63,10 +67,15 @@ class CampRegistrationController extends Controller
     public function lateRegistrationLeader($key){
         $camp = \App\registration_state::where('active', 1)->first();
         $links = \App\late_registration_key::where('leader', '=', 1)->get();
+        
         foreach($links as $link){
             if($key == $link->link_key){
+                $takenMap = array();
                 $places = \App\place::where('camp_id', $camp->id)->orderBy('placename', 'ASC')->get();
-                return view('Pages/registration-leader', ['places' => $places, 'key' => $key]);
+                foreach($places as $place){
+                    $takenMap[$place->placeID] = false;
+                }
+                return view('Pages/registration-leader', ['places' => $places, 'key' => $key, 'takenMap' => $takenMap]);
             }
         }
 

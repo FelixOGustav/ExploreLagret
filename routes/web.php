@@ -125,11 +125,12 @@ Route::group(['middleware' => 'auth'], function () {
 
 
 use Illuminate\Routing\UrlGenerator;
+/*
 Route::get('/test', 'PagesController@NewAdminTemplateTemp');
 
 Route::get('/test/mail/{id}', function ($id) {
     return view('Emails/defaultmail', ['mail' => \App\mail::find($id)]);
-});
+}); */
 
 /*
 Route::get('/sendMailJob', function(){

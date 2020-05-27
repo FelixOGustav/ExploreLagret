@@ -40,7 +40,7 @@
                                 <tbody>
                                     <tr>
                                         <td style="width: 15%;">
-                                                <label for="name" style="float:right">Namn</label>
+                                                <label for="name" style="float:right; margin-right: 10px">Namn</label>
                                         </td>
                                         <td style="width: 85%; padding-right: 40px;">
                                                 <input type="text" id="name" name="name" style="width: 100%" placeholder="Namn Namnsson">
@@ -48,7 +48,7 @@
                                     </tr>
                                     <tr>
                                         <td style="width: 15%;">
-                                            <label for="email" style="float:right">Epost</label>
+                                            <label for="email" style="float:right; margin-right: 10px">Epost</label>
                                         </td>
                                         <td style="width: 85%; padding-right: 40px;">
                                             <input type="email" name="email" id="email"  style="width: 100%" placeholder="namn.namnsson@namn.se">
@@ -56,12 +56,26 @@
                                     </tr>
                                     <tr>
                                         <td style="width: 15%;">
-                                            <label for="phoneNumber" style="float:right">Telefonnummer</label>
+                                            <label for="phoneNumber" style="float:right; margin-right: 10px">Telefonnummer</label>
                                         </td>
                                         <td style="width: 85%; padding-right: 40px;">
                                             <input type="text" name="phoneNumber" id="phoneNumber"  style="width: 100%" placeholder="0713-371337">
                                         </td>
                                     </tr>
+                                    <tr>
+                                        <td style="width: 15%;">
+                                            <label for="place" style="float:right; margin-right: 10px">Önskad Ort</label>
+                                        </td>
+                                        <td style="width: 85%; padding-right: 40px;">
+                                            <select id="place" name="place" class="form-control"  required>
+                                                <option value="">Välj...</option>
+                                            @foreach($places as $place)
+                                                <option value="{{$place->placeID}}" {{old("place") == $place->placeID ? "selected":""}}>{{$place->placename}}</option>
+                                            @endforeach
+                                        </select>
+                                        </td>
+                                    </tr>
+                                    
                                     <input type="hidden" id="leader" name="leader">
                                 </tbody>                                    
                             </table>
