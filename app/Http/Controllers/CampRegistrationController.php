@@ -458,6 +458,7 @@ class CampRegistrationController extends Controller
         $registration->member_place = Request('memberPlace');
         $registration->other = Request('other');
         $registration->terms = Request('terms');
+        $registration->camp_id = $camp->id;
         if(Request('discount')){
             $registration->discount = Request('discount');
         }
@@ -565,6 +566,7 @@ class CampRegistrationController extends Controller
         $registration->other = Request('other');
         $registration->terms = Request('terms');
         $registration->kitchen = '0';
+        $registration->camp_id = $camp->id;
         if(Request('discount')){
             $registration->discount = Request('discount');
         }
