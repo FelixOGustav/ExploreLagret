@@ -59,11 +59,11 @@ class AuthServiceProvider extends ServiceProvider
         Gate::define('managecamps', function() {
             return \App\accesslevel::find(Auth::user()->id)->manage_camp;
         });
-        
+
         Gate::define('manageusers', function() {
             return \App\accesslevel::find(Auth::user()->id)->manage_user;
         });
-        
+
         Gate::define('seminars', function() {
             return \App\accesslevel::find(Auth::user()->id)->seminars;
         });
@@ -71,15 +71,15 @@ class AuthServiceProvider extends ServiceProvider
         Gate::define('allergy', function() {
             return \App\accesslevel::find(Auth::user()->id)->allergy;
         });
-        
+
         Gate::define('other', function() {
             return \App\accesslevel::find(Auth::user()->id)->other;
         });
-        
+
         Gate::define('statistics', function() {
             return \App\accesslevel::find(Auth::user()->id)->statistics;
         });
-        
+
         Gate::define('manageusers', function() {
             return \App\accesslevel::find(Auth::user()->id)->manage_user;
         });
@@ -95,47 +95,47 @@ class AuthServiceProvider extends ServiceProvider
         Gate::define('schedule', function() {
             return \App\accesslevel::find(Auth::user()->id)->schedule;
         });
-        
+
         Gate::define('editregistration', function() {
             return \App\accesslevel::find(Auth::user()->id)->edit_registration;
         });
-        
+
         Gate::define('verifieregistration', function() {
             return \App\accesslevel::find(Auth::user()->id)->verified_registration;
         });
-        
+
         Gate::define('ljung', function() {
             return \App\accesslevel::find(Auth::user()->id)->ljung;
         });
-        
+
         Gate::define('vargarda', function() {
             return \App\accesslevel::find(Auth::user()->id)->vargarda;
         });
-        
+
         Gate::define('asklanda_ornunga', function() {
             return \App\accesslevel::find(Auth::user()->id)->asklanda_ornunga;
         });
-        
+
         Gate::define('bergstena_ostadkulle', function() {
             return \App\accesslevel::find(Auth::user()->id)->bergstena_ostadkulle;
         });
-        
+
         Gate::define('ljurhalla', function() {
             return \App\accesslevel::find(Auth::user()->id)->ljurhalla;
         });
-        
+
         Gate::define('t_r_e', function() {
             return \App\accesslevel::find(Auth::user()->id)->t_r_e;
         });
-        
+
         Gate::define('borgstena_tamta', function() {
             return \App\accesslevel::find(Auth::user()->id)->borgstena_tamta;
         });
-        
+
         Gate::define('storsjostrand', function() {
             return \App\accesslevel::find(Auth::user()->id)->storsjostrand;
         });
-        
+
         Gate::define('herrljunga', function() {
             return \App\accesslevel::find(Auth::user()->id)->herrljunga;
         });
@@ -151,7 +151,7 @@ class AuthServiceProvider extends ServiceProvider
         Gate::define('alingsas', function() {
             return \App\accesslevel::find(Auth::user()->id)->alingsas;
         });
-        
+
         Gate::define('sollebrunn_grafsnas_magra', function() {
             return \App\accesslevel::find(Auth::user()->id)->sollebrunn_grafsnas_magra;
         });
@@ -159,7 +159,7 @@ class AuthServiceProvider extends ServiceProvider
         Gate::define('toarp', function() {
             return \App\accesslevel::find(Auth::user()->id)->toarp;
         });
-        
+
         Gate::define('age', function() {
             return \App\accesslevel::find(Auth::user()->id)->age;
         });
@@ -171,17 +171,17 @@ class AuthServiceProvider extends ServiceProvider
         Gate::define('kitchen', function() {
             return \App\accesslevel::find(Auth::user()->id)->kitchen;
         });
-        
+
         Gate::define('contact_info', function() {
             return \App\accesslevel::find(Auth::user()->id)->contact_info;
         });
-        
+
         Gate::define('contact_info_advocate', function() {
             return \App\accesslevel::find(Auth::user()->id)->contact_info_advocate;
         });
 
         Gate::define('registrationlists', function(){
-            if(Auth::user()->can('ljung') || 
+            if(Auth::user()->can('ljung') ||
             Auth::user()->can('vargarda') ||
             Auth::user()->can('asklanda_ornunga') ||
             Auth::user()->can('bergstena_ostadkulle') ||
@@ -193,6 +193,7 @@ class AuthServiceProvider extends ServiceProvider
             Auth::user()->can('loo_langared')||
             Auth::user()->can('grabo')||
             Auth::user()->can('alingsas')||
+            Auth::user()->can('sollebrunn_grafsnas_magra')||
             Auth::user()->can('toarp')){
                 return true;
             }
